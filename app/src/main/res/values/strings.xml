@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RideFundraiser</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="distance">
+        <item>Miles</item>
+        <item>Kilometers</item>
+    </string-array>
+    <string-array name="money">
+        <item>USD</item>
+    </string-array>
+</resources>
