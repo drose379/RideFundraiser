@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customText="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#78909C"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <drose379.ridefundraiser.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:id="@+id/eventName"
+            />
+        <drose379.ridefundraiser.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:id="@+id/goalDistanceView"
+            />
+        <drose379.ridefundraiser.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:id="@+id/donationRate"/>
+        <drose379.ridefundraiser.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:id="@+id/donatingTo"/>
+    </LinearLayout>
+
+    <drose379.ridefundraiser.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        customText:bold="true"
+        android:paddingTop="25dp"
+        android:paddingLeft="25dp"
+        android:textSize="17sp"
+        android:textColor="#000000"
+        android:text="My Goal Distance:"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.65"
+            android:inputType="numberDecimal"
+            android:id="@+id/goalDistance"/>
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.35"
+            android:entries="@array/distance"
+            android:id="@+id/distanceUnits"
+            />
+
+    </LinearLayout>
+
+    <drose379.ridefundraiser.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        customText:bold="true"
+        android:paddingTop="25dp"
+        android:paddingLeft="25dp"
+        android:textSize="17sp"
+        android:textColor="#000000"
+        android:text="My Donation Per Mile:"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.65"
+            android:inputType="numberDecimal"
+            android:id="@+id/donationAmount"/>
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.35"
+            android:entries="@array/money"
+            android:id="@+id/moneyUnits"
+            />
+
+    </LinearLayout>
+
+    <drose379.ridefundraiser.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        customText:bold="true"
+        android:paddingTop="25dp"
+        android:paddingLeft="25dp"
+        android:textSize="17sp"
+        android:textColor="#000000"
+        android:text="Donating To:"
+        />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/organizationOptions"
+        android:entries="@array/testOrganizations"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:background="@color/indicator"
+        android:textColor="#FFFFFF"
+        android:id="@+id/doneButton2"
+        android:text="DONE"/>
+
+</LinearLayout>

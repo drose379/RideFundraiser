@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.melnykov.fab.FloatingActionButton;
 
-import drose379.ridefundraiser.NewActivity;
+import drose379.ridefundraiser.NewEvent;
 import drose379.ridefundraiser.R;
 
 /**
@@ -26,7 +26,7 @@ public class HomeTab extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(),NewActivity.class);
+                Intent i = new Intent(getActivity(),NewEvent.class);
                 startActivity(i);
             }
         });

@@ -7,7 +7,17 @@
         <item>Miles</item>
         <item>Kilometers</item>
     </string-array>
+
     <string-array name="money">
         <item>USD</item>
     </string-array>
+
+    <string-array name="testOrganizations">
+        <item>Born Free USA</item>
+        <item>Humane Farming Association</item>
+        <item>Blue Ocean Institute</item>
+        <item>EarthJustice</item>
+        <item>Direct Relief International</item>
+    </string-array>
+
 </resources>
