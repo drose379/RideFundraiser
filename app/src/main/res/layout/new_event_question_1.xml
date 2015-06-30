@@ -38,7 +38,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:layout_below="@+id/question1EditText"
-            android:background="@color/indicator"
+            android:background="@color/ColorLightPrimary"
             android:textColor="#FFFFFF"
             android:id="@+id/nextButton1"
             android:text="Next"/>

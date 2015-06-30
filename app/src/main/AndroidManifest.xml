@@ -17,10 +17,16 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".HomeTabRoot"
+            android:label="Home"/>
         <activity
             android:name=".NewEvent"
             android:label="New Activity"/>
 
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
 
 </manifest>

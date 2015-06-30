@@ -1,55 +1,46 @@
 package drose379.ridefundraiser;
 
-import android.content.Intent;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.android.gms.common.Scopes;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.plus.Plus;
-
 import drose379.ridefundraiser.homeTabs.SlidingTabLayout;
 import drose379.ridefundraiser.homeTabs.ViewPagerAdapter;
 
-
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener {
-
-    private GoogleApiClient gApiClient;
+public class HomeTabRoot extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.home_tab_root);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        gApiClient = new GoogleApiClient.Builder()
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(Plus.API)
-                .addScope(new Scope(Scopes.PROFILE))
-                .build();
+        ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+        pager.setAdapter(pagerAdapter);
+        pager.setOffscreenPageLimit(3);
 
-    }
+        SlidingTabLayout tabLayout = (SlidingTabLayout) findViewById(R.id.tabs);
+        tabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+            @Override
+            public int getIndicatorColor(int position) {
+                return getResources().getColor(R.color.indicator);
+            }
 
-    @Override
-    public void onConnected(Bundle connectionHint) {
+            @Override
+            public int getDividerColor(int position) {
+                return 0;
+            }
+        });
 
-    }
-    @Override
-    public void onConnectionSuspended(int cause) {
+        tabLayout.setViewPager(pager);
+        //stretch tab layout to fill page
 
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult result) {
-        
     }
 
     @Override
