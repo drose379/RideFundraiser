@@ -3,6 +3,15 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="description">Select an amount and an organization you care about, and hop on your bicycle, throw on your running shoes
+        go for a walk, or participate in an event of your choosing. Raise money by the Mile or by the Hour, with the help of others too.
+    </string>
+
+    <string name="donationDesc">Simply select an amount, and choose an organization that interests you.</string>
+    <string name="walkDesc">Head outside for a relaxing walk.</string>
+    <string name="runDesc">Throw on your running shows and go for a hard run</string>
+    <string name="bikeDesc">Hop on your bicycle for a long ride in the great outdoors</string>
+
     <string-array name="distance">
         <item>Miles</item>
         <item>Kilometers</item>

@@ -1,13 +1,16 @@
 package drose379.ridefundraiser;
 
 import android.content.Intent;
+import android.content.IntentSender;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Scope;
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        gApiClient = new GoogleApiClient.Builder()
+        gApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(Plus.API)
@@ -39,8 +42,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     }
 
     @Override
-    public void onConnected(Bundle connectionHint) {
+    public void onStart() {
+        super.onStart();
+        gApiClient.connect();
+    }
 
+    @Override
+    public void onConnected(Bundle connectionHint) {
+        Log.i("connection","Google services Connected");
     }
     @Override
     public void onConnectionSuspended(int cause) {
@@ -49,7 +58,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     @Override
     public void onConnectionFailed(ConnectionResult result) {
-        
+        try {
+            result.startResolutionForResult(this,1);
+        } catch (IntentSender.SendIntentException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
