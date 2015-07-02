@@ -11,6 +11,9 @@
     <string name="walkDesc">Head outside for a relaxing walk.</string>
     <string name="runDesc">Throw on your running shows and go for a hard run</string>
     <string name="bikeDesc">Hop on your bicycle for a long ride in the great outdoors</string>
+    <string name="otherDesc">Try anything else that could help you raise money, and donate by the hour instead.</string>
+
+    <string name="intro">Hop on your bike, or head out for a run or walk and raise money by the mile, or attend an event and raise money by the hour.</string>
 
     <string-array name="distance">
         <item>Miles</item>

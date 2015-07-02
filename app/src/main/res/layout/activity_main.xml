@@ -34,95 +34,91 @@
             />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title"
             android:padding="20dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/grid"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="3dp"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_attach_money_white_36dp"
-                    android:background="#EF5350"
-                    android:layout_gravity="center_vertical"
-                    android:padding="10dp"/>
-
-                <drose379.ridefundraiser.CustomTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="16sp"
-                    customText:bold="true"
-                    android:layout_weight="0.85"
-                    android:layout_gravity="center_vertical"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:padding="10dp"
-                    android:text="@string/donationDesc"/>
+                    android:layout_margin="3dp"
+                    android:background="#E53935"
+                    android:src="@drawable/ic_directions_walk_white_36dp"/>
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:padding="10dp"
+                    android:layout_margin="3dp"
+                    android:background="#E53935"
+                    android:src="@drawable/ic_directions_run_white_36dp"/>
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:padding="10dp"
+                    android:layout_margin="3dp"
+                    android:background="#E53935"
+                    android:src="@drawable/ic_directions_bike_white_36dp"/>
+
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="3dp"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_directions_walk_white_36dp"
-                    android:background="#EF5350"
-                    android:layout_gravity="center_vertical"
-                    android:padding="10dp"/>
-
-                <drose379.ridefundraiser.CustomTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textSize="16sp"
-                    customText:bold="true"
-                    android:layout_gravity="center_vertical"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:padding="10dp"
-                    android:text="@string/walkDesc"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="3dp"
-                android:orientation="horizontal">
+                    android:layout_margin="3dp"
+                    android:background="#E53935"
+                    android:src="@drawable/ic_help_outline_white_36dp"/>
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_directions_run_white_36dp"
-                    android:background="#EF5350"
-                    android:layout_gravity="center_vertical"
-                    android:padding="10dp"/>
-
-                <drose379.ridefundraiser.CustomTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    customText:bold="true"
-                    android:layout_weight="0.85"
-                    android:layout_gravity="center_vertical"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:padding="10dp"
-                    android:text="@string/runDesc"/>
+                    android:layout_margin="3dp"
+                    android:background="#E53935"
+                    android:src="@drawable/ic_attach_money_white_36dp"/>
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:padding="10dp"
+                    android:layout_margin="3dp"
+                    android:background="#E53935"
+                    android:src="@drawable/ic_group_white_24dp"/>
 
 
             </LinearLayout>
-            
+
 
         </LinearLayout>
+        
+        <drose379.ridefundraiser.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="40dp"
+            android:text="@string/intro"
+            android:layout_below="@+id/grid"
+            customText:bold="true"
+            android:textSize="16sp"
+            android:textColor="@color/ColorPrimaryDark"
+            />
 
         <RelativeLayout
             android:layout_width="wrap_content"

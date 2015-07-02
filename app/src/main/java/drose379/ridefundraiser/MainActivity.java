@@ -9,18 +9,28 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.ErrorDialogFragment;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Scope;
+import com.google.android.gms.drive.Drive;
+import com.google.android.gms.plus.People;
 import com.google.android.gms.plus.Plus;
+import com.google.android.gms.plus.model.people.Person;
+import com.google.android.gms.plus.model.people.PersonBuffer;
 
 import drose379.ridefundraiser.homeTabs.SlidingTabLayout;
 import drose379.ridefundraiser.homeTabs.ViewPagerAdapter;
 
 
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener {
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
+        View.OnClickListener {
 
     private GoogleApiClient gApiClient;
 
@@ -36,8 +46,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(Plus.API)
-                .addScope(new Scope(Scopes.PROFILE))
+                .addScope(Plus.SCOPE_PLUS_LOGIN)
+                .addScope(Plus.SCOPE_PLUS_PROFILE)
                 .build();
+
+
+        findViewById(R.id.googleSignIn).setOnClickListener(this);
 
     }
 
@@ -45,12 +59,24 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public void onStart() {
         super.onStart();
         gApiClient.connect();
+
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        gApiClient.disconnect();
     }
 
     @Override
     public void onConnected(Bundle connectionHint) {
-        Log.i("connection","Google services Connected");
+        if (Plus.PeopleApi.getCurrentPerson(gApiClient) == null) {
+            Log.i("connection","PERSON NULL");
+        } else {
+            Log.i("connection",Plus.PeopleApi.getCurrentPerson(gApiClient).getDisplayName());
+        }
     }
+
+
     @Override
     public void onConnectionSuspended(int cause) {
 
@@ -58,10 +84,37 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     @Override
     public void onConnectionFailed(ConnectionResult result) {
-        try {
-            result.startResolutionForResult(this,1);
-        } catch (IntentSender.SendIntentException e) {
-            throw new RuntimeException(e);
+        Log.i("connection",String.valueOf(result.getErrorCode()));
+        if (result.hasResolution()) {
+            try {
+                result.startResolutionForResult(this,1);
+            } catch (IntentSender.SendIntentException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            Log.i("connection","NO RESOLUTION");
+            ErrorDialogFragment errorFrag = new ErrorDialogFragment();
+            Bundle arguments = new Bundle();
+            arguments.putInt("ERROR",result.getErrorCode());
+            errorFrag.setArguments(arguments);
+            errorFrag.show(getFragmentManager(),"Error");
+        }
+    }
+
+    @Override
+    public void onActivityResult(int request,int result,Intent data) {
+        super.onActivityResult(request,result,data);
+        if (request == 1) {
+            gApiClient.connect();
+        }
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        //check which button is clicked
+        if (v.getId() == R.id.googleSignIn) {
+            //gApiClient.connect();
         }
     }
 
