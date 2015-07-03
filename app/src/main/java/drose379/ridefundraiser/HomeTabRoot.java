@@ -4,13 +4,19 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.google.android.gms.plus.model.people.Person;
 
 import drose379.ridefundraiser.homeTabs.SlidingTabLayout;
 import drose379.ridefundraiser.homeTabs.ViewPagerAdapter;
 
 public class HomeTabRoot extends AppCompatActivity {
+
+    private String currentPerson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +25,9 @@ public class HomeTabRoot extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        currentPerson = getIntent().getStringExtra("displayName");
+        Log.i("gConnect", "HOME TAB OPENED WITH USER" + currentPerson);
 
         ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
