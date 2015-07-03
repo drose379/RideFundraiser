@@ -9,20 +9,20 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.common.ConnectionResult;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 
-import com.google.android.gms.plus.Plus;
+import com.google.android.gms.plus.model.people.Person;
 
 
-
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,
-        View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,GSignInController.UICallback {
 
     private GoogleApiClient gApiClient;
+    private GSignInController gController;
 
     private boolean shouldInflateAccountPicker = false;
 
@@ -34,79 +34,60 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        gApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(Plus.API)
-                .addScope(Plus.SCOPE_PLUS_LOGIN)
-                .addScope(Plus.SCOPE_PLUS_PROFILE)
-                .build();
-
+        gController = new GSignInController(this);
 
         findViewById(R.id.googleSignIn).setOnClickListener(this);
 
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        gApiClient.connect();
-    }
-    @Override
-    public void onStop() {
-        super.onStop();
-        gApiClient.disconnect();
+    public void signInSuccess(Person currentUser) {
+        //skip the log-in screen
+        Log.i("gConnect", "SUCCESS " + currentUser.getDisplayName());
+        //call intent to open up HomeTabRoot
     }
 
     @Override
-    public void onConnected(Bundle connectionHint) {
-        if (Plus.PeopleApi.getCurrentPerson(gApiClient) == null) {
-            Log.i("connection","PERSON NULL");
-        } else {
-            Log.i("connection",Plus.PeopleApi.getCurrentPerson(gApiClient).getDisplayName());
+    public void showLoginScreen() {
+        Log.i("gConnect","Show login screen");
+        RelativeLayout loginRoot = (RelativeLayout) findViewById(R.id.loginContainer);
+        LinearLayout loadRoot = (LinearLayout) findViewById(R.id.loadRoot);
+        loadRoot.setVisibility(View.GONE
+        );
+        loginRoot.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void inflateResolution(ConnectionResult result) {
+        Log.i("gConnect","Inflate Resolution");
+        try {
+            result.startResolutionForResult(this,1);
+        } catch (IntentSender.SendIntentException e) {
+
         }
     }
 
-
-    @Override
-    public void onConnectionSuspended(int cause) {//attempt to log user in
-
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult result) {
-        if (shouldInflateAccountPicker) {
-            Log.i("connection",String.valueOf(result.getErrorCode()));
-            if (result.hasResolution()) {
-                try {
-                    result.startResolutionForResult(this,1);
-                } catch (IntentSender.SendIntentException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {
-                throw new RuntimeException("Could not connect to Google API");
-            }
-        } else {
-            Log.i("connection","should not inflate account picker, need to wait for google log in button to be clicked");
-            shouldInflateAccountPicker = true;
-        }
-    }
 
     @Override
     public void onActivityResult(int request,int result,Intent data) {
-        super.onActivityResult(request,result,data);
+        super.onActivityResult(request, result, data);
         if (request == 1) {
-            //callback to method in GSignInController attempt()
+            gController.attemptSignIn();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.googleSignIn) {
+            gController.attemptSignIn();
         }
     }
 
 
     @Override
-    public void onClick(View v) {
-        //check which button is clicked
-        if (v.getId() == R.id.googleSignIn) {
-            gApiClient.connect();
-        }
+    public void onStop() {
+        super.onStop();
+        gController.disconnect();
     }
 
     @Override
