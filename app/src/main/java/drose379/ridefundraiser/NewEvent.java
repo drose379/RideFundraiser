@@ -45,7 +45,8 @@ public class NewEvent extends AppCompatActivity {
          */
     }
 
-    public void questionOneCallback(String eventName) {
+    public void questionOneCallback(String eventName,String measure) {
+        Log.i("measure",measure);
         /*
             * Must account for when people type lower case letters, use String.contains() in the default of switch to ensure that no running,walk,or bike slips through
             * Must sanitize all inputs in newX() methods

@@ -30,6 +30,29 @@
             android:textSize="15sp"
             android:id="@+id/question1EditText"/>
 
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/measureSelection"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/question1EditText"
+            >
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:id="@+id/mile"
+                android:text="By The Mile"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hour"
+                android:text="By The Hour"/>
+
+        </RadioGroup>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,7 +60,7 @@
             android:paddingRight="40dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:layout_below="@+id/question1EditText"
+            android:layout_below="@+id/measureSelection"
             android:background="@color/ColorLightPrimary"
             android:textColor="#FFFFFF"
             android:id="@+id/nextButton1"
