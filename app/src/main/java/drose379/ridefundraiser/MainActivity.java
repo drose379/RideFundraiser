@@ -2,7 +2,6 @@ package drose379.ridefundraiser;
 
 import android.content.Intent;
 import android.content.IntentSender;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,20 +11,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.ErrorDialogFragment;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.common.Scopes;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.drive.Drive;
-import com.google.android.gms.plus.People;
-import com.google.android.gms.plus.Plus;
-import com.google.android.gms.plus.model.people.Person;
-import com.google.android.gms.plus.model.people.PersonBuffer;
 
-import drose379.ridefundraiser.homeTabs.SlidingTabLayout;
-import drose379.ridefundraiser.homeTabs.ViewPagerAdapter;
+import com.google.android.gms.common.api.GoogleApiClient;
+
+import com.google.android.gms.plus.Plus;
+
 
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
@@ -33,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         View.OnClickListener {
 
     private GoogleApiClient gApiClient;
+
+    private boolean shouldInflateAccountPicker = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public void onStart() {
         super.onStart();
         gApiClient.connect();
-
     }
     @Override
     public void onStop() {
@@ -78,26 +69,26 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
 
     @Override
-    public void onConnectionSuspended(int cause) {
+    public void onConnectionSuspended(int cause) {//attempt to log user in
 
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult result) {
-        Log.i("connection",String.valueOf(result.getErrorCode()));
-        if (result.hasResolution()) {
-            try {
-                result.startResolutionForResult(this,1);
-            } catch (IntentSender.SendIntentException e) {
-                throw new RuntimeException(e);
+        if (shouldInflateAccountPicker) {
+            Log.i("connection",String.valueOf(result.getErrorCode()));
+            if (result.hasResolution()) {
+                try {
+                    result.startResolutionForResult(this,1);
+                } catch (IntentSender.SendIntentException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                throw new RuntimeException("Could not connect to Google API");
             }
         } else {
-            Log.i("connection","NO RESOLUTION");
-            ErrorDialogFragment errorFrag = new ErrorDialogFragment();
-            Bundle arguments = new Bundle();
-            arguments.putInt("ERROR",result.getErrorCode());
-            errorFrag.setArguments(arguments);
-            errorFrag.show(getFragmentManager(),"Error");
+            Log.i("connection","should not inflate account picker, need to wait for google log in button to be clicked");
+            shouldInflateAccountPicker = true;
         }
     }
 
@@ -105,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public void onActivityResult(int request,int result,Intent data) {
         super.onActivityResult(request,result,data);
         if (request == 1) {
-            gApiClient.connect();
+            //callback to method in GSignInController attempt()
         }
     }
 
@@ -114,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public void onClick(View v) {
         //check which button is clicked
         if (v.getId() == R.id.googleSignIn) {
-            //gApiClient.connect();
+            gApiClient.connect();
         }
     }
 
