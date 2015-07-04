@@ -74,12 +74,31 @@ public class NewEvent extends AppCompatActivity {
         trans.commit();
     }
 
-    public void questionTwoCallback() {
+    public void questionTwoCallback(String type,String user,String eventName,String donatingTo,float rate,float distance) {
         /*
             * need to save new event to DB
             * Need to create Live Event actiivty where the event is traced live while user is in motion
             * Must update "My Activity" tab with completed events
          */
+        switch (type) {
+            case "HOUR" :
+                saveLiveHourEvent();
+                break;
+            case "MILE" :
+                saveLiveMileEvent(user,eventName,donatingTo,rate,distance);
+                break;
+        }
+    }
+
+    public void saveLiveMileEvent(String user,String eventName,String donatingTo,float rate,float distance) {
+        /**
+         * Save event to db
+         * Open up live event activity
+         */
+    }
+
+    public void saveLiveHourEvent() {
+
     }
 
 }

@@ -45,7 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //skip the log-in screen
         Log.i("gConnect", "SUCCESS " + currentUser.getDisplayName());
         Intent openHome = new Intent(this,HomeTabRoot.class);
-        openHome.putExtra("displayName",currentUser.getDisplayName());
+
+        CurrentUser.currentUser = currentUser.getDisplayName();
+
         startActivity(openHome);
         finish();
     }

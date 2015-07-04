@@ -36,6 +36,11 @@ public class NewEventQuestion2 extends Fragment {
     private final String EVENT_MILE = "MILE";
     private final String EVENT_HOUR = "HOUR";
 
+
+    private TextView goalDistanceDisplay = (TextView) getView().findViewById(R.id.goalDistanceView);
+    private TextView donationRateDisplay = (TextView) getView().findViewById(R.id.donationRate);
+    private TextView donatingToDisplay = (TextView) getView().findViewById(R.id.donatingTo);
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -87,7 +92,6 @@ public class NewEventQuestion2 extends Fragment {
 
     public void initGoalDistanceDisplay() {
         EditText distanceGoal = (EditText) getView().findViewById(R.id.goalDistance);
-        final TextView distanceDisplay = (TextView) getView().findViewById(R.id.goalDistanceView);
         final Spinner distanceOptions = (Spinner) getView().findViewById(R.id.distanceUnits);
 
         final String[] options = getResources().getStringArray(R.array.distance);
@@ -98,7 +102,7 @@ public class NewEventQuestion2 extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 distanceUnit = options[position];
-                String[] currentDisplay = distanceDisplay.getText().toString().split("\\s+");
+                String[] currentDisplay = goalDistanceDisplay.getText().toString().split("\\s+");
                 if (currentDisplay.length > 1) {
                     currentDisplay[1] = null;
                     currentDisplay[1] = distanceUnit;
@@ -107,7 +111,7 @@ public class NewEventQuestion2 extends Fragment {
                     newDisplay = newDisplay.concat(currentDisplay[0]);
                     newDisplay = newDisplay.concat(" " + currentDisplay[1]);
 
-                    distanceDisplay.setText(newDisplay);
+                    goalDistanceDisplay.setText(newDisplay);
                     initDonationRateDisplay();
                 }
             }
@@ -126,7 +130,7 @@ public class NewEventQuestion2 extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                distanceDisplay.setText(s + " " + distanceUnit);
+                goalDistanceDisplay.setText(s + " " + distanceUnit);
             }
 
             @Override
@@ -138,18 +142,17 @@ public class NewEventQuestion2 extends Fragment {
 
     public void initDonationRateDisplay() {
         EditText donationAmount = (EditText) getView().findViewById(R.id.donationAmount);
-        final TextView donationDisplay = (TextView) getView().findViewById(R.id.donationRate);
         final Spinner moneyUnit = (Spinner) getView().findViewById(R.id.moneyUnits);
 
-        if (donationDisplay.getText().toString().length() > 1) {
-            String[] currentDisplay = donationDisplay.getText().toString().split("\\s+");
+        if (donationRateDisplay.getText().toString().length() > 1) {
+            String[] currentDisplay = donationRateDisplay.getText().toString().split("\\s+");
             currentDisplay[currentDisplay.length-1] = null;
             currentDisplay[currentDisplay.length-1] = distanceUnit.substring(0,distanceUnit.length()-1);
             String newDisplay = "";
             for (String item : currentDisplay) {
                 newDisplay = newDisplay.concat(item + " ");
             }
-            donationDisplay.setText(newDisplay);
+            donationRateDisplay.setText(newDisplay);
         }
 
         donationAmount.addTextChangedListener(new TextWatcher() {
@@ -160,7 +163,7 @@ public class NewEventQuestion2 extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                donationDisplay.setText("$" + s + " " + moneyUnit.getSelectedItem().toString() + " Per " + distanceUnit.substring(0,distanceUnit.length()-1));
+                donationRateDisplay.setText("$" + s + " " + moneyUnit.getSelectedItem().toString() + " Per " + distanceUnit.substring(0, distanceUnit.length() - 1));
             }
 
             @Override
@@ -172,14 +175,14 @@ public class NewEventQuestion2 extends Fragment {
 
     public void initDonationToDisplay() {
         Spinner donationTo = (Spinner) getView().findViewById(R.id.organizationOptions);
-        final TextView donatingDisplay = (TextView) getView().findViewById(R.id.donatingTo);
+
 
         final String[] options = getResources().getStringArray(R.array.testOrganizations);
 
         donationTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView parent, View view, int position, long id) {
-                donatingDisplay.setText(options[position]);
+                donatingToDisplay.setText(options[position]);
             }
 
             @Override
@@ -201,15 +204,25 @@ public class NewEventQuestion2 extends Fragment {
         Locale locale = Locale.US;
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(locale);
 
-        EditText goalDistance = (EditText) getView().findViewById(R.id.goalDistance);
-        EditText donationRate = (EditText) getView().findViewById(R.id.donationAmount);
 
-        if (goalDistance.getText().toString().length() != 0 && donationRate.getText().toString().length() != 0) {
-            float distance = Float.parseFloat(goalDistance.getText().toString());
-            float rate = Float.parseFloat(donationRate.getText().toString());
+        if (goalDistanceDisplay.getText().toString().length() != 0 && donationRateDisplay.getText().toString().length() != 0) {
+
+
+
+            /**
+             * Need access to:
+             * User * (CurrentUser.user)
+             * Event Name * (eventName)
+             * Organization (donatingTo)
+             * Per mile donation (rate)
+             * Goal distance (distance)
+             */
+
+            final String donatingTo = (String) donatingToDisplay.getText();
+            final float distance = Float.parseFloat(goalDistanceDisplay.getText().toString());
+            final float rate = Float.parseFloat(donationRateDisplay.getText().toString());
 
             float baseDonation = distance * rate;
-
 
             MaterialDialog confirmDialog = new MaterialDialog.Builder(getActivity())
                     .title("Confirm")
@@ -220,12 +233,11 @@ public class NewEventQuestion2 extends Fragment {
                     .callback(new MaterialDialog.ButtonCallback() {
                         @Override
                         public void onPositive(MaterialDialog dialog) {
-                            parentActivity.questionTwoCallback();
+                            parentActivity.questionTwoCallback(eventType,CurrentUser.currentUser,eventName,donatingTo,rate,distance);
                         }
                     })
                     .build();
             confirmDialog.show();
-
         }
 
     }

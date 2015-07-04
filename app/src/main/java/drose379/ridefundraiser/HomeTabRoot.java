@@ -26,9 +26,6 @@ public class HomeTabRoot extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        currentPerson = getIntent().getStringExtra("displayName");
-        Log.i("gConnect", "HOME TAB OPENED WITH USER" + currentPerson);
-
         ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         pager.setAdapter(pagerAdapter);
