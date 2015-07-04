@@ -46,47 +46,21 @@ public class NewEvent extends AppCompatActivity {
     }
 
     public void questionOneCallback(String eventName,String measure) {
-        Log.i("measure",measure);
-        /*
-            * Must account for when people type lower case letters, use String.contains() in the default of switch to ensure that no running,walk,or bike slips through
-            * Must sanitize all inputs in newX() methods
-        */
-        switch (eventName) {
-            case "Running" :
-                newRun(eventName);
+        switch(measure) {
+            case "By The Mile" :
+                questionTwoTransaction("MILE",eventName);
                 break;
-            case "Walking" :
-                newWalk(eventName);
-                break;
-
-            case "Biking" :
-                newBike(eventName);
-                break;
-
-            default :
-                if (eventName.contains("walking") || eventName.contains("Walking")) {
-                    newWalk(eventName);
-                } else if (eventName.contains("running") || eventName.contains("Running")) {
-                    newRun(eventName);
-                } else if (eventName.contains("biking") || eventName.contains("Biking")) {
-                    newBike(eventName);
-                } else {
-                    newOther(eventName);
-                }
+            case "By The Hour" :
+                questionTwoTransaction("HOUR",eventName);
                 break;
         }
     }
 
-    /*
-        * Create fragment transitions here in below methods, make sure to get animations working correctly
-            * Try objectAnimator for animations
+    /**
+     * Event type should be either by MILE or by HOUR
+     * This method must change the UI based on the event type
+     * MUST pass argument to NewEventQuestion2 of event type, so it can device in onCreateView which layout to show.
      */
-
-    public void newWalk(String name) {questionTwoTransaction("WALK",name);}
-    public void newRun(String name) {questionTwoTransaction("RUN",name);}
-    public void newBike(String name) {questionTwoTransaction("BIKE",name);}
-    public void newOther(String name) {questionTwoTransaction("OTHER",name);}
-
     public void questionTwoTransaction(String eventType,String eventName) {
         NewEventQuestion2 question2 = new NewEventQuestion2();
         Bundle eventInfo = new Bundle();
