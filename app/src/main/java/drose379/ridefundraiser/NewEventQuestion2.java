@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -29,8 +31,10 @@ public class NewEventQuestion2 extends Fragment {
 
     private String eventName;
     private String eventType;
-
     private String distanceUnit;
+
+    private final String EVENT_MILE = "MILE";
+    private final String EVENT_HOUR = "HOUR";
 
     @Override
     public void onAttach(Activity activity) {
@@ -49,10 +53,22 @@ public class NewEventQuestion2 extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        initView();
+        switch (eventType) {
+            case EVENT_MILE :
+                initMileView();
+                break;
+            case EVENT_HOUR :
+                initHourView();
+                break;
+        }
     }
 
-    public void initView() {
+    /**
+     * Create a initMileView method and an initHourView method
+     */
+    public void initMileView() {
+        getView().findViewById(R.id.milesMeasureRoot).setVisibility(View.VISIBLE);
+
         TextView eventNameDisplay = (TextView) getView().findViewById(R.id.eventName);
         eventNameDisplay.setText(eventName);
 
@@ -67,7 +83,6 @@ public class NewEventQuestion2 extends Fragment {
         initGoalDistanceDisplay();
         initDonationRateDisplay();
         initDonationToDisplay();
-
     }
 
     public void initGoalDistanceDisplay() {
@@ -172,6 +187,14 @@ public class NewEventQuestion2 extends Fragment {
 
             }
         });
+    }
+
+    /**
+     * End of mile root display
+     */
+
+    public void initHourView() {
+        getView().findViewById(R.id.hourMeasureRoot).setVisibility(View.VISIBLE);
     }
 
     public void validateAndCall() {
