@@ -1,15 +1,13 @@
 package drose379.ridefundraiser;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
+
+import java.util.ArrayList;
 
 
 /**
@@ -24,6 +22,7 @@ public class NewEvent extends AppCompatActivity {
      */
 
     FragmentManager fragManager;
+
 
 
     @Override
@@ -85,7 +84,7 @@ public class NewEvent extends AppCompatActivity {
                 saveLiveHourEvent();
                 break;
             case "MILE" :
-                saveLiveMileEvent(user,eventName,donatingTo,rate,distance);
+                saveLiveMileEvent(user, eventName, donatingTo, rate, distance);
                 break;
         }
     }
@@ -93,8 +92,20 @@ public class NewEvent extends AppCompatActivity {
     public void saveLiveMileEvent(String user,String eventName,String donatingTo,float rate,float distance) {
         /**
          * Save event to db
-         * Open up live event activity
+         * Open up live event activity ONLY AFTER LIVE RECORD HAS BEEN SUCCESSFULLY INSERTED INTO DB
          */
+        LiveMileEventHelper liveMileHelper = new LiveMileEventHelper(user,eventName,donatingTo,String.valueOf(rate),String.valueOf(distance));
+        if (liveMileHelper.createLiveEvent()) {
+            /**
+                * Close this activity
+                * Open Live Event activity with the info here
+             */
+        } else {
+            /**
+                * Bad connection, try to run method again
+                * Use flag to tell if this is the second time bad connection has occured. If TRUE, tell user they need internet connectivity
+             */
+        }
     }
 
     public void saveLiveHourEvent() {
