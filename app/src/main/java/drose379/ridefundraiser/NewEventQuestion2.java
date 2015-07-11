@@ -6,14 +6,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -36,10 +34,11 @@ public class NewEventQuestion2 extends Fragment {
     private final String EVENT_MILE = "MILE";
     private final String EVENT_HOUR = "HOUR";
 
+    private EditText donationRateEdit;
 
-    private TextView goalDistanceDisplay = (TextView) getView().findViewById(R.id.goalDistanceView);
-    private TextView donationRateDisplay = (TextView) getView().findViewById(R.id.donationRate);
-    private TextView donatingToDisplay = (TextView) getView().findViewById(R.id.donatingTo);
+    private TextView goalDistanceDisplay;
+    private TextView donationRateDisplay;
+    private TextView donatingToDisplay;
 
     @Override
     public void onAttach(Activity activity) {
@@ -52,6 +51,13 @@ public class NewEventQuestion2 extends Fragment {
     public View onCreateView(LayoutInflater inflater,ViewGroup parent,Bundle savedInstance) {
         super.onCreateView(inflater, parent, savedInstance);
         View v = inflater.inflate(R.layout.new_event_question_2, null);
+
+        donationRateEdit = (EditText) v.findViewById(R.id.donationAmount);
+
+        goalDistanceDisplay = (TextView) v.findViewById(R.id.goalDistanceView);
+        donationRateDisplay = (TextView) v.findViewById(R.id.donationRate);
+        donatingToDisplay = (TextView) v.findViewById(R.id.donatingTo);
+
         return v;
     }
 
@@ -207,21 +213,19 @@ public class NewEventQuestion2 extends Fragment {
 
         if (goalDistanceDisplay.getText().toString().length() != 0 && donationRateDisplay.getText().toString().length() != 0) {
 
-
-
             /**
              * Need access to:
              * User * (CurrentUser.user)
              * Event Name * (eventName)
              * Organization (donatingTo)
-             * Per mile donation (rate)
+             * Per mile donation (rate) need to grab frpom actualeidttext
              * Goal distance (distance)
              */
 
             final String donatingTo = (String) donatingToDisplay.getText();
-            final float distance = Float.parseFloat(goalDistanceDisplay.getText().toString());
-            final float rate = Float.parseFloat(donationRateDisplay.getText().toString());
-
+            final float distance = Float.parseFloat(goalDistanceDisplay.getText().toString().split("\\s")[0]);
+//            final float rate = Float.parseFloat(donationRateDisplay.getText().toString().split("\\s")[0]);
+            final float rate = Float.parseFloat(donationRateEdit.getText().toString());
             float baseDonation = distance * rate;
 
             MaterialDialog confirmDialog = new MaterialDialog.Builder(getActivity())

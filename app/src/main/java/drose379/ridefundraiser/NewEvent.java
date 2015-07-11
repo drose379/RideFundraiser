@@ -7,8 +7,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import java.util.ArrayList;
-
 
 /**
  * Created by drose379 on 6/25/15.
@@ -47,7 +45,7 @@ public class NewEvent extends AppCompatActivity {
     public void questionOneCallback(String eventName,String measure) {
         switch(measure) {
             case "By The Mile" :
-                questionTwoTransaction("MILE",eventName);
+                questionTwoTransaction("MILE", eventName);
                 break;
             case "By The Hour" :
                 questionTwoTransaction("HOUR",eventName);
@@ -71,6 +69,9 @@ public class NewEvent extends AppCompatActivity {
                 setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out).
                 replace(R.id.fragmentContainer, question2);
         trans.commit();
+
+
+
     }
 
     public void questionTwoCallback(String type,String user,String eventName,String donatingTo,float rate,float distance) {
@@ -94,7 +95,7 @@ public class NewEvent extends AppCompatActivity {
          * Save event to db
          * Open up live event activity ONLY AFTER LIVE RECORD HAS BEEN SUCCESSFULLY INSERTED INTO DB
          */
-        LiveMileEventHelper liveMileHelper = new LiveMileEventHelper(user,eventName,donatingTo,String.valueOf(rate),String.valueOf(distance));
+        LiveMileEventHelper liveMileHelper = new LiveMileEventHelper(this,user,eventName,donatingTo,String.valueOf(rate),String.valueOf(distance));
         if (liveMileHelper.createLiveEvent()) {
             /**
                 * Close this activity

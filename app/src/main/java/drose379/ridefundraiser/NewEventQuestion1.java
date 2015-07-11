@@ -3,6 +3,7 @@ package drose379.ridefundraiser;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,9 @@ public class NewEventQuestion1 extends Fragment {
                 String event = answerField.getText().toString().isEmpty() ? null : answerField.getText().toString();
                 if (event != null) {
                     RadioButton selectedMeasure = (RadioButton) getView().findViewById(measureGroup.getCheckedRadioButtonId());
-                    parentActivity.questionOneCallback(event,(String)selectedMeasure.getText());
+                    parentActivity.questionOneCallback(event, (String) selectedMeasure.getText());
+                    //selectedMeasure is NOT NULL, move to next point
+                    Log.i("measureTest",(String)selectedMeasure.getText());
                 }
             }
         });
