@@ -1,6 +1,7 @@
 package drose379.ridefundraiser;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -99,8 +100,10 @@ public class NewEvent extends AppCompatActivity {
         if (liveMileHelper.createLiveEvent()) {
             /**
                 * Close this activity
-                * Open Live Event activity with the info here
+                * Open Live Event activity with the info stored in this liveMileHelper instance (pass the LiveMileHelper instance)
              */
+            Intent i = new Intent();
+
         } else {
             /**
                 * Bad connection, try to run method again

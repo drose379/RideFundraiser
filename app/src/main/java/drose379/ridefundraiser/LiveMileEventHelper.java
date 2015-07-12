@@ -1,6 +1,8 @@
 package drose379.ridefundraiser;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -18,7 +20,7 @@ import java.util.Arrays;
 /**
  * Created by drose379 on 7/4/15.
  */
-public class LiveMileEventHelper {
+public class LiveMileEventHelper implements Parcelable {
     private Context context;
 
     private OkHttpClient httpClient = new OkHttpClient();
@@ -28,6 +30,21 @@ public class LiveMileEventHelper {
     private String organization;
     private String perMile;
     private String goalDistance;
+
+    public static final Parcelable.Creator<LiveMileEventHelper> CREATOR = new Parcelable.Creator<LiveMileEventHelper>() {
+        public LiveMileEventHelper createFromParcel(Parcel in) {
+            return new LiveMileEventHelper(in);
+        }
+
+        public LiveMileEventHelper[] newArray(int size) {
+            return new LiveMileEventHelper[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
     public LiveMileEventHelper(Context context,String user, String eventName, String organization, String perMile, String goalDistance) {
         this.context = context;
@@ -39,6 +56,29 @@ public class LiveMileEventHelper {
         this.goalDistance = goalDistance;
     }
 
+    /**
+     * Use the parcel passed in to grab data from parcel
+     * @param in to pull data form
+     */
+    public LiveMileEventHelper(Parcel in) {
+
+    }
+
+    /**
+     * Used to write existing data to parcel for use later
+     * @param dest
+     * @param flags
+     */
+    @Override
+    public void writeToParcel(Parcel dest,int flags) {
+        
+    }
+
+
+    /**
+     * Called to create a new live mile event
+     * @return Request success boolean
+     */
     public boolean createLiveEvent() {
         final BooleanWrapper didSucceed = new BooleanWrapper(false);
 
@@ -62,6 +102,18 @@ public class LiveMileEventHelper {
 
             }
         });
+        return didSucceed.getSavedItem();
+    }
+
+    /**
+     * Called when live mile event is complete, used to move record from Live to Completed table in DB
+     * @return Transfer from live to completed event boolean
+     */
+    public boolean liveMileEventFinished() {
+        final BooleanWrapper didSucceed = new BooleanWrapper(false);
+
+        //make transfer from live to complete
+
         return didSucceed.getSavedItem();
     }
 }
