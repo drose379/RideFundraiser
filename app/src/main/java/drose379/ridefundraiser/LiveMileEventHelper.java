@@ -1,7 +1,6 @@
 package drose379.ridefundraiser;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -55,7 +54,6 @@ public class LiveMileEventHelper {
             @Override
             public void onResponse(Response response) throws IOException {
                 if (response.code() == 200) {
-                    Log.i("serverResp",String.valueOf(response.code()));
                     didSucceed.setSavedItem(true);
                 }
             }
