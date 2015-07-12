@@ -3,6 +3,7 @@ package drose379.ridefundraiser;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -76,7 +77,7 @@ public class LiveMileEventHelper implements Parcelable {
      */
     @Override
     public void writeToParcel(Parcel dest,int flags) {
-        dest.writeStringArray(new String[]{user,eventName,organization,perMile,goalDistance});
+        dest.writeStringArray(new String[]{user, eventName, organization, perMile, goalDistance});
     }
 
 
@@ -99,6 +100,7 @@ public class LiveMileEventHelper implements Parcelable {
             @Override
             public void onResponse(Response response) throws IOException {
                 if (response.code() == 200) {
+                    Log.i("statusCode", "Did set to true");
                     didSucceed.setSavedItem(true);
                 }
             }

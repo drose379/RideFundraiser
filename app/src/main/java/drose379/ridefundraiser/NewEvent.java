@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 
 /**
@@ -102,9 +103,17 @@ public class NewEvent extends AppCompatActivity {
                 * Close this activity
                 * Open Live Event activity with the info stored in this liveMileHelper instance (pass the LiveMileHelper instance)
              */
-            Intent i = new Intent();
+            Log.i("startLive", "Called");
+            Intent liveEvent = new Intent(this,LiveMileEvent.class);
+
+            Bundle extra = new Bundle();
+            extra.putParcelable("helperInstance",liveMileHelper);
+            liveEvent.putExtra("extra",extra);
+            startActivity(liveEvent);
+            this.finish();
 
         } else {
+            Log.i("startLive","LiveEventHelper is not returning true");  
             /**
                 * Bad connection, try to run method again
                 * Use flag to tell if this is the second time bad connection has occured. If TRUE, tell user they need internet connectivity
