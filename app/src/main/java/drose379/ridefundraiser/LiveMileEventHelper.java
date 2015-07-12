@@ -61,7 +61,12 @@ public class LiveMileEventHelper implements Parcelable {
      * @param in to pull data form
      */
     public LiveMileEventHelper(Parcel in) {
-
+        String[] eventData = in.createStringArray();
+        user = eventData[0];
+        eventName = eventData[1];
+        organization = eventData[2];
+        perMile = eventData[3];
+        goalDistance = eventData[4];
     }
 
     /**
@@ -71,7 +76,7 @@ public class LiveMileEventHelper implements Parcelable {
      */
     @Override
     public void writeToParcel(Parcel dest,int flags) {
-        
+        dest.writeStringArray(new String[]{user,eventName,organization,perMile,goalDistance});
     }
 
 
