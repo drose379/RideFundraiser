@@ -1,20 +1,20 @@
 package drose379.ridefundraiser;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.widget.Toast;
 
 
 /**
  * Created by drose379 on 6/25/15.
  */
 @SuppressLint("NewApi")
-public class NewEvent extends AppCompatActivity {
+public class NewEvent extends AppCompatActivity implements LiveMileEventHelper.NetworkCallback {
 
     /*
         * initViewController needs to be organized
@@ -97,28 +97,16 @@ public class NewEvent extends AppCompatActivity {
          * Save event to db
          * Open up live event activity ONLY AFTER LIVE RECORD HAS BEEN SUCCESSFULLY INSERTED INTO DB
          */
+        
         LiveMileEventHelper liveMileHelper = new LiveMileEventHelper(this,user,eventName,donatingTo,String.valueOf(rate),String.valueOf(distance));
-        if (liveMileHelper.createLiveEvent()) {
-            /**
-                * Close this activity
-                * Open Live Event activity with the info stored in this liveMileHelper instance (pass the LiveMileHelper instance)
-             */
-            Log.i("startLive", "Called");
-            Intent liveEvent = new Intent(this,LiveMileEvent.class);
+        liveMileHelper.createLiveEvent();
+    }
 
-            Bundle extra = new Bundle();
-            extra.putParcelable("helperInstance",liveMileHelper);
-            liveEvent.putExtra("extra",extra);
-            startActivity(liveEvent);
-            this.finish();
+    @Override
+    public void onRequestSuccess() {
+        this.finish();
 
-        } else {
-            Log.i("startLive","LiveEventHelper is not returning true");  
-            /**
-                * Bad connection, try to run method again
-                * Use flag to tell if this is the second time bad connection has occured. If TRUE, tell user they need internet connectivity
-             */
-        }
+       
     }
 
     public void saveLiveHourEvent() {

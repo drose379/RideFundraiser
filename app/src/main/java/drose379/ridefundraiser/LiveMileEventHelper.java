@@ -3,7 +3,6 @@ package drose379.ridefundraiser;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -22,7 +21,14 @@ import java.util.Arrays;
  * Created by drose379 on 7/4/15.
  */
 public class LiveMileEventHelper implements Parcelable {
+
+    public interface NetworkCallback {
+        public void onRequestSuccess();
+    }
+
     private Context context;
+
+    private NetworkCallback callback;
 
     private OkHttpClient httpClient = new OkHttpClient();
 
@@ -49,6 +55,7 @@ public class LiveMileEventHelper implements Parcelable {
 
     public LiveMileEventHelper(Context context,String user, String eventName, String organization, String perMile, String goalDistance) {
         this.context = context;
+        callback = (NetworkCallback) context;
 
         this.user = user;
         this.eventName = eventName;
@@ -85,9 +92,7 @@ public class LiveMileEventHelper implements Parcelable {
      * Called to create a new live mile event
      * @return Request success boolean
      */
-    public boolean createLiveEvent() {
-        final BooleanWrapper didSucceed = new BooleanWrapper(false);
-
+    public void createLiveEvent() {
         JSONArray values = new JSONArray(Arrays.asList(user,eventName,organization,perMile,goalDistance));
 
         RequestBody rBody = RequestBody.create(MediaType.parse("text/plain"),values.toString());
@@ -100,8 +105,7 @@ public class LiveMileEventHelper implements Parcelable {
             @Override
             public void onResponse(Response response) throws IOException {
                 if (response.code() == 200) {
-                    Log.i("statusCode", "Did set to true");
-                    didSucceed.setSavedItem(true);
+                    callback.onRequestSuccess();
                 }
             }
             @Override
@@ -109,7 +113,6 @@ public class LiveMileEventHelper implements Parcelable {
 
             }
         });
-        return didSucceed.getSavedItem();
     }
 
     /**
