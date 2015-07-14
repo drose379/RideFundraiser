@@ -53,10 +53,12 @@ public class LiveMileEventHelper implements Parcelable {
         return 0;
     }
 
-    public LiveMileEventHelper(Context context,String user, String eventName, String organization, String perMile, String goalDistance) {
+    public LiveMileEventHelper (Context context) {
         this.context = context;
         callback = (NetworkCallback) context;
+    }
 
+    public void setValues(String user, String eventName, String organization, String perMile, String goalDistance) {
         this.user = user;
         this.eventName = eventName;
         this.organization = organization;

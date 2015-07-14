@@ -22,6 +22,9 @@
         <activity
             android:name=".NewEvent"
             android:label="New Activity"/>
+        <activity 
+            android:name=".LiveMileEvent"
+            android:label="Live Event"/>
 
     </application>
 

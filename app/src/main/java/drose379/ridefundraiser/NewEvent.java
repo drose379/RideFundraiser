@@ -1,13 +1,12 @@
 package drose379.ridefundraiser;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
 
 
 /**
@@ -21,8 +20,8 @@ public class NewEvent extends AppCompatActivity implements LiveMileEventHelper.N
         *  Make all views that need global access private properties of the class?
      */
 
-    FragmentManager fragManager;
-
+    private FragmentManager fragManager;
+    private LiveMileEventHelper liveMileHelper;
 
 
     @Override
@@ -31,9 +30,11 @@ public class NewEvent extends AppCompatActivity implements LiveMileEventHelper.N
         setContentView(R.layout.new_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        fragManager = getSupportFragmentManager();
-        initViewController();
 
+        fragManager = getSupportFragmentManager();
+        liveMileHelper = new LiveMileEventHelper(this);
+
+        initViewController();
     }
 
     public void initViewController() {
@@ -98,7 +99,7 @@ public class NewEvent extends AppCompatActivity implements LiveMileEventHelper.N
          * Open up live event activity ONLY AFTER LIVE RECORD HAS BEEN SUCCESSFULLY INSERTED INTO DB
          */
         
-        LiveMileEventHelper liveMileHelper = new LiveMileEventHelper(this,user,eventName,donatingTo,String.valueOf(rate),String.valueOf(distance));
+        liveMileHelper.setValues(user,eventName,donatingTo,String.valueOf(rate),String.valueOf(distance));
         liveMileHelper.createLiveEvent();
     }
 
@@ -106,7 +107,15 @@ public class NewEvent extends AppCompatActivity implements LiveMileEventHelper.N
     public void onRequestSuccess() {
         this.finish();
 
-       
+        Intent liveEvent = new Intent(this,LiveMileEvent.class);
+        Bundle extra = new Bundle();
+        extra.putParcelable("helperInstance",liveMileHelper);
+        liveEvent.putExtra("extra",extra);
+        startActivity(liveEvent);
+        /*
+            * Need to have instance of LiveMileEventHelper to pass to the LiveEvent activity
+            * Create method in LiveMileEventHelper seperate from the construct to give it necessary values
+         */
     }
 
     public void saveLiveHourEvent() {
