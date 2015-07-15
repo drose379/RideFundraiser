@@ -57,7 +57,7 @@
                 <View
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:background="@drawable/circle_lg"
+                    android:background="@drawable/circle_2"
                     android:id="@+id/goalGauge"/>
             </RelativeLayout>
 
@@ -71,7 +71,7 @@
                 android:layout_height="125dp"
                 android:layout_alignParentLeft="true"
                 android:id="@+id/distanceGauge"
-                android:background="@drawable/circle_lg"/>
+                android:background="@drawable/circle_1"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
                     android:layout_height="125dp"
                     android:layout_alignParentLeft="true"
                     android:id="@+id/timeGauge"
-                    android:background="@drawable/circle_lg"/>
+                    android:background="@drawable/circle_1"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -107,7 +107,7 @@
 
         </RelativeLayout>
 
-        <!-- -->
+        <!--Map View Here-->
 
     </LinearLayout>
 
