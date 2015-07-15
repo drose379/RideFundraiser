@@ -11,6 +11,10 @@ import android.content.Intent;
  */
 public class LiveMileEvent extends AppCompatActivity {
 
+	/**
+	  * Need to design the layout for the activity and create GPSHelper accordingly 
+	  */
+
 	private LiveMileEventHelper eventHelper;
 	private GPSHelper gpsHelper;
 
@@ -21,10 +25,4 @@ public class LiveMileEvent extends AppCompatActivity {
 		gpsHelper = GPSHelper.getInstance(getApplicationContext());
 	}
 
-    public LiveMileEvent() {
-    	/**
-		  * Use GPSHelper class to get callback from distance traveled
-		  * Also integrate map functionality with GPSHelper
-    	  */
-    }
 }

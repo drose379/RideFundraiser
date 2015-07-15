@@ -26,7 +26,26 @@ public class GPSHelper {
 
 	private LocationManager locationManager;
 
-	private LocationListener locationListener = new LocationListener() {
+	private static GPSHelper sharedInstance = null;
+
+	public static GPSHelper getInstance(Context context) {
+		if (sharedInstance == null) {
+			sharedInstance = new GPSHelper(context);
+		} 
+		return sharedInstance;
+	}
+
+	public GPSHelper(Context context) {
+		locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+	}
+
+	public void startListening() {
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,500,0,new CustomLocationListener());
+	}
+
+
+
+	public class CustomLocationListener implements LocationListener {
 		@Override
 		public void onLocationChanged(Location location) {
 
@@ -43,32 +62,6 @@ public class GPSHelper {
 		public void onStatusChanged(String provider,int status,Bundle extras) {
 
 		}
-	};
-
-	private static GPSHelper sharedInstance = null;
-
-	public static GPSHelper getInstance(Context context) {
-		if (sharedInstance == null) {
-			sharedInstance = new GPSHelper(context);
-		} 
-		return sharedInstance;
 	}
-
-	public GPSHelper(Context context) {
-		locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-	}
-
-	public void startListening() {
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,500,0,locationListener);
-	}
-
-/**	
-	* Instead of using a annoymous class as a property in class, create a class that implements LocationListener
-	* Pass new CustomLocationListener() into requestLocationUpdates
-	*
-	* public class CustomLocationListener implements LocationListener {
-	*
-	* }
-*/
 
 }
