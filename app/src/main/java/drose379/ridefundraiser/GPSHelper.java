@@ -45,7 +45,7 @@ public class GPSHelper {
 		}
 	};
 
-	private GPSHelper sharedInstance = null;
+	private static GPSHelper sharedInstance = null;
 
 	public static GPSHelper getInstance(Context context) {
 		if (sharedInstance == null) {
