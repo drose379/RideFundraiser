@@ -12,12 +12,15 @@ import android.content.Intent;
 public class LiveMileEvent extends AppCompatActivity {
 
 	private LiveMileEventHelper eventHelper;
+	private GPSHelper gpsHelper;
 
 	@Override
 	public void onCreate(Bundle savedInstance) {
 		super.onCreate(savedInstance);
 		eventHelper = getIntent().getBundleExtra("extra").getParcelable("helperInstance");
+		gpsHelper = GPSHelper.getInstance(getApplicationContext());
 	}
+
     public LiveMileEvent() {
     	/**
 		  * Use GPSHelper class to get callback from distance traveled
