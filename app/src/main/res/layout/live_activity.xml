@@ -45,8 +45,50 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="25dp"
+            android:id="@+id/gaugeContainer"
             >
 
+            <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/distanceGauge"
+                android:background="@drawable/circle_lg"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:id="@+id/distanceMeasure"
+                android:text="test"/>
+
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                >
+
+                <View
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:layout_alignParentLeft="true"
+                    android:id="@+id/timeGauge"
+                    android:background="@drawable/circle_lg"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/timeMeasure"
+                    android:text="test"/>
+
+            </RelativeLayout>
 
 
         </RelativeLayout>
