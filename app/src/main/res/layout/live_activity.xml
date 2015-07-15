@@ -49,8 +49,22 @@
             >
 
             <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                >
+                <View
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@drawable/circle_lg"
+                    android:id="@+id/goalGauge"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
 
             <View
                 android:layout_width="125dp"
@@ -92,6 +106,8 @@
 
 
         </RelativeLayout>
+
+        <!-- -->
 
     </LinearLayout>
 
