@@ -62,5 +62,13 @@ public class GPSHelper {
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,500,0,locationListener);
 	}
 
+/**	
+	* Instead of using a annoymous class as a property in class, create a class that implements LocationListener
+	* Pass new CustomLocationListener() into requestLocationUpdates
+	*
+	* public class CustomLocationListener implements LocationListener {
+	*
+	* }
+*/
 
 }
