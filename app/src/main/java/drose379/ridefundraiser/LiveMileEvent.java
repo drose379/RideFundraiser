@@ -20,6 +20,8 @@ public class LiveMileEvent extends AppCompatActivity {
 
 	private TextView distanceMeasure;
 	private TextView timeMeasure;
+	private TextView averageSpeedMeasure;
+	private TextView goalReachedMeasure;
 
 	private Button singleStart;
 
@@ -31,12 +33,17 @@ public class LiveMileEvent extends AppCompatActivity {
          singleStart = (Button) findViewById(R.id.singleStartButton);
          distanceMeasure = (TextView) findViewById(R.id.distanceText);
          timeMeasure = (TextView) findViewById(R.id.timeText);
+         averageSpeedMeasure = (TextView) findViewById(R.id.avgSpeed);
+         goalReachedMeasure = (TextView) findViewById(R.id.percentReached);
 
          singleStart.setTypeface(TypeHelper.getTypefaceBold(this));
          distanceMeasure.setTypeface(TypeHelper.getTypeface(this));
          timeMeasure.setTypeface(TypeHelper.getTypeface(this));
+         averageSpeedMeasure.setTypeface(TypeHelper.getTypeface(this));
+         goalReachedMeasure.setTypeface(TypeHelper.getTypeface(this));
 
 		eventHelper = getIntent().getBundleExtra("extra").getParcelable("helperInstance");
+		//EventHelper needs getter methods in order to gain access to goal distance value from this activity (used for goal percent)
 		gpsHelper = GPSHelper.getInstance(getApplicationContext());
 	}
 

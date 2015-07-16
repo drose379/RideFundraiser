@@ -66,6 +66,8 @@ public class LiveMileEventHelper implements Parcelable {
         this.goalDistance = goalDistance;
     }
 
+    //Need a getvalues
+
     /**
      * Use the parcel passed in to grab data from parcel
      * @param in to pull data form

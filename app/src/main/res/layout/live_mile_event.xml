@@ -45,7 +45,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="25dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal"
             android:id="@+id/topBoxesContainer">
         
@@ -78,6 +80,47 @@
                 android:text="21:43"/>
 
         </LinearLayout>
+
+                <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal"
+            android:id="@+id/bottomBoxContainer">
+        
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:layout_marginRight="1dp"
+                android:layout_weight="0.5"
+                android:padding="15dp"
+                android:textSize="17sp"
+                android:textColor="#000000"
+                android:background="#eeeeee"
+                android:id="@+id/avgSpeed"
+                android:text="22 MPH"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:layout_marginLeft="1dp"
+                android:layout_weight="0.5"
+                android:padding="15dp"
+                android:textSize="17sp"
+                android:textColor="#000000"
+                android:background="#eeeeee"
+                android:id="@+id/percentReached"
+                android:text="63% Reached"/>
+
+        </LinearLayout>
+
+        <!-- add percentage goal reached block and average speed block below current blocks (have same margin 1dp each) -->
 
         <!--Map View Here-->
 
