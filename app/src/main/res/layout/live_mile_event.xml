@@ -102,7 +102,7 @@
                 android:textColor="#000000"
                 android:background="#eeeeee"
                 android:id="@+id/avgSpeed"
-                android:text="22 MPH"/>
+                android:text="AVG: 22 MPH"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -119,8 +119,6 @@
                 android:text="63% Reached"/>
 
         </LinearLayout>
-
-        <!-- add percentage goal reached block and average speed block below current blocks (have same margin 1dp each) -->
 
         <!--Map View Here-->
 
