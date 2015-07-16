@@ -15,7 +15,7 @@ public class LiveTab extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstance) {
         super.onCreateView(inflater, container, savedInstance);
-        View v = inflater.inflate(R.layout.live_activity,container,false);
+        View v = inflater.inflate(R.layout.live_mile_event,container,false);
         return v;
     }
 }
