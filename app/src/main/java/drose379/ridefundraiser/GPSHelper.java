@@ -21,6 +21,7 @@ public class GPSHelper {
 
 	public interface LocationCallback {
 		public void distanceUpdate(double distance);
+		public void averageSpeedUpdate(int avgSpeed);
 		public void updateStatus(boolean status);
 	}
 
@@ -62,11 +63,13 @@ public class GPSHelper {
              */
 
             if (location.getAccuracy() < 25 && location.getSpeed() > 0.5) {
+
             	lastLocation = lastLocation == null ? location : lastLocation;
             	totalDistance += totalDistance + lastLocation.distanceTo(location);
-            	//convert to miles, then to double with DecimalFormatter class
-            	Log.i("locatinSample",String.valueOf(totalDistance));
-            } else {
+            	//convert to miles, then to double with DecimalFormatter class, then give to distanceUpdate callback method
+            
+            } 
+            else {
             	Log.i("locationSample","CRITERIA NOT MET");
             }
 
