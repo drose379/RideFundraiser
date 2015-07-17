@@ -11,10 +11,11 @@ import android.widget.TextView;
 /**
  * Created by dylanrose60 on 7/12/15.
  */
-public class LiveMileEvent extends AppCompatActivity implements View.OnClickListener {
+public class LiveMileEvent extends AppCompatActivity implements View.OnClickListener,GPSHelper.LocationCallback {
 
 	/**
-	  * Need to design the layout for the activity and create GPSHelper accordingly 
+	  * Create timerHelepr to keep track of timing event
+	  * Avg speed and percent way through event will be calculated in GPSHelper class
 	  */
 
 	private LiveMileEventHelper eventHelper;
@@ -50,15 +51,27 @@ public class LiveMileEvent extends AppCompatActivity implements View.OnClickList
 
 		eventHelper = getIntent().getBundleExtra("extra").getParcelable("helperInstance");
 		//EventHelper needs getter methods in order to gain access to goal distance value from this activity (used for goal percent)
-		gpsHelper = GPSHelper.getInstance(getApplicationContext());
+		gpsHelper = GPSHelper.getInstance(this);
 
+	}
+
+	@Override
+	public void updateStatus(boolean isRunning) {
+		this.isRunning = isRunning;
+	}
+
+	@Override
+	public void distanceUpdate(double distance) {
+		distanceMeasure.setText(String.valueOf(distance));
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.singleStartButton :
-				Log.i("location","START CLICKED");
+				/**
+				  * Switch from START button to PAUSE button, detect clicks in this method also 
+				  */
 				gpsHelper.startLocationUpdates();
 				break;
 		}
