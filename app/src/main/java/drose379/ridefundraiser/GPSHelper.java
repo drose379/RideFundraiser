@@ -5,7 +5,10 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
+import android.widget.Toast;
+
+import java.text.DecimalFormat;
 
 /**
  * Created by dylanrose60 on 7/13/15.
@@ -20,16 +23,19 @@ public class GPSHelper {
 	  */
 
 	public interface LocationCallback {
-		public void distanceUpdate(double distance);
-		public void averageSpeedUpdate(int avgSpeed);
+		public void distanceUpdate(String distance);
+		public void averageSpeedUpdate(double avgSpeed);
 		public void updateStatus(boolean status);
 	}
 
+	Context context;
 	LocationCallback callback;
 
 	LocationManager locationManager;
 	Location lastLocation = null;
 	float totalDistance;
+
+	DecimalFormat format = new DecimalFormat("##.##");
 
 	private static GPSHelper sharedInstance = null;
 
@@ -41,6 +47,7 @@ public class GPSHelper {
 	}
 
 	public GPSHelper(Context context) {
+		this.context = context;
  		callback = (LocationCallback) context;
 		locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 	}
@@ -55,6 +62,7 @@ public class GPSHelper {
 	public class CustomLocationListener implements LocationListener {
 		@Override
 		public void onLocationChanged(Location location) {
+			final Location current = location;
             /**
              * Make sure isRunning boolean in LiveMileEvent is switched to true with updateStatus method
              * Only accept Location object if accuracy is less then 25 meters
@@ -62,16 +70,17 @@ public class GPSHelper {
              * Also keep average speed with each collected Location object
              */
 
-            if (location.getAccuracy() < 25 && location.getSpeed() > 0.5) {
+            if (location.getAccuracy() < 45 && location.getSpeed() >= 0.75) {
 
             	lastLocation = lastLocation == null ? location : lastLocation;
             	totalDistance += totalDistance + lastLocation.distanceTo(location);
             	//convert to miles, then to double with DecimalFormatter class, then give to distanceUpdate callback method
+
+            	double mileConv = totalDistance/1609.34;
+
+            	callback.distanceUpdate(format.format(mileConv));
             
             } 
-            else {
-            	Log.i("locationSample","CRITERIA NOT MET");
-            }
 
 		}
 		@Override

@@ -2,10 +2,10 @@ package drose379.ridefundraiser;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -61,8 +61,13 @@ public class LiveMileEvent extends AppCompatActivity implements View.OnClickList
 	}
 
 	@Override
-	public void distanceUpdate(double distance) {
-		distanceMeasure.setText(String.valueOf(distance));
+	public void distanceUpdate(String distance) {
+		distanceMeasure.setText(distance + " Miles");
+	}
+
+	@Override
+	public void averageSpeedUpdate(double speed) {
+		//update average speed display
 	}
 
 	@Override
