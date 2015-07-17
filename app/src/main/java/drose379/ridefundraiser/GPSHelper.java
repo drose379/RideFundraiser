@@ -5,8 +5,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
-import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -57,12 +55,30 @@ public class GPSHelper {
 		callback.updateStatus(true);
 	}
 
+	public void updateDistance(Location location) {
+		if (location.getAccuracy() < 45 && location.getSpeed() >= 0.75) {
+            
+            lastLocation = lastLocation == null ? location : lastLocation;
+           	totalDistance += totalDistance + lastLocation.distanceTo(location);
+           	
+           	callback.distanceUpdate(format.format(totalDistance/1609.34));   
+        
+        } 
+	}
+	
+	public void updateAverageSpeed(Location location) {
+
+	}
+
+	public void updateGoalReached(Location location) {
+		
+	}
+
 
 
 	public class CustomLocationListener implements LocationListener {
 		@Override
 		public void onLocationChanged(Location location) {
-			final Location current = location;
             /**
              * Make sure isRunning boolean in LiveMileEvent is switched to true with updateStatus method
              * Only accept Location object if accuracy is less then 25 meters
@@ -70,17 +86,11 @@ public class GPSHelper {
              * Also keep average speed with each collected Location object
              */
 
-            if (location.getAccuracy() < 45 && location.getSpeed() >= 0.75) {
+            updateDistance(location);
+            updateAverageSpeed(location);
+            updateGoalReached(location);
 
-            	lastLocation = lastLocation == null ? location : lastLocation;
-            	totalDistance += totalDistance + lastLocation.distanceTo(location);
-            	//convert to miles, then to double with DecimalFormatter class, then give to distanceUpdate callback method
 
-            	double mileConv = totalDistance/1609.34;
-
-            	callback.distanceUpdate(format.format(mileConv));
-            
-            } 
 
 		}
 		@Override
