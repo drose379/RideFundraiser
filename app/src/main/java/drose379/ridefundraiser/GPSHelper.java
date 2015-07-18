@@ -56,7 +56,7 @@ public class GPSHelper {
 		this.eventHelper = eventHelper;
 	}
 
-	public void startLocationUpdates() {
+	public void startEvent() {
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000,0,new CustomLocationListener());
 		TimeKeeper.getInstance(context).startClock();
 		callback.updateStatus(true);
@@ -70,9 +70,11 @@ public class GPSHelper {
 		allLocations.add(location);
 
        	totalDistance = totalDistance + lastLocation.distanceTo(location);
-           	
-        callback.distanceUpdate(format1.format(totalDistance/1609.34));   
-       	callback.goalReachedUpdate(format2.format(totalDistance/Double.parseDouble(eventHelper.getGoalDistance())));
+        
+       	double distanceMiles = totalDistance/1609.34;
+
+        callback.distanceUpdate(format1.format(distanceMiles));   
+       	callback.goalReachedUpdate(format2.format(distanceMiles/Double.parseDouble(eventHelper.getGoalDistance())));
 
         lastLocation = location;
 	}

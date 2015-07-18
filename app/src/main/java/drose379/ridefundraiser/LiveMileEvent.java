@@ -91,7 +91,7 @@ public class LiveMileEvent extends AppCompatActivity implements View.OnClickList
 				/**
 				  * Switch from START button to PAUSE button, detect clicks in this method also 
 				  */
-				gpsHelper.startLocationUpdates();
+				gpsHelper.startEvent();
 				break;
 		}
 	}
