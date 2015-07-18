@@ -58,6 +58,7 @@ public class GPSHelper {
 
 	public void startLocationUpdates() {
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000,0,new CustomLocationListener());
+		TimeKeeper.getInstance(context).startClock();
 		callback.updateStatus(true);
 	}
 
@@ -65,15 +66,15 @@ public class GPSHelper {
 	  * Callback for distance measure and goal percent measure
 	  */
 	public void updateDistance(Location location) {
-            lastLocation = lastLocation == null ? location : lastLocation;
-			allLocations.add(location);
+        lastLocation = lastLocation == null ? location : lastLocation;
+		allLocations.add(location);
 
-           	totalDistance = totalDistance + lastLocation.distanceTo(location);
+       	totalDistance = totalDistance + lastLocation.distanceTo(location);
            	
-           	callback.distanceUpdate(format1.format(totalDistance/1609.34));   
-           	callback.goalReachedUpdate(format2.format(totalDistance/Double.parseDouble(eventHelper.getGoalDistance())));
+        callback.distanceUpdate(format1.format(totalDistance/1609.34));   
+       	callback.goalReachedUpdate(format2.format(totalDistance/Double.parseDouble(eventHelper.getGoalDistance())));
 
-           	lastLocation = location;
+        lastLocation = location;
 	}
 	
 	public void updateAverageSpeed(Location location) {

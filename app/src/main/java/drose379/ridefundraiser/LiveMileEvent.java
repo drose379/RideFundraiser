@@ -10,7 +10,7 @@ import android.widget.TextView;
 /**
  * Created by dylanrose60 on 7/12/15.
  */
-public class LiveMileEvent extends AppCompatActivity implements View.OnClickListener,GPSHelper.LocationCallback {
+public class LiveMileEvent extends AppCompatActivity implements View.OnClickListener,GPSHelper.LocationCallback,TimeKeeper.TimerCallback {
 
 	/**
 	  * Create timerHelepr to keep track of timing event
@@ -72,6 +72,16 @@ public class LiveMileEvent extends AppCompatActivity implements View.OnClickList
     @Override
     public void goalReachedUpdate(String percentReached) {
     	goalReachedMeasure.setText(percentReached + "%");
+    }
+
+    @Override
+    public void timerUpdate(final int time) {
+    	timeMeasure.post(new Runnable() {
+            @Override
+            public void run() {
+                timeMeasure.setText(String.valueOf(time));
+            }
+        });
     }
 
 	@Override
