@@ -14,9 +14,9 @@ public class TimerFormat {
 	private static int SECONDS_IN_HOUR = 3600;
 
 	public static String toTimerFormat(int totalSeconds) {
-		int hours = 00;
-		int mins = 00;
-		int seconds = 00;
+		int hours = 0;
+		int mins = 0;
+		int seconds = 0;
 
 		String timerFormat = null;
 
@@ -37,7 +37,14 @@ public class TimerFormat {
 
 		}
 
-		timerFormat = String.valueOf(hours) + ":" + String.valueOf(mins) + ":" + String.valueOf(seconds);
+		//look into each value, if its less then 10, put a 0 before it, use ternary
+		//hours = hours < 10 ? 0 + hours : hours;
+
+		String hour = hours < 10 ? "0" + hours : String.valueOf(hours);
+		String min = mins < 10 ? "0" + mins : String.valueOf(mins);
+		String sec = seconds < 10 ? "0" + seconds : String.valueOf(seconds);
+
+		timerFormat = hour + ":" + min + ":" + sec;
         return timerFormat;
 	}
 }
