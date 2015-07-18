@@ -75,7 +75,7 @@ public class LiveMileEvent extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void timerUpdate(final int time) {
+    public void timerUpdate(final String time) {
     	timeMeasure.post(new Runnable() {
             @Override
             public void run() {

@@ -6,10 +6,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
+
 public class TimeKeeper {
 
 	public interface TimerCallback {
-		public void timerUpdate(int time);
+		public void timerUpdate(String time);
 	}
 
 	//timeAtPause
@@ -35,7 +36,8 @@ public class TimeKeeper {
             @Override
             public void run() {
             	totalSeconds++;
-            	callback.timerUpdate(totalSeconds);
+            	String secondsFormatted = TimerFormat.toTimerFormat(totalSeconds);
+            	callback.timerUpdate(secondsFormatted);
             }
         }, 1000L,1000L);
 	}
