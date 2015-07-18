@@ -77,7 +77,7 @@
                 android:textColor="#000000"
                 android:background="#eeeeee"
                 android:id="@+id/timeText"
-                android:text="21:43"/>
+                android:text="Time"/>
 
         </LinearLayout>
 
@@ -102,7 +102,7 @@
                 android:textColor="#000000"
                 android:background="#eeeeee"
                 android:id="@+id/avgSpeed"
-                android:text="AVG: 22 MPH"/>
+                android:text="Avg. Speed"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -116,7 +116,7 @@
                 android:textColor="#000000"
                 android:background="#eeeeee"
                 android:id="@+id/percentReached"
-                android:text="63% Reached"/>
+                android:text="Percent Complete"/>
 
         </LinearLayout>
 

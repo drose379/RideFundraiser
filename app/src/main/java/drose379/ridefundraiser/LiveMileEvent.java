@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 /**
@@ -51,7 +50,7 @@ public class LiveMileEvent extends AppCompatActivity implements View.OnClickList
 
 		eventHelper = getIntent().getBundleExtra("extra").getParcelable("helperInstance");
 		//EventHelper needs getter methods in order to gain access to goal distance value from this activity (used for goal percent)
-		gpsHelper = GPSHelper.getInstance(this);
+		gpsHelper = GPSHelper.getInstance(this,eventHelper);
 
 	}
 
@@ -66,9 +65,14 @@ public class LiveMileEvent extends AppCompatActivity implements View.OnClickList
 	}
 
 	@Override
-	public void averageSpeedUpdate(double speed) {
-		//update average speed display
+	public void averageSpeedUpdate(String speed) {
+		averageSpeedMeasure.setText(speed + " M/S");
 	}
+
+    @Override
+    public void goalReachedUpdate(String percentReached) {
+    	goalReachedMeasure.setText(percentReached + "%");
+    }
 
 	@Override
 	public void onClick(View v) {

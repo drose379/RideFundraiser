@@ -6,6 +6,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+import java.util.ArrayList;
 import java.text.DecimalFormat;
 
 /**
@@ -22,32 +23,37 @@ public class GPSHelper {
 
 	public interface LocationCallback {
 		public void distanceUpdate(String distance);
-		public void averageSpeedUpdate(double avgSpeed);
+		public void averageSpeedUpdate(String avgSpeed);
+		public void goalReachedUpdate(String percentReached);
 		public void updateStatus(boolean status);
 	}
 
 	Context context;
+	LiveMileEventHelper eventHelper;
 	LocationCallback callback;
 
 	LocationManager locationManager;
 	Location lastLocation = null;
+	ArrayList<Location> allLocations = new ArrayList<Location>();
 	float totalDistance;
 
-	DecimalFormat format = new DecimalFormat("##.##");
+	DecimalFormat format1 = new DecimalFormat("##.##");
+	DecimalFormat format2 = new DecimalFormat("##");
 
 	private static GPSHelper sharedInstance = null;
 
-	public static GPSHelper getInstance(Context context) {
+	public static GPSHelper getInstance(Context context,LiveMileEventHelper eventHelper) {
 		if (sharedInstance == null) {
-			sharedInstance = new GPSHelper(context);
+			sharedInstance = new GPSHelper(context,eventHelper);
 		} 
 		return sharedInstance;
 	}
 
-	public GPSHelper(Context context) {
+	public GPSHelper(Context context,LiveMileEventHelper eventHelper) {
 		this.context = context;
  		callback = (LocationCallback) context;
 		locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+		this.eventHelper = eventHelper;
 	}
 
 	public void startLocationUpdates() {
@@ -55,26 +61,33 @@ public class GPSHelper {
 		callback.updateStatus(true);
 	}
 
+	/**
+	  * Callback for distance measure and goal percent measure
+	  */
 	public void updateDistance(Location location) {
-		if (location.getAccuracy() < 45 && location.getSpeed() >= 0.75) {
-            
             lastLocation = lastLocation == null ? location : lastLocation;
-           	totalDistance += totalDistance + lastLocation.distanceTo(location);
+			allLocations.add(location);
+
+           	totalDistance = totalDistance + lastLocation.distanceTo(location);
            	
-           	callback.distanceUpdate(format.format(totalDistance/1609.34));   
-        
-        } 
+           	callback.distanceUpdate(format1.format(totalDistance/1609.34));   
+           	callback.goalReachedUpdate(format2.format(totalDistance/Double.parseDouble(eventHelper.getGoalDistance())));
+
+           	lastLocation = location;
 	}
 	
 	public void updateAverageSpeed(Location location) {
-
-	}
-
-	public void updateGoalReached(Location location) {
+		int locationsCount = allLocations.size();
+		float totalSpeed = 0;
 		
+		for(Location currentLocation : allLocations) {
+			totalSpeed += currentLocation.getSpeed();
+		}
+
+		double averageSpeed = totalSpeed / locationsCount;
+		//CURRENTLY m/s, convert to MPH?
+		callback.averageSpeedUpdate(format1.format(averageSpeed));
 	}
-
-
 
 	public class CustomLocationListener implements LocationListener {
 		@Override
@@ -86,11 +99,10 @@ public class GPSHelper {
              * Also keep average speed with each collected Location object
              */
 
-            updateDistance(location);
-            updateAverageSpeed(location);
-            updateGoalReached(location);
-
-
+            if (location.getAccuracy() < 30 && location.getSpeed() > 0.65) {
+            	updateDistance(location);
+            	updateAverageSpeed(location);
+            }
 
 		}
 		@Override
