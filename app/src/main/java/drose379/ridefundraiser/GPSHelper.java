@@ -65,6 +65,10 @@ public class GPSHelper {
 		this.eventHelper = eventHelper;
 	}
 
+	public static void finish() {
+		sharedInstance = null;
+	}
+
 	public void setMapReady(boolean isReady) {
 		mapReady = isReady;
 	}
@@ -75,7 +79,7 @@ public class GPSHelper {
 	}
 
 	public void startEvent() {
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000,0,new CustomLocationListener());
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,new CustomLocationListener());
 		TimeKeeper.getInstance(context).startClock();
 		callback.updateStatus(true);
 	}
@@ -131,7 +135,7 @@ public class GPSHelper {
              * Also keep average speed with each collected Location object
              */
 
-            if (location.getAccuracy() < 45 && location.getSpeed() > 0.55) {
+            if (location.getAccuracy() < 40 && location.getSpeed() > 0.6) {
             	updateDistance(location);
             	updateLiveMap(location);
             	updateAverageSpeed(location);

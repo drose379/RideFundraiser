@@ -44,6 +44,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 	TextView goalReachedMeasure;
 
 	Button singleStart;
+	Button singlePause;
 
 	boolean isRunning = false;
 
@@ -58,11 +59,13 @@ public class LiveMileEvent extends AppCompatActivity implements
 		SupportMapFragment liveMapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.liveMap);
         liveMapFrag.getMapAsync(this);
 
-        singleStart = (Button) findViewById(R.id.singleStartButton);
         distanceMeasure = (TextView) findViewById(R.id.distanceText);
         timeMeasure = (TextView) findViewById(R.id.timeText);
         averageSpeedMeasure = (TextView) findViewById(R.id.avgSpeed);
         goalReachedMeasure = (TextView) findViewById(R.id.percentReached);
+
+        singleStart = (Button) findViewById(R.id.singleStartButton);
+        singlePause = (Button) findViewById(R.id.singlePauseButton);
 
         singleStart.setTypeface(TypeHelper.getTypefaceBold(this));
         distanceMeasure.setTypeface(TypeHelper.getTypeface(this));
@@ -78,17 +81,27 @@ public class LiveMileEvent extends AppCompatActivity implements
 	@Override
 	public void onPause() {
 		super.onPause();
-		gpsHelper = null;
+		GPSHelper.finish();
+		TimeKeeper.finish();
+		/**
+          * Instead of stopping gps helper, keep it running in background and make event resumable "Running events?"
+		  */
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.singleStartButton :
-				/**
-				  * Switch from START button to PAUSE button, detect clicks for pause in this method also 
-				  */
+
+				singleStart.setVisibility(View.GONE);
+				singlePause.setVisibility(View.VISIBLE);
+				
 				gpsHelper.startEvent();
+				break;
+			case R.id.singlePauseButton :
+				/**
+				  * Need to implement pause features for GPSHelper and TimeKeeper classes
+				  */
 				break;
 		}
 	}
@@ -102,11 +115,14 @@ public class LiveMileEvent extends AppCompatActivity implements
 
 		liveMap = map;
 		gpsHelper.setMapReady(true);
-		LatLng lastLoc = new LatLng(gpsHelper.getLastLocation().getLatitude(),gpsHelper.getLastLocation().getLongitude());
-		polyline = liveMap.addPolyline(new PolylineOptions().add(lastLoc).color(Color.RED).width(5).visible(true));
+		if (gpsHelper.getLastLocation() != null) {
+			LatLng lastLoc = new LatLng(gpsHelper.getLastLocation().getLatitude(),gpsHelper.getLastLocation().getLongitude());
+			polyline = liveMap.addPolyline(new PolylineOptions().add(lastLoc).color(Color.RED).width(5).visible(true));
 
-		map.addMarker(new MarkerOptions().position(lastLoc));
-		map.moveCamera(CameraUpdateFactory.newLatLngZoom(lastLoc,16));
+			map.addMarker(new MarkerOptions().position(lastLoc).title("Starting Point"));
+			map.moveCamera(CameraUpdateFactory.newLatLngZoom(lastLoc,16));
+		}
+
 	}
 
 	@Override
@@ -125,6 +141,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 		  * Call setPoints on saved polyline
 		  */
 		polyline.setPoints(polyPoints);
+        liveMap.moveCamera(CameraUpdateFactory.newLatLng(polyPoints.get(polyPoints.size() - 1)));
 	}
 
 	@Override

@@ -15,15 +15,19 @@ public class TimeKeeper {
 
 	//timeAtPause
 	TimerCallback callback;
-	static TimeKeeper timeKeeper;
+	private static TimeKeeper timeKeeper;
 
 	Timer timer = new Timer();
 
-	int totalSeconds  = 0;
+	int totalSeconds = 0;
 
 	public static TimeKeeper getInstance(Context context) {
 		timeKeeper = timeKeeper == null ? new TimeKeeper(context) : timeKeeper;
 		return timeKeeper;
+	}
+
+	public static void finish() {
+		timeKeeper = null;
 	}
 
 	public TimeKeeper(Context context) {
