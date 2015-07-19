@@ -1,18 +1,22 @@
 package drose379.ridefundraiser;
 
-import android.location.Location;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.util.List;
 
 
 /**
@@ -32,6 +36,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 	private LiveMileEventHelper eventHelper;
 	private GPSHelper gpsHelper;
 	private GoogleMap liveMap;
+	private Polyline polyline;
 
 	TextView distanceMeasure;
 	TextView timeMeasure;
@@ -71,6 +76,12 @@ public class LiveMileEvent extends AppCompatActivity implements
 	}
 
 	@Override
+	public void onPause() {
+		super.onPause();
+		gpsHelper = null;
+	}
+
+	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.singleStartButton :
@@ -92,6 +103,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 		liveMap = map;
 		gpsHelper.setMapReady(true);
 		LatLng lastLoc = new LatLng(gpsHelper.getLastLocation().getLatitude(),gpsHelper.getLastLocation().getLongitude());
+		polyline = liveMap.addPolyline(new PolylineOptions().add(lastLoc).color(Color.RED).width(5).visible(true));
 
 		map.addMarker(new MarkerOptions().position(lastLoc));
 		map.moveCamera(CameraUpdateFactory.newLatLngZoom(lastLoc,16));
@@ -109,7 +121,10 @@ public class LiveMileEvent extends AppCompatActivity implements
 
 	@Override
 	public void liveMapUpdate(List<LatLng> polyPoints) {
-		
+		/**
+		  * Call setPoints on saved polyline
+		  */
+		polyline.setPoints(polyPoints);
 	}
 
 	@Override

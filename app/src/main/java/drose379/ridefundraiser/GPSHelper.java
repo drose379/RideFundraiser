@@ -6,10 +6,11 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
-import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLng;
 
-import java.util.ArrayList;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by dylanrose60 on 7/13/15.
@@ -100,6 +101,10 @@ public class GPSHelper {
 		  * Add to polyPoints
 		  * Pass polyPoints through callback to LiveMileEvent activity
 		  */
+
+		LatLng current = new LatLng(location.getLatitude(),location.getLongitude());
+		polyPoints.add(current);
+		callback.liveMapUpdate(polyPoints);
 	}
 	
 	public void updateAverageSpeed(Location location) {
@@ -126,7 +131,7 @@ public class GPSHelper {
              * Also keep average speed with each collected Location object
              */
 
-            if (location.getAccuracy() < 30 && location.getSpeed() > 0.65) {
+            if (location.getAccuracy() < 45 && location.getSpeed() > 0.55) {
             	updateDistance(location);
             	updateLiveMap(location);
             	updateAverageSpeed(location);
