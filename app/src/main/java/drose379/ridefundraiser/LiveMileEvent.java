@@ -6,11 +6,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+
 
 /**
  * Created by dylanrose60 on 7/12/15.
  */
-public class LiveMileEvent extends AppCompatActivity implements View.OnClickListener,GPSHelper.LocationCallback,TimeKeeper.TimerCallback {
+public class LiveMileEvent extends AppCompatActivity implements
+        OnMapReadyCallback,
+		View.OnClickListener,
+        GPSHelper.LocationCallback,
+        TimeKeeper.TimerCallback {
 
 	/**
 	  * Create timerHelepr to keep track of timing event
@@ -49,9 +57,30 @@ public class LiveMileEvent extends AppCompatActivity implements View.OnClickList
         singleStart.setOnClickListener(this); 
 
 		eventHelper = getIntent().getBundleExtra("extra").getParcelable("helperInstance");
-		//EventHelper needs getter methods in order to gain access to goal distance value from this activity (used for goal percent)
+		SupportMapFragment liveMap = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.liveMap);
+        liveMap.getMapAsync(this);
 		gpsHelper = GPSHelper.getInstance(this,eventHelper);
 
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.singleStartButton :
+				/**
+				  * Switch from START button to PAUSE button, detect clicks in this method also 
+				  */
+				gpsHelper.startEvent();
+				break;
+		}
+	}
+
+	@Override
+	public void onMapReady(GoogleMap map) {
+		/**
+		  * Set flag in GPSHelper saying the map is ready, if map is not ready in GPSHelper, it will not start event
+		  * Get a lastKnownLocation from the GPSHelper to set the map location starting point with map.addMarker(LatLong)
+		  */
 	}
 
 	@Override
@@ -83,19 +112,5 @@ public class LiveMileEvent extends AppCompatActivity implements View.OnClickList
             }
         });
     }
-
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-			case R.id.singleStartButton :
-				/**
-				  * Switch from START button to PAUSE button, detect clicks in this method also 
-				  */
-				gpsHelper.startEvent();
-				break;
-		}
-	}
-
-
 
 }

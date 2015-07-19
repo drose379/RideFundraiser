@@ -69,8 +69,7 @@ public class GPSHelper {
         lastLocation = lastLocation == null ? location : lastLocation;
 		allLocations.add(location);
 
-       	totalDistance = totalDistance + lastLocation.distanceTo(location);
-        
+       	totalDistance = totalDistance + lastLocation.distanceTo(location);   
        	double distanceMiles = totalDistance/1609.34;
 
         callback.distanceUpdate(format1.format(distanceMiles));   

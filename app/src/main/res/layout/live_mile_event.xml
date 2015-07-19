@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/ColorPrimaryDark"
@@ -120,7 +122,14 @@
 
         </LinearLayout>
 
-        <!--Map View Here-->
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+
+            android:id="@+id/liveMap"
+            tools:context=".LiveMap"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            />
 
     </LinearLayout>
 
