@@ -1,5 +1,6 @@
 package drose379.ridefundraiser;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.TextView;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.CameraUpdateFactory;
 
 
 /**
@@ -27,6 +31,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 
 	private LiveMileEventHelper eventHelper;
 	private GPSHelper gpsHelper;
+	private GoogleMap liveMap;
 
 	TextView distanceMeasure;
 	TextView timeMeasure;
@@ -42,6 +47,12 @@ public class LiveMileEvent extends AppCompatActivity implements
 		super.onCreate(savedInstance);
         setContentView(R.layout.live_mile_event);
 
+        gpsHelper = GPSHelper.getInstance(this,eventHelper);
+        eventHelper = getIntent().getBundleExtra("extra").getParcelable("helperInstance");
+
+		SupportMapFragment liveMapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.liveMap);
+        liveMapFrag.getMapAsync(this);
+
         singleStart = (Button) findViewById(R.id.singleStartButton);
         distanceMeasure = (TextView) findViewById(R.id.distanceText);
         timeMeasure = (TextView) findViewById(R.id.timeText);
@@ -56,10 +67,6 @@ public class LiveMileEvent extends AppCompatActivity implements
 
         singleStart.setOnClickListener(this); 
 
-		eventHelper = getIntent().getBundleExtra("extra").getParcelable("helperInstance");
-		SupportMapFragment liveMap = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.liveMap);
-        liveMap.getMapAsync(this);
-		gpsHelper = GPSHelper.getInstance(this,eventHelper);
 
 	}
 
@@ -68,7 +75,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 		switch (v.getId()) {
 			case R.id.singleStartButton :
 				/**
-				  * Switch from START button to PAUSE button, detect clicks in this method also 
+				  * Switch from START button to PAUSE button, detect clicks for pause in this method also 
 				  */
 				gpsHelper.startEvent();
 				break;
@@ -81,6 +88,13 @@ public class LiveMileEvent extends AppCompatActivity implements
 		  * Set flag in GPSHelper saying the map is ready, if map is not ready in GPSHelper, it will not start event
 		  * Get a lastKnownLocation from the GPSHelper to set the map location starting point with map.addMarker(LatLong)
 		  */
+
+		liveMap = map;
+		gpsHelper.setMapReady(true);
+		LatLng lastLoc = new LatLng(gpsHelper.getLastLocation().getLatitude(),gpsHelper.getLastLocation().getLongitude());
+
+		map.addMarker(new MarkerOptions().position(lastLoc));
+		map.moveCamera(CameraUpdateFactory.newLatLngZoom(lastLoc,16));
 	}
 
 	@Override
@@ -91,6 +105,11 @@ public class LiveMileEvent extends AppCompatActivity implements
 	@Override
 	public void distanceUpdate(String distance) {
 		distanceMeasure.setText(distance + " Miles");
+	}
+
+	@Override
+	public void liveMapUpdate(List<LatLng> polyPoints) {
+		
 	}
 
 	@Override

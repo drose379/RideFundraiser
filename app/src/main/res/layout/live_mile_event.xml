@@ -124,8 +124,8 @@
 
         <fragment
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-
+            android:layout_height="300dp"
+            android:layout_margin="25dp"
             android:id="@+id/liveMap"
             tools:context=".LiveMap"
             android:name="com.google.android.gms.maps.SupportMapFragment"

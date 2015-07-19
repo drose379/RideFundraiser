@@ -6,6 +6,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+import com.google.android.gms.maps.model.LatLng
+
 import java.util.ArrayList;
 import java.text.DecimalFormat;
 
@@ -25,6 +27,7 @@ public class GPSHelper {
 		public void distanceUpdate(String distance);
 		public void averageSpeedUpdate(String avgSpeed);
 		public void goalReachedUpdate(String percentReached);
+		public void liveMapUpdate(List<LatLng> points);
 		public void updateStatus(boolean status);
 	}
 
@@ -32,13 +35,17 @@ public class GPSHelper {
 	LiveMileEventHelper eventHelper;
 	LocationCallback callback;
 
+
 	LocationManager locationManager;
 	Location lastLocation = null;
 	ArrayList<Location> allLocations = new ArrayList<Location>();
+	List<LatLng> polyPoints = new ArrayList<LatLng>();
 	float totalDistance;
 
 	DecimalFormat format1 = new DecimalFormat("##.##");
 	DecimalFormat format2 = new DecimalFormat("##");
+
+	boolean mapReady = false;
 
 	private static GPSHelper sharedInstance = null;
 
@@ -53,7 +60,17 @@ public class GPSHelper {
 		this.context = context;
  		callback = (LocationCallback) context;
 		locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
 		this.eventHelper = eventHelper;
+	}
+
+	public void setMapReady(boolean isReady) {
+		mapReady = isReady;
+	}
+
+	public Location getLastLocation() {
+		lastLocation = lastLocation == null ? locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER) : lastLocation;
+		return lastLocation;
 	}
 
 	public void startEvent() {
@@ -67,18 +84,26 @@ public class GPSHelper {
 	  */
 	public void updateDistance(Location location) {
         lastLocation = lastLocation == null ? location : lastLocation;
-		allLocations.add(location);
 
        	totalDistance = totalDistance + lastLocation.distanceTo(location);   
        	double distanceMiles = totalDistance/1609.34;
 
         callback.distanceUpdate(format1.format(distanceMiles));   
-       	callback.goalReachedUpdate(format2.format(distanceMiles/Double.parseDouble(eventHelper.getGoalDistance())));
+       	//callback.goalReachedUpdate(format2.format(distanceMiles/Double.parseDouble(eventHelper.getGoalDistance())));
 
         lastLocation = location;
 	}
+
+	public void updateLiveMap(Location location) {
+		/**
+		  * Create LatLng object from this location
+		  * Add to polyPoints
+		  * Pass polyPoints through callback to LiveMileEvent activity
+		  */
+	}
 	
 	public void updateAverageSpeed(Location location) {
+		allLocations.add(location);
 		int locationsCount = allLocations.size();
 		float totalSpeed = 0;
 		
@@ -87,7 +112,7 @@ public class GPSHelper {
 		}
 
 		double averageSpeed = totalSpeed / locationsCount;
-		//CURRENTLY m/s, convert to MPH?
+		//CURRENTLY m/s, convert to MPH
 		callback.averageSpeedUpdate(format1.format(averageSpeed));
 	}
 
@@ -103,6 +128,7 @@ public class GPSHelper {
 
             if (location.getAccuracy() < 30 && location.getSpeed() > 0.65) {
             	updateDistance(location);
+            	updateLiveMap(location);
             	updateAverageSpeed(location);
             }
 
