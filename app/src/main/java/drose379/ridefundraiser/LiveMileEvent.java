@@ -35,6 +35,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 
 	private LiveMileEventHelper eventHelper;
 	private GPSHelper gpsHelper;
+	private TimeKeeper timeKeeper;
 	private GoogleMap liveMap;
 	private Polyline polyline;
 
@@ -54,6 +55,7 @@ public class LiveMileEvent extends AppCompatActivity implements
         setContentView(R.layout.live_mile_event);
 
         gpsHelper = GPSHelper.getInstance(this,eventHelper);
+        timeKeeper = TimeKeeper.getInstance(this);
         eventHelper = getIntent().getBundleExtra("extra").getParcelable("helperInstance");
 
 		SupportMapFragment liveMapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.liveMap);
@@ -98,11 +100,13 @@ public class LiveMileEvent extends AppCompatActivity implements
 				singlePause.setVisibility(View.VISIBLE);
 
 				gpsHelper.startEvent();
+				timeKeeper.startClock();
 				break;
 			case R.id.singlePauseButton :
 				/**
 				  * Need to implement pause features for GPSHelper and TimeKeeper classes
 				  */
+				timeKeeper.pauseClock();
 				break;
 		}
 	}
@@ -140,9 +144,18 @@ public class LiveMileEvent extends AppCompatActivity implements
 	public void liveMapUpdate(List<LatLng> polyPoints) {
 		/**
 		  * Call setPoints on saved polyline
+		  * CHECK IF POLYLINE IS NULL, IF IT IS, CREATE A NEW ONE WITH GOOGLEMAP.ADDPOLYLINE
 		  */
-		polyline.setPoints(polyPoints);
-        liveMap.moveCamera(CameraUpdateFactory.newLatLng(polyPoints.get(polyPoints.size() - 1)));
+		if (polyline == null) {
+			//create the new polyline 
+			polyline = liveMap.addPolyline(new PolylineOptions().color(Color.RED).width(5).visible(true));
+			polyline.setPoints(polyPoints);
+			liveMap.moveCamera(CameraUpdateFactory.newLatLng(polyPoints.get(polyPoints.size() - 1)));
+		} else {
+			polyline.setPoints(polyPoints);
+       		liveMap.moveCamera(CameraUpdateFactory.newLatLng(polyPoints.get(polyPoints.size() - 1)));
+		}
+
 	}
 
 	@Override

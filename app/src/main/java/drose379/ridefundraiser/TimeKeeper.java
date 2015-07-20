@@ -46,8 +46,8 @@ public class TimeKeeper {
         }, 1000L,1000L);
 	}
 
-	public void stopClock() {
-
+	public void pauseClock() {
+		timer.cancel();
 	}
 
 }

@@ -79,8 +79,7 @@ public class GPSHelper {
 	}
 
 	public void startEvent() {
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,new CustomLocationListener());
-		TimeKeeper.getInstance(context).startClock();
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,new CustomLocationListener()); 
 		callback.updateStatus(true);
 	}
 
