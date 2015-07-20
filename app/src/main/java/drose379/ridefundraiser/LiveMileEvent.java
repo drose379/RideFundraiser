@@ -68,6 +68,7 @@ public class LiveMileEvent extends AppCompatActivity implements
         singlePause = (Button) findViewById(R.id.singlePauseButton);
 
         singleStart.setTypeface(TypeHelper.getTypefaceBold(this));
+        singlePause.setTypeface(TypeHelper.getTypefaceBold(this));
         distanceMeasure.setTypeface(TypeHelper.getTypeface(this));
         timeMeasure.setTypeface(TypeHelper.getTypeface(this));
         averageSpeedMeasure.setTypeface(TypeHelper.getTypeface(this));
@@ -95,7 +96,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 
 				singleStart.setVisibility(View.GONE);
 				singlePause.setVisibility(View.VISIBLE);
-				
+
 				gpsHelper.startEvent();
 				break;
 			case R.id.singlePauseButton :

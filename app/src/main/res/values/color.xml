@@ -4,4 +4,5 @@
     <color name="ColorPrimaryDark">#415D81</color>
     <color name="indicator">#03A9F4</color>
     <color name="ColorLightPrimary">#5394D6</color>
+    <color name="ColorStart">#00bfa5</color>
 </resources>
