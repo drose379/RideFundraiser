@@ -47,6 +47,7 @@ public class GPSHelper {
 	DecimalFormat format2 = new DecimalFormat("##");
 
 	boolean mapReady = false;
+	boolean shouldUpdate = true;
 
 	private static GPSHelper sharedInstance = null;
 
@@ -82,6 +83,10 @@ public class GPSHelper {
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,new CustomLocationListener()); 
 		callback.updateStatus(true);
 	}
+
+	public void pauseUpdates() {
+		shouldUpdate = false;
+	} 
 
 	/**
 	  * Callback for distance measure and goal percent measure
@@ -134,7 +139,8 @@ public class GPSHelper {
              * Also keep average speed with each collected Location object
              */
 
-            if (location.getAccuracy() < 40 && location.getSpeed() > 0.6) {
+            //check for paused flag
+            if (shouldUpdate && location.getAccuracy() < 40 && location.getSpeed() > 0.6) {
             	updateDistance(location);
             	updateLiveMap(location);
             	updateAverageSpeed(location);

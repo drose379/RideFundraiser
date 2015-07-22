@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -43,6 +45,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 	TextView timeMeasure;
 	TextView averageSpeedMeasure;
 	TextView goalReachedMeasure;
+	LinearLayout dualButtonLayout;
 
 	Button singleStart;
 	Button singlePause;
@@ -68,6 +71,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 
         singleStart = (Button) findViewById(R.id.singleStartButton);
         singlePause = (Button) findViewById(R.id.singlePauseButton);
+        dualButtonLayout = (LinearLayout) findViewById(R.id.resumeFinishContainer);
 
         singleStart.setTypeface(TypeHelper.getTypefaceBold(this));
         singlePause.setTypeface(TypeHelper.getTypefaceBold(this));
@@ -77,15 +81,38 @@ public class LiveMileEvent extends AppCompatActivity implements
         goalReachedMeasure.setTypeface(TypeHelper.getTypeface(this));
 
         singleStart.setOnClickListener(this); 
+        singlePause.setOnClickListener(this);
 
+	}
 
+	@Override
+	public void onBackPressed() {
+        MaterialDialog mDialog = new MaterialDialog.Builder(this)
+                .title("Exit Live Event?")
+                .content("Would you really like to end this live event now?")
+                .positiveText("Exit")
+                .negativeText("Resume")
+                .callback(new MaterialDialog.ButtonCallback() {
+                    @Override
+                    public void onPositive(MaterialDialog dialog) {
+                        gpsHelper.finish();
+                        timeKeeper.finish();
+                        LiveMileEvent.this.finish();
+                    }
+
+                    @Override
+                    public void onNegative(MaterialDialog dialog) {
+                        dialog.dismiss();
+                    }
+                })
+                .build();
+       mDialog.show();
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-		GPSHelper.finish();
-		TimeKeeper.finish();
+
 		/**
           * Instead of stopping gps helper, keep it running in background and make event resumable "Running events?"
 		  */
@@ -95,6 +122,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.singleStartButton :
+				isRunning = true;
 
 				singleStart.setVisibility(View.GONE);
 				singlePause.setVisibility(View.VISIBLE);
@@ -103,10 +131,14 @@ public class LiveMileEvent extends AppCompatActivity implements
 				timeKeeper.startClock();
 				break;
 			case R.id.singlePauseButton :
+				isRunning = false;
 				/**
 				  * Need to implement pause features for GPSHelper and TimeKeeper classes
 				  */
-				timeKeeper.pauseClock();
+				singlePause.setVisibility(View.GONE);
+				dualButtonLayout.setVisibility(View.VISIBLE);
+                gpsHelper.pauseUpdates();
+				timeKeeper.pauseUpdates();
 				break;
 		}
 	}
@@ -147,7 +179,6 @@ public class LiveMileEvent extends AppCompatActivity implements
 		  * CHECK IF POLYLINE IS NULL, IF IT IS, CREATE A NEW ONE WITH GOOGLEMAP.ADDPOLYLINE
 		  */
 		if (polyline == null) {
-			//create the new polyline 
 			polyline = liveMap.addPolyline(new PolylineOptions().color(Color.RED).width(5).visible(true));
 			polyline.setPoints(polyPoints);
 			liveMap.moveCamera(CameraUpdateFactory.newLatLng(polyPoints.get(polyPoints.size() - 1)));

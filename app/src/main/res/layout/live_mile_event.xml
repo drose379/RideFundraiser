@@ -56,6 +56,37 @@
                 />
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:id="@+id/resumeFinishContainer"
+                >
+                <!--Resume or Finish buttons-->
+
+                <Button 
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:padding="15dp"
+                    android:background="#64b5f6"
+                    android:text="Finish"
+                    android:id="@+id/finish"
+                    />
+
+                <Button 
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:padding="15dp"
+                    android:text="Resume"
+                    android:background="@color/ColorStart"
+                    android:id="@+id/resume"
+                    />
+         
+            </LinearLayout>
+
 
         </LinearLayout>
 

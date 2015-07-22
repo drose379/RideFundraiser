@@ -1,6 +1,7 @@
 package drose379.ridefundraiser;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,6 +21,7 @@ public class TimeKeeper {
 	Timer timer = new Timer();
 
 	int totalSeconds = 0;
+	boolean shouldUpdate;
 
 	public static TimeKeeper getInstance(Context context) {
 		timeKeeper = timeKeeper == null ? new TimeKeeper(context) : timeKeeper;
@@ -35,19 +37,22 @@ public class TimeKeeper {
 	}
 
 	public void startClock() {
-        
+        shouldUpdate = true;
 		timer.schedule(new TimerTask() {
             @Override
             public void run() {
-            	totalSeconds++;
-            	String secondsFormatted = TimerFormat.toTimerFormat(totalSeconds);
-            	callback.timerUpdate(secondsFormatted);
+            	if (shouldUpdate) {
+                    Log.i("shouldCount","SHould count is true");
+            		totalSeconds++;
+            		String secondsFormatted = TimerFormat.toTimerFormat(totalSeconds);
+            		callback.timerUpdate(secondsFormatted);
+            	}
             }
         }, 1000L,1000L);
 	}
 
-	public void pauseClock() {
-		timer.cancel();
+	public void pauseUpdates() {
+		shouldUpdate = false;
 	}
 
 }
