@@ -132,15 +132,20 @@ public class LiveMileEvent extends AppCompatActivity implements
 				break;
 			case R.id.singlePauseButton :
 				isRunning = false;
-				/**
-				  * Need to implement pause features for GPSHelper and TimeKeeper classes
-				  */
+
 				singlePause.setVisibility(View.GONE);
 				dualButtonLayout.setVisibility(View.VISIBLE);
+				
                 gpsHelper.pauseUpdates();
 				timeKeeper.pauseUpdates();
 				break;
+
+			//Need to listen for Resume and Finish button clicks
+				//Resume, set status, get gps and timer rolling again, and change button back to pause button
+				//Finish, grab all current data, show a results screen, once user confirms the results, send to server, show home tabs
 		}
+
+
 	}
 
 	@Override
