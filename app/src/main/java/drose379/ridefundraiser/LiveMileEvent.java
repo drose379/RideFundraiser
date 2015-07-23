@@ -201,6 +201,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 	@Override
 	public void distanceUpdate(String distance) {
 		distanceMeasure.setText(distance + " Miles");
+		//eventHelper.updateEventDistance(distance);
 	}
 
 	@Override

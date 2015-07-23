@@ -124,6 +124,29 @@ public class LiveMileEventHelper implements Parcelable {
     }
 
     /**
+     * Called each time distance is updated in UI, used to keep other users who want to donate to this event updated on progress
+     */
+    public void updateEventDistance(String distance) {
+        JSONArray value = new JSONArray(Arrays.asList(distance));
+        RequestBody body = RequestBody.create(MediaType.parse("text/plain"),value.toString());
+        Request request = new Request.Builder()
+                .post(body)
+                .url() // must add url
+                .build()
+        Call c = httpClient.newCall(request);
+        c.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request r,IOException e) {
+                //keep count of failures, if more then 10 happen, throw an exception which will be caught with a no internet connection dialog
+            }
+            @Override
+            public void onResponse(Response response) throws IOException {
+                //reset count of failed attempts
+            }
+        })
+    }
+
+    /**
      * Called when live mile event is complete, used to move record from Live to Completed table in DB
      * @return Transfer from live to completed event boolean
      */
