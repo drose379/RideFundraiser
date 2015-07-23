@@ -56,7 +56,6 @@ public class LiveMileEvent extends AppCompatActivity implements
     /**
      * Need flags to tell which buttons are showing at the time.
      * If the exit dialog resume is clicked, and finish and resume buttons are showing, must stay paused until resume button is clicked
-     * @param savedInstance
      */
 
 	@Override
@@ -159,6 +158,7 @@ public class LiveMileEvent extends AppCompatActivity implements
             case R.id.finish :
                 pauseEvent();
 				//Finish, grab all current data, show a results screen, once user confirms the results, send to server, show home tabs
+                //must snapshot map,and grab all final data
 		}
 
 
@@ -207,10 +207,9 @@ public class LiveMileEvent extends AppCompatActivity implements
 	public void liveMapUpdate(List<LatLng> polyPoints) {
 		/**
 		  * Call setPoints on saved polyline
-		  * CHECK IF POLYLINE IS NULL, IF IT IS, CREATE A NEW ONE WITH GOOGLEMAP.ADDPOLYLINE
 		  */
 		if (polyline == null) {
-			polyline = liveMap.addPolyline(new PolylineOptions().color(Color.RED).width(5).visible(true));
+			polyline = liveMap.addPolyline(new PolylineOptions().color(Color.BLUE).width(8).visible(true));
 			polyline.setPoints(polyPoints);
 			liveMap.moveCamera(CameraUpdateFactory.newLatLng(polyPoints.get(polyPoints.size() - 1)));
 		} else {

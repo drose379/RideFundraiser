@@ -95,8 +95,10 @@ public class GPSHelper {
        	totalDistance = totalDistance + lastLocation.distanceTo(location);   
        	double distanceMiles = totalDistance/1609.34;
 
-        callback.distanceUpdate(format1.format(distanceMiles));   
-       	//callback.goalReachedUpdate(format2.format(distanceMiles/Double.parseDouble(eventHelper.getGoalDistance())));
+        callback.distanceUpdate(format1.format(distanceMiles));
+
+        double goalReachedPercent = (distanceMiles / Double.parseDouble(eventHelper.getGoalDistance())) * 100;
+       	callback.goalReachedUpdate(format2.format(goalReachedPercent));
 
         lastLocation = location;
 	}

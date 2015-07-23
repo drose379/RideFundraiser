@@ -101,15 +101,15 @@
       <file leaf-file-name="LiveMileEvent.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/LiveMileEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5472837">
-              <caret line="57" column="135" selection-start-line="57" selection-start-column="135" selection-end-line="57" selection-end-column="135" />
+            <state vertical-scroll-proportion="-0.17102616">
+              <caret line="208" column="44" selection-start-line="208" selection-start-column="44" selection-end-line="208" selection-end-column="44" />
               <folding>
-                <element signature="e#6593#6594#0" expanded="true" />
-                <element signature="e#6644#6645#0" expanded="true" />
-                <element signature="e#7314#7315#0" expanded="true" />
-                <element signature="e#7364#7365#0" expanded="true" />
-                <element signature="e#7587#7740#0" expanded="true" />
-                <element signature="e#7739#7740#0" expanded="true" />
+                <element signature="e#6625#6626#0" expanded="true" />
+                <element signature="e#6676#6677#0" expanded="true" />
+                <element signature="e#7260#7261#0" expanded="true" />
+                <element signature="e#7310#7311#0" expanded="true" />
+                <element signature="e#7533#7686#0" expanded="true" />
+                <element signature="e#7685#7686#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -129,10 +129,15 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/GPSHelper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="139" column="89" selection-start-line="139" selection-start-column="89" selection-end-line="139" selection-end-column="89" />
+              <caret line="100" column="70" selection-start-line="100" selection-start-column="70" selection-end-line="100" selection-end-column="70" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#1892#1893#0" expanded="true" />
                 <element signature="e#1920#1921#0" expanded="true" />
+                <element signature="e#1965#1966#0" expanded="true" />
+                <element signature="e#1990#1991#0" expanded="true" />
+                <element signature="e#2368#2369#0" expanded="true" />
+                <element signature="e#2405#2406#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1798,9 +1803,9 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraise/TimerFormat.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/live_mile_event.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/GPSHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/TimeKeeper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/LiveMileEvent.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/GPSHelper.java" />
       </list>
     </option>
   </component>
@@ -2576,25 +2581,30 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/GPSHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="139" column="89" selection-start-line="139" selection-start-column="89" selection-end-line="139" selection-end-column="89" />
+          <caret line="100" column="70" selection-start-line="100" selection-start-column="70" selection-end-line="100" selection-end-column="70" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#1892#1893#0" expanded="true" />
             <element signature="e#1920#1921#0" expanded="true" />
+            <element signature="e#1965#1966#0" expanded="true" />
+            <element signature="e#1990#1991#0" expanded="true" />
+            <element signature="e#2368#2369#0" expanded="true" />
+            <element signature="e#2405#2406#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/LiveMileEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5472837">
-          <caret line="57" column="135" selection-start-line="57" selection-start-column="135" selection-end-line="57" selection-end-column="135" />
+        <state vertical-scroll-proportion="-0.17102616">
+          <caret line="208" column="44" selection-start-line="208" selection-start-column="44" selection-end-line="208" selection-end-column="44" />
           <folding>
-            <element signature="e#6593#6594#0" expanded="true" />
-            <element signature="e#6644#6645#0" expanded="true" />
-            <element signature="e#7314#7315#0" expanded="true" />
-            <element signature="e#7364#7365#0" expanded="true" />
-            <element signature="e#7587#7740#0" expanded="true" />
-            <element signature="e#7739#7740#0" expanded="true" />
+            <element signature="e#6625#6626#0" expanded="true" />
+            <element signature="e#6676#6677#0" expanded="true" />
+            <element signature="e#7260#7261#0" expanded="true" />
+            <element signature="e#7310#7311#0" expanded="true" />
+            <element signature="e#7533#7686#0" expanded="true" />
+            <element signature="e#7685#7686#0" expanded="true" />
           </folding>
         </state>
       </provider>
