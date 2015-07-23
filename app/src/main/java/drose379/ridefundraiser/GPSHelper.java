@@ -29,7 +29,6 @@ public class GPSHelper {
 		public void averageSpeedUpdate(String avgSpeed);
 		public void goalReachedUpdate(String percentReached);
 		public void liveMapUpdate(List<LatLng> points);
-		public void updateStatus(boolean status);
 	}
 
 	Context context;
@@ -66,7 +65,7 @@ public class GPSHelper {
 		this.eventHelper = eventHelper;
 	}
 
-	public static void finish() {
+	public void finish() {
 		sharedInstance = null;
 	}
 
@@ -80,12 +79,11 @@ public class GPSHelper {
 	}
 
 	public void startEvent() {
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,new CustomLocationListener()); 
-		callback.updateStatus(true);
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,new CustomLocationListener());
 	}
 
-	public void pauseUpdates() {
-		shouldUpdate = false;
+	public void updateStatus(boolean shouldUpdateGPS) {
+		shouldUpdate = shouldUpdateGPS;
 	} 
 
 	/**
@@ -139,7 +137,6 @@ public class GPSHelper {
              * Also keep average speed with each collected Location object
              */
 
-            //check for paused flag
             if (shouldUpdate && location.getAccuracy() < 40 && location.getSpeed() > 0.6) {
             	updateDistance(location);
             	updateLiveMap(location);

@@ -11,7 +11,7 @@
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyC_PZjjqvtmpjLrsoPx2Jw1fuTw4eVciLo"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name="drose379.ridefundraiser.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,13 +20,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".HomeTabRoot"
+        <activity android:name="drose379.ridefundraiser.HomeTabRoot"
             android:label="Home"/>
         <activity
-            android:name=".NewEvent"
+            android:name="drose379.ridefundraiser.NewEvent"
             android:label="New Activity"/>
         <activity 
-            android:name=".LiveMileEvent"
+            android:name="drose379.ridefundraiser.LiveMileEvent"
             android:label="Live Event"/>
 
     </application>

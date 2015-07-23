@@ -3,6 +3,7 @@ package drose379.ridefundraiser;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -49,8 +50,14 @@ public class LiveMileEvent extends AppCompatActivity implements
 
 	Button singleStart;
 	Button singlePause;
+	Button resume;
+	Button finish;
 
-	boolean isRunning = false;
+    /**
+     * Need flags to tell which buttons are showing at the time.
+     * If the exit dialog resume is clicked, and finish and resume buttons are showing, must stay paused until resume button is clicked
+     * @param savedInstance
+     */
 
 	@Override
 	public void onCreate(Bundle savedInstance) {
@@ -71,10 +78,14 @@ public class LiveMileEvent extends AppCompatActivity implements
 
         singleStart = (Button) findViewById(R.id.singleStartButton);
         singlePause = (Button) findViewById(R.id.singlePauseButton);
+        resume = (Button) findViewById(R.id.resume);
+        finish = (Button) findViewById(R.id.finish);
         dualButtonLayout = (LinearLayout) findViewById(R.id.resumeFinishContainer);
 
         singleStart.setTypeface(TypeHelper.getTypefaceBold(this));
         singlePause.setTypeface(TypeHelper.getTypefaceBold(this));
+		resume.setTypeface(TypeHelper.getTypefaceBold(this));
+		finish.setTypeface(TypeHelper.getTypefaceBold(this));
         distanceMeasure.setTypeface(TypeHelper.getTypeface(this));
         timeMeasure.setTypeface(TypeHelper.getTypeface(this));
         averageSpeedMeasure.setTypeface(TypeHelper.getTypeface(this));
@@ -82,11 +93,15 @@ public class LiveMileEvent extends AppCompatActivity implements
 
         singleStart.setOnClickListener(this); 
         singlePause.setOnClickListener(this);
+		resume.setOnClickListener(this);
+		finish.setOnClickListener(this);
 
 	}
 
 	@Override
 	public void onBackPressed() {
+        pauseEvent();
+
         MaterialDialog mDialog = new MaterialDialog.Builder(this)
                 .title("Exit Live Event?")
                 .content("Would you really like to end this live event now?")
@@ -102,6 +117,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 
                     @Override
                     public void onNegative(MaterialDialog dialog) {
+                        resumeEvent();
                         dialog.dismiss();
                     }
                 })
@@ -122,31 +138,45 @@ public class LiveMileEvent extends AppCompatActivity implements
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.singleStartButton :
-				isRunning = true;
 
-				singleStart.setVisibility(View.GONE);
-				singlePause.setVisibility(View.VISIBLE);
+	            hideShow(singleStart,singlePause);
 
 				gpsHelper.startEvent();
 				timeKeeper.startClock();
 				break;
 			case R.id.singlePauseButton :
-				isRunning = false;
 
-				singlePause.setVisibility(View.GONE);
-				dualButtonLayout.setVisibility(View.VISIBLE);
-				
-                gpsHelper.pauseUpdates();
-				timeKeeper.pauseUpdates();
+				hideShow(singlePause,dualButtonLayout);
+
+                    pauseEvent();
 				break;
+            case R.id.resume :
+                resumeEvent();
 
-			//Need to listen for Resume and Finish button clicks
-				//Resume, set status, get gps and timer rolling again, and change button back to pause button
+                hideShow(dualButtonLayout,singlePause);
+
+                break;
+            case R.id.finish :
+                pauseEvent();
 				//Finish, grab all current data, show a results screen, once user confirms the results, send to server, show home tabs
 		}
 
 
 	}
+
+    public void hideShow(View hide,View show) {
+        hide.setVisibility(View.GONE);
+        show.setVisibility(View.VISIBLE);
+    }
+
+    public void pauseEvent() {
+        gpsHelper.updateStatus(false);
+        timeKeeper.updateStatus(false);
+    }
+    public void resumeEvent() {
+        gpsHelper.updateStatus(true);
+        timeKeeper.updateStatus(true);
+    }
 
 	@Override
 	public void onMapReady(GoogleMap map) {
@@ -167,10 +197,6 @@ public class LiveMileEvent extends AppCompatActivity implements
 
 	}
 
-	@Override
-	public void updateStatus(boolean isRunning) {
-		this.isRunning = isRunning;
-	}
 
 	@Override
 	public void distanceUpdate(String distance) {

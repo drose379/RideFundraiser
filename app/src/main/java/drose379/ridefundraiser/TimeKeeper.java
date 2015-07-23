@@ -28,7 +28,7 @@ public class TimeKeeper {
 		return timeKeeper;
 	}
 
-	public static void finish() {
+	public void finish() {
 		timeKeeper = null;
 	}
 
@@ -51,8 +51,8 @@ public class TimeKeeper {
         }, 1000L,1000L);
 	}
 
-	public void pauseUpdates() {
-		shouldUpdate = false;
+	public void updateStatus(boolean shouldUpdateClock) {
+		shouldUpdate = shouldUpdateClock;
 	}
 
 }

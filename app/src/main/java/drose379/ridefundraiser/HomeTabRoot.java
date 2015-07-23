@@ -4,12 +4,8 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
-import com.google.android.gms.plus.model.people.Person;
 
 import drose379.ridefundraiser.homeTabs.SlidingTabLayout;
 import drose379.ridefundraiser.homeTabs.ViewPagerAdapter;
