@@ -3,6 +3,7 @@ package drose379.ridefundraiser;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -116,8 +117,9 @@ public class LiveMileEventHelper implements Parcelable {
                     callback.onRequestSuccess();
                 }
             }
+
             @Override
-            public void onFailure(Request request,IOException e) {
+            public void onFailure(Request request, IOException e) {
 
             }
         });
@@ -127,12 +129,17 @@ public class LiveMileEventHelper implements Parcelable {
      * Called each time distance is updated in UI, used to keep other users who want to donate to this event updated on progress
      */
     public void updateEventDistance(String distance) {
-        JSONArray value = new JSONArray(Arrays.asList(distance));
-        RequestBody body = RequestBody.create(MediaType.parse("text/plain"),value.toString());
+
+        /**
+         * Need to also create a LiveEventDonation table where users can donate to live events they see
+         */
+
+        JSONArray value = new JSONArray(Arrays.asList(user,eventName,distance));
+        RequestBody body = RequestBody.create(MediaType.parse("text/plain"), value.toString());
         Request request = new Request.Builder()
                 .post(body)
-                .url() // must add url
-                .build()
+                .url("http://104.236.15.47/RideFundraiserAPI/index.php/updateLiveEvent")
+                .build();
         Call c = httpClient.newCall(request);
         c.enqueue(new Callback() {
             @Override
@@ -142,8 +149,9 @@ public class LiveMileEventHelper implements Parcelable {
             @Override
             public void onResponse(Response response) throws IOException {
                 //reset count of failed attempts
+                Log.i("distanceUpdate", "DISTANCE UPDATED");
             }
-        })
+        });
     }
 
     /**

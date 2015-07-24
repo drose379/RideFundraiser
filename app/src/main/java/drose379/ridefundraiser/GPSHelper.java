@@ -5,6 +5,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -63,7 +64,7 @@ public class GPSHelper {
 		locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
 		this.eventHelper = eventHelper;
-	}
+    }
 
 	public void finish() {
 		sharedInstance = null;
@@ -79,7 +80,7 @@ public class GPSHelper {
 	}
 
 	public void startEvent() {
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,new CustomLocationListener());
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, new CustomLocationListener());
 	}
 
 	public void updateStatus(boolean shouldUpdateGPS) {

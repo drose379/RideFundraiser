@@ -63,9 +63,9 @@ public class LiveMileEvent extends AppCompatActivity implements
 		super.onCreate(savedInstance);
         setContentView(R.layout.live_mile_event);
 
+        eventHelper = getIntent().getBundleExtra("extra").getParcelable("helperInstance");
         gpsHelper = GPSHelper.getInstance(this,eventHelper);
         timeKeeper = TimeKeeper.getInstance(this);
-        eventHelper = getIntent().getBundleExtra("extra").getParcelable("helperInstance");
 
 		SupportMapFragment liveMapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.liveMap);
         liveMapFrag.getMapAsync(this);
@@ -152,7 +152,7 @@ public class LiveMileEvent extends AppCompatActivity implements
             case R.id.resume :
                 resumeEvent();
 
-                hideShow(dualButtonLayout,singlePause);
+                hideShow(dualButtonLayout, singlePause);
 
                 break;
             case R.id.finish :
@@ -189,7 +189,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 		gpsHelper.setMapReady(true);
 		if (gpsHelper.getLastLocation() != null) {
 			LatLng lastLoc = new LatLng(gpsHelper.getLastLocation().getLatitude(),gpsHelper.getLastLocation().getLongitude());
-			polyline = liveMap.addPolyline(new PolylineOptions().add(lastLoc).color(Color.RED).width(5).visible(true));
+			polyline = liveMap.addPolyline(new PolylineOptions().add(lastLoc).color(Color.BLUE).width(8).visible(true));
 
 			map.addMarker(new MarkerOptions().position(lastLoc).title("Starting Point"));
 			map.moveCamera(CameraUpdateFactory.newLatLngZoom(lastLoc,16));
@@ -201,7 +201,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 	@Override
 	public void distanceUpdate(String distance) {
 		distanceMeasure.setText(distance + " Miles");
-		//eventHelper.updateEventDistance(distance);
+		eventHelper.updateEventDistance(distance);
 	}
 
 	@Override
