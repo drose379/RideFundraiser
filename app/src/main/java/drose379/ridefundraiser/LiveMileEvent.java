@@ -3,7 +3,6 @@ package drose379.ridefundraiser;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -28,16 +27,16 @@ import java.util.List;
 public class LiveMileEvent extends AppCompatActivity implements
         OnMapReadyCallback,
 		View.OnClickListener,
-        GPSHelper.LocationCallback,
+        GPSController.LocationCallback,
         TimeKeeper.TimerCallback {
 
 	/**
 	  * Create timerHelepr to keep track of timing event
-	  * Avg speed and percent way through event will be calculated in GPSHelper class
+	  * Avg speed and percent way through event will be calculated in GPSController class
 	  */
 
 	private LiveMileEventHelper eventHelper;
-	private GPSHelper gpsHelper;
+	private GPSController gpsController;
 	private TimeKeeper timeKeeper;
 	private GoogleMap liveMap;
 	private Polyline polyline;
@@ -64,7 +63,7 @@ public class LiveMileEvent extends AppCompatActivity implements
         setContentView(R.layout.live_mile_event);
 
         eventHelper = getIntent().getBundleExtra("extra").getParcelable("helperInstance");
-        gpsHelper = GPSHelper.getInstance(this,eventHelper);
+        gpsController = GPSController.getInstance(this, eventHelper);
         timeKeeper = TimeKeeper.getInstance(this);
 
 		SupportMapFragment liveMapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.liveMap);
@@ -109,7 +108,7 @@ public class LiveMileEvent extends AppCompatActivity implements
                 .callback(new MaterialDialog.ButtonCallback() {
                     @Override
                     public void onPositive(MaterialDialog dialog) {
-                        gpsHelper.finish();
+                        gpsController.finish();
                         timeKeeper.finish();
                         LiveMileEvent.this.finish();
                     }
@@ -140,7 +139,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 
 	            hideShow(singleStart,singlePause);
 
-				gpsHelper.startEvent();
+				gpsController.startEvent();
 				timeKeeper.startClock();
 				break;
 			case R.id.singlePauseButton :
@@ -157,8 +156,19 @@ public class LiveMileEvent extends AppCompatActivity implements
                 break;
             case R.id.finish :
                 pauseEvent();
-				//Finish, grab all current data, show a results screen, once user confirms the results, send to server, show home tabs
-                //must snapshot map,and grab all final data
+
+                Bundle completeEventData = new Bundle();
+                completeEventData.putString("eventName",eventHelper.getEventName());
+                completeEventData.putString("distance",distanceMeasure.getText().toString());
+                completeEventData.putString("time",timeMeasure.getText().toString());
+                completeEventData.putString("averageSpeed",averageSpeedMeasure.getText().toString());
+                completeEventData.putString("percentComplete",goalReachedMeasure.getText().toString());
+
+                /**
+                 * LiveMileEventHelper must have method to construct a json array of donation summary
+                 * Pass the JSONArray of donation summary to the EventFinished activity in string format
+                 * Call MileEventFinished Activity with an intent with extra of bundle
+                 */
 		}
 
 
@@ -170,25 +180,25 @@ public class LiveMileEvent extends AppCompatActivity implements
     }
 
     public void pauseEvent() {
-        gpsHelper.updateStatus(false);
+        gpsController.updateStatus(false);
         timeKeeper.updateStatus(false);
     }
     public void resumeEvent() {
-        gpsHelper.updateStatus(true);
+        gpsController.updateStatus(true);
         timeKeeper.updateStatus(true);
     }
 
 	@Override
 	public void onMapReady(GoogleMap map) {
 		/**
-		  * Set flag in GPSHelper saying the map is ready, if map is not ready in GPSHelper, it will not start event
-		  * Get a lastKnownLocation from the GPSHelper to set the map location starting point with map.addMarker(LatLong)
+		  * Set flag in GPSController saying the map is ready, if map is not ready in GPSController, it will not start event
+		  * Get a lastKnownLocation from the GPSController to set the map location starting point with map.addMarker(LatLong)
 		  */
 
 		liveMap = map;
-		gpsHelper.setMapReady(true);
-		if (gpsHelper.getLastLocation() != null) {
-			LatLng lastLoc = new LatLng(gpsHelper.getLastLocation().getLatitude(),gpsHelper.getLastLocation().getLongitude());
+		gpsController.setMapReady(true);
+		if (gpsController.getLastLocation() != null) {
+			LatLng lastLoc = new LatLng(gpsController.getLastLocation().getLatitude(), gpsController.getLastLocation().getLongitude());
 			polyline = liveMap.addPolyline(new PolylineOptions().add(lastLoc).color(Color.BLUE).width(8).visible(true));
 
 			map.addMarker(new MarkerOptions().position(lastLoc).title("Starting Point"));

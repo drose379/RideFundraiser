@@ -70,6 +70,7 @@ public class LiveMileEventHelper implements Parcelable {
     public String getGoalDistance() {
         return this.goalDistance;
     }
+    public String getEventName() {return this.eventName;}
 
     //Need a getvalues
 
