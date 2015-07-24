@@ -1,11 +1,14 @@
 package drose379.ridefundraiser;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -27,6 +30,7 @@ import java.util.List;
 public class LiveMileEvent extends AppCompatActivity implements
         OnMapReadyCallback,
 		View.OnClickListener,
+        LiveMileEventHelper.LiveEventComm,
         GPSController.LocationCallback,
         TimeKeeper.TimerCallback {
 
@@ -52,6 +56,8 @@ public class LiveMileEvent extends AppCompatActivity implements
 	Button resume;
 	Button finish;
 
+    MaterialDialog globalLoading;
+
     /**
      * Need flags to tell which buttons are showing at the time.
      * If the exit dialog resume is clicked, and finish and resume buttons are showing, must stay paused until resume button is clicked
@@ -63,6 +69,7 @@ public class LiveMileEvent extends AppCompatActivity implements
         setContentView(R.layout.live_mile_event);
 
         eventHelper = getIntent().getBundleExtra("extra").getParcelable("helperInstance");
+        eventHelper.updateContext(this);
         gpsController = GPSController.getInstance(this, eventHelper);
         timeKeeper = TimeKeeper.getInstance(this);
 
@@ -110,6 +117,7 @@ public class LiveMileEvent extends AppCompatActivity implements
                     public void onPositive(MaterialDialog dialog) {
                         gpsController.finish();
                         timeKeeper.finish();
+                        eventHelper.endLiveEvent();
                         LiveMileEvent.this.finish();
                     }
 
@@ -157,12 +165,16 @@ public class LiveMileEvent extends AppCompatActivity implements
             case R.id.finish :
                 pauseEvent();
 
-                Bundle completeEventData = new Bundle();
-                completeEventData.putString("eventName",eventHelper.getEventName());
-                completeEventData.putString("distance",distanceMeasure.getText().toString());
-                completeEventData.putString("time",timeMeasure.getText().toString());
-                completeEventData.putString("averageSpeed",averageSpeedMeasure.getText().toString());
-                completeEventData.putString("percentComplete",goalReachedMeasure.getText().toString());
+                globalLoading = new MaterialDialog.Builder(this)
+                        .title("Thank You!")
+                        .customView(R.layout.load_dialog_layout,true)
+                        .autoDismiss(false)
+                        .build();
+                TextView loadText = (TextView) globalLoading.getCustomView().findViewById(R.id.loadText);
+                loadText.setTypeface(TypeHelper.getTypefaceBold(this));
+                globalLoading.show();
+
+                eventHelper.liveMileEventFinished();
 
                 /**
                  * LiveMileEventHelper must have method to construct a json array of donation summary
@@ -173,6 +185,23 @@ public class LiveMileEvent extends AppCompatActivity implements
 
 
 	}
+
+    @Override
+    public void finishedEventDataReady(String donationSummaryJson) {
+        //globalLoading.dismiss();
+
+        Bundle completeEventData = new Bundle();
+        completeEventData.putString("eventName",eventHelper.getEventName());
+        completeEventData.putString("distance",distanceMeasure.getText().toString());
+        completeEventData.putString("time",timeMeasure.getText().toString());
+        completeEventData.putString("averageSpeed",averageSpeedMeasure.getText().toString());
+        completeEventData.putString("percentComplete",goalReachedMeasure.getText().toString());
+        //completeEventData.putString("donationSummary",donationSummaryJson);
+
+        //Use intent to open activity
+        //Be sure to attach bundle to intent
+
+    }
 
     public void hideShow(View hide,View show) {
         hide.setVisibility(View.GONE);
@@ -211,7 +240,6 @@ public class LiveMileEvent extends AppCompatActivity implements
 	@Override
 	public void distanceUpdate(String distance) {
 		distanceMeasure.setText(distance + " Miles");
-		eventHelper.updateEventDistance(distance);
 	}
 
 	@Override
@@ -222,7 +250,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 		if (polyline == null) {
 			polyline = liveMap.addPolyline(new PolylineOptions().color(Color.BLUE).width(8).visible(true));
 			polyline.setPoints(polyPoints);
-			liveMap.moveCamera(CameraUpdateFactory.newLatLng(polyPoints.get(polyPoints.size() - 1)));
+			liveMap.moveCamera(CameraUpdateFactory.newLatLngZoom(polyPoints.get(polyPoints.size() - 1), 16));
 		} else {
 			polyline.setPoints(polyPoints);
        		liveMap.moveCamera(CameraUpdateFactory.newLatLng(polyPoints.get(polyPoints.size() - 1)));
@@ -248,6 +276,17 @@ public class LiveMileEvent extends AppCompatActivity implements
                 timeMeasure.setText(String.valueOf(time));
             }
         });
+    }
+
+    @Override
+    public void updateEventInfo() {
+        String distance = distanceMeasure.getText().toString();
+        String time = timeMeasure.getText().toString();
+        String goalReached = goalReachedMeasure.getText().toString();
+        String averageSpeed = averageSpeedMeasure.getText().toString();
+        String baseRaised = String.valueOf(Integer.getInteger(distance) * Integer.getInteger(eventHelper.getPerMile()));
+
+        eventHelper.updateEventInfo(distance,time,goalReached,averageSpeed,baseRaised);
     }
 
 }

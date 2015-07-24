@@ -12,7 +12,7 @@ public class MileEventFinished extends AppCompatActivity {
         super.onCreate(savedInstance);
 
         /**
-         *
+         * Show confirmation screen for event.
          */
 
     }

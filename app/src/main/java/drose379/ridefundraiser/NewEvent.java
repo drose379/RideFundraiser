@@ -99,7 +99,7 @@ public class NewEvent extends AppCompatActivity implements LiveMileEventHelper.N
          * Open up live event activity ONLY AFTER LIVE RECORD HAS BEEN SUCCESSFULLY INSERTED INTO DB
          */
         
-        liveMileHelper.setValues(user,eventName,donatingTo,String.valueOf(rate),String.valueOf(distance));
+        liveMileHelper.setValues(eventName,donatingTo,String.valueOf(rate),String.valueOf(distance));
         liveMileHelper.createLiveEvent();
     }
 
@@ -117,6 +117,7 @@ public class NewEvent extends AppCompatActivity implements LiveMileEventHelper.N
             * Create method in LiveMileEventHelper seperate from the construct to give it necessary values
          */
     }
+
 
     public void saveLiveHourEvent() {
 

@@ -29,6 +29,7 @@ public class GPSController {
 		public void averageSpeedUpdate(String avgSpeed);
 		public void goalReachedUpdate(String percentReached);
 		public void liveMapUpdate(List<LatLng> points);
+        void updateEventInfo();
 	}
 
 	Context context;
@@ -129,6 +130,10 @@ public class GPSController {
 		callback.averageSpeedUpdate(format1.format(averageSpeed));
 	}
 
+    public void updateEventInfo() {
+
+    }
+
 	public class CustomLocationListener implements LocationListener {
 		@Override
 		public void onLocationChanged(Location location) {
@@ -143,6 +148,7 @@ public class GPSController {
             	updateDistance(location);
             	updateLiveMap(location);
             	updateAverageSpeed(location);
+                updateEventInfo();
             }
 
 		}

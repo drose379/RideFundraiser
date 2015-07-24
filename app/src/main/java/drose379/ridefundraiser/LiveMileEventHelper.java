@@ -24,16 +24,19 @@ import java.util.Arrays;
 public class LiveMileEventHelper implements Parcelable {
 
     public interface NetworkCallback {
-        public void onRequestSuccess();
+        void onRequestSuccess();
+    }
+    public interface LiveEventComm {
+        void finishedEventDataReady(String donationSummary);
     }
 
     private Context context;
 
     private NetworkCallback callback;
+    private LiveEventComm liveCallback;
 
     private OkHttpClient httpClient = new OkHttpClient();
 
-    private String user;
     private String eventName;
     private String organization;
     private String perMile;
@@ -59,8 +62,12 @@ public class LiveMileEventHelper implements Parcelable {
         callback = (NetworkCallback) context;
     }
 
-    public void setValues(String user, String eventName, String organization, String perMile, String goalDistance) {
-        this.user = user;
+    public void updateContext(Context context) {
+        this.context = context;
+        liveCallback = (LiveEventComm) context;
+    }
+
+    public void setValues(String eventName, String organization, String perMile, String goalDistance) {
         this.eventName = eventName;
         this.organization = organization;
         this.perMile = perMile;
@@ -71,6 +78,7 @@ public class LiveMileEventHelper implements Parcelable {
         return this.goalDistance;
     }
     public String getEventName() {return this.eventName;}
+    public String getPerMile() { return perMile;}
 
     //Need a getvalues
 
@@ -80,11 +88,10 @@ public class LiveMileEventHelper implements Parcelable {
      */
     public LiveMileEventHelper(Parcel in) {
         String[] eventData = in.createStringArray();
-        user = eventData[0];
-        eventName = eventData[1];
-        organization = eventData[2];
-        perMile = eventData[3];
-        goalDistance = eventData[4];
+        eventName = eventData[0];
+        organization = eventData[1];
+        perMile = eventData[2];
+        goalDistance = eventData[3];
     }
 
     /**
@@ -94,7 +101,15 @@ public class LiveMileEventHelper implements Parcelable {
      */
     @Override
     public void writeToParcel(Parcel dest,int flags) {
-        dest.writeStringArray(new String[]{user, eventName, organization, perMile, goalDistance});
+        dest.writeStringArray(new String[]{eventName, organization, perMile, goalDistance});
+    }
+
+    public String generateJSONArray(String... value) {
+        JSONArray vals = new JSONArray();
+        for (String val : value) {
+            vals.put(val);
+        }
+        return vals.toString();
     }
 
 
@@ -103,9 +118,9 @@ public class LiveMileEventHelper implements Parcelable {
      * @return Request success boolean
      */
     public void createLiveEvent() {
-        JSONArray values = new JSONArray(Arrays.asList(user,eventName,organization,perMile,goalDistance));
-
-        RequestBody rBody = RequestBody.create(MediaType.parse("text/plain"),values.toString());
+        //JSONArray values = new JSONArray(Arrays.asList(user,eventName,organization,perMile,goalDistance));
+        String jsonVals = generateJSONArray(CurrentUser.currentUser,eventName,organization,perMile,goalDistance);
+        RequestBody rBody = RequestBody.create(MediaType.parse("text/plain"),jsonVals);
         final Request request = new Request.Builder()
                 .post(rBody)
                 .url("http://104.236.15.47/RideFundraiserAPI/index.php/newLiveEvent")
@@ -129,14 +144,9 @@ public class LiveMileEventHelper implements Parcelable {
     /**
      * Called each time distance is updated in UI, used to keep other users who want to donate to this event updated on progress
      */
-    public void updateEventDistance(String distance) {
-
-        /**
-         * Need to also create a LiveEventDonation table where users can donate to live events they see
-         */
-
-        JSONArray value = new JSONArray(Arrays.asList(user,eventName,distance));
-        RequestBody body = RequestBody.create(MediaType.parse("text/plain"), value.toString());
+    public void updateEventInfo(String distance,String time,String goalReached,String averageSpeed,String baseRaised) {
+        String jsonEncodedArray = generateJSONArray(CurrentUser.currentUser,eventName,distance,time,goalReached,averageSpeed,baseRaised);
+        RequestBody body = RequestBody.create(MediaType.parse("text/plain"),jsonEncodedArray);
         Request request = new Request.Builder()
                 .post(body)
                 .url("http://104.236.15.47/RideFundraiserAPI/index.php/updateLiveEvent")
@@ -150,20 +160,60 @@ public class LiveMileEventHelper implements Parcelable {
             @Override
             public void onResponse(Response response) throws IOException {
                 //reset count of failed attempts
-                Log.i("distanceUpdate", "DISTANCE UPDATED");
             }
         });
     }
+
+    public void endLiveEvent() {
+        RequestBody rBody = RequestBody.create(MediaType.parse("text/plain"),generateJSONArray(CurrentUser.currentUser,eventName));
+        Request request = new Request.Builder()
+                .post(rBody)
+                .url("http://104.236.15.47/RideFundraiserAPI/index.php/removeLiveEvent")
+                .build();
+        Call call = httpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                //callback to LiveEvent activity to remove loading dialog and dismiss
+            }
+        });
+    }
+
 
     /**
      * Called when live mile event is complete, used to move record from Live to Completed table in DB
      * @return Transfer from live to completed event boolean
      */
-    public boolean liveMileEventFinished() {
-        final BooleanWrapper didSucceed = new BooleanWrapper(false);
+    public void liveMileEventFinished() {
 
         //make transfer from live to complete
+        //get response from script of donation summary json, pass with callback
+        //liveCallback.finishedEventDataReady(donationSummary)
 
-        return didSucceed.getSavedItem();
+        //on response of request, pass the json string of donation summary to the callback liveCallback
+
+        RequestBody rBody = RequestBody.create(MediaType.parse("text/plain"),generateJSONArray(CurrentUser.currentUser,eventName));
+        Request request = new Request.Builder()
+                .post(rBody)
+                .url("http://104.236.15.47/RideFundraiserAPI/index.php/liveEventFinished")
+                .build();
+        Call newCall = httpClient.newCall(request);
+        newCall.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+                //callback to live event activity with donation summary
+            }
+        });
+
     }
 }
