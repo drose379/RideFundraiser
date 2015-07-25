@@ -131,7 +131,7 @@ public class GPSController {
 	}
 
     public void updateEventInfo() {
-
+        callback.updateEventInfo();
     }
 
 	public class CustomLocationListener implements LocationListener {

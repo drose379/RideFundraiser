@@ -284,7 +284,8 @@ public class LiveMileEvent extends AppCompatActivity implements
         String time = timeMeasure.getText().toString();
         String goalReached = goalReachedMeasure.getText().toString();
         String averageSpeed = averageSpeedMeasure.getText().toString();
-        String baseRaised = String.valueOf(Integer.getInteger(distance) * Integer.getInteger(eventHelper.getPerMile()));
+        //String baseRaised = String.valueOf(Integer.getInteger(distance) * Integer.getInteger(eventHelper.getPerMile())); //null pointer
+        String baseRaised = String.valueOf(5);
 
         eventHelper.updateEventInfo(distance,time,goalReached,averageSpeed,baseRaised);
     }
