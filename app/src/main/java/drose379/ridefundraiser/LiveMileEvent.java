@@ -21,6 +21,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import org.json.JSONObject;
+
 import java.util.List;
 
 
@@ -188,7 +190,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 
     @Override
     public void finishedEventDataReady(String donationSummaryJson) {
-        //globalLoading.dismiss();
+        globalLoading.dismiss();
 
         Bundle completeEventData = new Bundle();
         completeEventData.putString("eventName",eventHelper.getEventName());
@@ -196,8 +198,9 @@ public class LiveMileEvent extends AppCompatActivity implements
         completeEventData.putString("time",timeMeasure.getText().toString());
         completeEventData.putString("averageSpeed",averageSpeedMeasure.getText().toString());
         completeEventData.putString("percentComplete",goalReachedMeasure.getText().toString());
-        //completeEventData.putString("donationSummary",donationSummaryJson);
+        completeEventData.putString("donationSummary",donationSummaryJson);
 
+        //MUST ATTACH BITMAP OF COMPLETED MAP AS BYTEARRAY TO BUNDLE
         //Use intent to open activity
         //Be sure to attach bundle to intent
 

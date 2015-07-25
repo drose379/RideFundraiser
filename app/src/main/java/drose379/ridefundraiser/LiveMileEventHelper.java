@@ -14,6 +14,8 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -212,7 +214,7 @@ public class LiveMileEventHelper implements Parcelable {
             @Override
             public void onResponse(Response response) throws IOException {
                 //callback to live event activity with donation summary
-                Log.i("finishedResp",response.body().string());
+                liveCallback.finishedEventDataReady(response.body().string());
             }
         });
 
