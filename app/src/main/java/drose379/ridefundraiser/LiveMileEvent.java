@@ -1,6 +1,8 @@
 package drose379.ridefundraiser;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +25,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 
@@ -192,7 +195,7 @@ public class LiveMileEvent extends AppCompatActivity implements
                 /**
                  * LiveMileEventHelper must have method to construct a json array of donation summary
                  * Pass the JSONArray of donation summary to the EventFinished activity in string format
-                 * Call MileEventFinished Activity with an intent with extra of bundle
+                 * Call MileEventOverview Activity with an intent with extra of bundle
                  */
 		}
 
@@ -201,20 +204,38 @@ public class LiveMileEvent extends AppCompatActivity implements
 
     @Override
     public void finishedEventDataReady(String donationSummaryJson) {
-        globalLoading.dismiss();
 
-        Bundle completeEventData = new Bundle();
+
+        final Bundle completeEventData = new Bundle();
         completeEventData.putString("eventName",eventHelper.getEventName());
-        completeEventData.putString("distance",distanceMeasure.getText().toString());
-        completeEventData.putString("time",timeMeasure.getText().toString());
-        completeEventData.putString("averageSpeed",averageSpeedMeasure.getText().toString());
-        completeEventData.putString("percentComplete",goalReachedMeasure.getText().toString());
-        completeEventData.putString("donationSummary",donationSummaryJson);
+        completeEventData.putString("distance", distanceMeasure.getText().toString());
+        completeEventData.putString("time", timeMeasure.getText().toString());
+        completeEventData.putString("averageSpeed", averageSpeedMeasure.getText().toString());
+        completeEventData.putString("percentComplete", goalReachedMeasure.getText().toString());
+        completeEventData.putString("donationSummary", donationSummaryJson);
 
-        //MUST ATTACH BITMAP OF COMPLETED MAP AS BYTEARRAY TO BUNDLE
-        //Use intent to open activity
-        //Be sure to attach bundle to intent
-        endLiveEvent(false);
+        liveMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
+            @Override
+            public void onSnapshotReady(Bitmap bitmap) {
+
+                ByteArrayOutputStream output = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, output);
+                completeEventData.putByteArray("map", output.toByteArray());
+
+
+                Intent eventOverview = new Intent(LiveMileEvent.this, MileEventOverview.class);
+                eventOverview.putExtra("eventData", completeEventData);
+
+                globalLoading.dismiss();
+                endLiveEvent(false);
+                startActivity(eventOverview);
+
+            }
+        });
+
+
+
+
     }
 
     public void hideShow(View hide,View show) {
@@ -264,17 +285,17 @@ public class LiveMileEvent extends AppCompatActivity implements
 		if (polyline == null) {
 			polyline = liveMap.addPolyline(new PolylineOptions().color(Color.BLUE).width(8).visible(true));
 			polyline.setPoints(polyPoints);
-			liveMap.moveCamera(CameraUpdateFactory.newLatLngZoom(polyPoints.get(polyPoints.size() - 1), 16));
+			liveMap.animateCamera(CameraUpdateFactory.newLatLngZoom(polyPoints.get(polyPoints.size() - 1), 16));
 		} else {
 			polyline.setPoints(polyPoints);
-       		liveMap.moveCamera(CameraUpdateFactory.newLatLng(polyPoints.get(polyPoints.size() - 1)));
+       		liveMap.animateCamera(CameraUpdateFactory.newLatLng(polyPoints.get(polyPoints.size() - 1)));
 		}
 
 	}
 
 	@Override
 	public void averageSpeedUpdate(String speed) {
-		averageSpeedMeasure.setText(speed + " M/S");
+		averageSpeedMeasure.setText(speed + " MPH");
 	}
 
     @Override

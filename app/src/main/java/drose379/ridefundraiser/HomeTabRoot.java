@@ -8,11 +8,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import drose379.ridefundraiser.homeTabs.SlidingTabLayout;
-import drose379.ridefundraiser.homeTabs.ViewPagerAdapter;
+import drose379.ridefundraiser.homeTabs.ViewPagerAdapterHome;
 
 public class HomeTabRoot extends AppCompatActivity {
 
-    private String currentPerson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +21,7 @@ public class HomeTabRoot extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapterHome pagerAdapter = new ViewPagerAdapterHome(getSupportFragmentManager());
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         pager.setAdapter(pagerAdapter);
         pager.setOffscreenPageLimit(3);

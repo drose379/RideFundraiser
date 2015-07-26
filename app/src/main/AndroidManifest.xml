@@ -28,6 +28,9 @@
         <activity 
             android:name="drose379.ridefundraiser.LiveMileEvent"
             android:label="Live Event"/>
+        <activity
+            android:name="drose379.ridefundraiser.MileEventOverview"
+            android:label="Event Overview"/>
 
     </application>
 

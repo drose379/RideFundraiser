@@ -195,7 +195,7 @@ import android.widget.TextView;
         }
 
         private void populateTabStrip() {
-            final ViewPagerAdapter adapter = (ViewPagerAdapter) mViewPager.getAdapter();
+            final ViewPagerAdapterHome adapter = (ViewPagerAdapterHome) mViewPager.getAdapter();
             final OnClickListener tabClickListener = new TabClickListener();
 
             for (int i = 0; i < adapter.getCount(); i++) {
