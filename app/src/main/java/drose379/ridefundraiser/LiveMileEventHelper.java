@@ -213,7 +213,6 @@ public class LiveMileEventHelper implements Parcelable {
 
             @Override
             public void onResponse(Response response) throws IOException {
-                //callback to live event activity with donation summary
                 liveCallback.finishedEventDataReady(response.body().string());
             }
         });

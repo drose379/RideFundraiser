@@ -105,6 +105,20 @@ public class LiveMileEvent extends AppCompatActivity implements
 
 	}
 
+    /**
+     *
+     * @param hardDelete if True, make request to server to remove event records from db, not necessary when finishing a live event.
+     *                   Only necessary when ending event early
+     */
+    public void endLiveEvent(boolean hardDelete) {
+        if (hardDelete) {
+            eventHelper.endLiveEvent();
+        }
+        gpsController.finish();
+        timeKeeper.finish();
+        LiveMileEvent.this.finish();
+    }
+
 	@Override
 	public void onBackPressed() {
         pauseEvent();
@@ -117,10 +131,7 @@ public class LiveMileEvent extends AppCompatActivity implements
                 .callback(new MaterialDialog.ButtonCallback() {
                     @Override
                     public void onPositive(MaterialDialog dialog) {
-                        gpsController.finish();
-                        timeKeeper.finish();
-                        eventHelper.endLiveEvent();
-                        LiveMileEvent.this.finish();
+                        endLiveEvent(true);
                     }
 
                     @Override
@@ -203,7 +214,7 @@ public class LiveMileEvent extends AppCompatActivity implements
         //MUST ATTACH BITMAP OF COMPLETED MAP AS BYTEARRAY TO BUNDLE
         //Use intent to open activity
         //Be sure to attach bundle to intent
-
+        endLiveEvent(false);
     }
 
     public void hideShow(View hide,View show) {

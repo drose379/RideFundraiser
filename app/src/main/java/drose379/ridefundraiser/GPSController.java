@@ -126,8 +126,7 @@ public class GPSController {
 		}
 
 		double averageSpeed = totalSpeed / locationsCount;
-		//CURRENTLY m/s, convert to MPH
-		callback.averageSpeedUpdate(format1.format(averageSpeed));
+		callback.averageSpeedUpdate(format1.format(averageSpeed * 2.23694));
 	}
 
     public void updateEventInfo() {
