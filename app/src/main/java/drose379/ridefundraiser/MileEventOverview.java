@@ -3,6 +3,7 @@ package drose379.ridefundraiser;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import drose379.ridefundraiser.homeTabs.SlidingTabLayout;
 
 /**
  * Created by Dylan on 7/23/15.
@@ -32,8 +35,12 @@ public class MileEventOverview extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //create viewpager adapter and attach to viewpager (grab by id)
-        //set color of SlidingTabLayout
+        ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
+        ViewPagerAdapterOverview pagerAdapter = new ViewPagerAdapterOverview(getSupportFragmentManager());
+        pager.setAdapter(pagerAdapter);
+
+        SlidingTabLayout tabs = (SlidingTabLayout) findViewById(R.id.tabs);
+        tabs.setViewPager(pager);
 
         eventData = getIntent().getBundleExtra("eventData");
 

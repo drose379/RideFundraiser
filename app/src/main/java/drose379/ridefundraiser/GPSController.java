@@ -143,12 +143,12 @@ public class GPSController {
              * Also keep average speed with each collected Location object
              */
 
-            //if (shouldUpdate && location.getAccuracy() < 40 && location.getSpeed() > 0.6) {
+            if (shouldUpdate && location.getAccuracy() < 40 && location.getSpeed() > 0.6) {
             	updateDistance(location);
             	updateLiveMap(location);
             	updateAverageSpeed(location);
                 updateEventInfo();
-            //}
+            }
 
 		}
 		@Override
