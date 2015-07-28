@@ -13,7 +13,7 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import drose379.ridefundraiser.homeTabs.SlidingTabLayout;
+
 
 /**
  * Created by Dylan on 7/23/15.
@@ -34,14 +34,14 @@ public class MileEventOverview extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+/**
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         ViewPagerAdapterOverview pagerAdapter = new ViewPagerAdapterOverview(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
 
         SlidingTabLayout tabs = (SlidingTabLayout) findViewById(R.id.tabs);
         tabs.setViewPager(pager);
-
+*/
         eventData = getIntent().getBundleExtra("eventData");
 
         showDonationSummary();

@@ -4,10 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import drose379.ridefundraiser.homeTabs.HomeTab;
-import drose379.ridefundraiser.homeTabs.LiveTab;
-import drose379.ridefundraiser.homeTabs.OrganizationsTab;
-
 /**
  * Created by Dylan on 7/26/15.
  */
