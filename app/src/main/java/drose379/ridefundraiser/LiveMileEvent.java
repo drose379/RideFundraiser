@@ -288,7 +288,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 			liveMap.animateCamera(CameraUpdateFactory.newLatLngZoom(polyPoints.get(polyPoints.size() - 1), 16));
 		} else {
 			polyline.setPoints(polyPoints);
-       		liveMap.animateCamera(CameraUpdateFactory.newLatLng(polyPoints.get(polyPoints.size() - 1)));
+       		liveMap.animateCamera(CameraUpdateFactory.newLatLngZoom(polyPoints.get(polyPoints.size() - 1),16));
 		}
 
 	}
