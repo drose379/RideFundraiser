@@ -12,7 +12,7 @@ import drose379.ridefundraiser.R;
  */
 public class ViewPagerAdapterOverview extends FragmentPagerAdapter {
 
-    public String[] titles = new String[] {"Event Summary","Donation Summary"};
+    public String[] titles = new String[] {"Event","Donation"};
     public int[] icons = new int[] {R.drawable.ic_directions_run_white_24dp,R.drawable.ic_attach_money_white_24dp};
 
     public ViewPagerAdapterOverview(FragmentManager manager) {super(manager);}
@@ -21,8 +21,7 @@ public class ViewPagerAdapterOverview extends FragmentPagerAdapter {
     public Fragment getItem(int item) {
         switch (item) {
             case 0 :
-                return new Fragment();
-            //open event details fragment
+                return new EventOverviewFragment();
             case 1 :
                 return new Fragment();
             //open donation summary fragment
@@ -33,7 +32,7 @@ public class ViewPagerAdapterOverview extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return titles.length;
+        return 2;
     }
 
     public String getTabTitle(int position) {return titles[position];}
