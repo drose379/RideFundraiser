@@ -88,11 +88,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MileEventOverview.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MileEventOverview.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/MileEventOverview.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.3050505">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,14 +113,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mile_event_overview.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mile_event_overview.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/mile_event_overview.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.206897">
-              <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.23390558">
+              <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -1749,10 +1749,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/hometabs/SlidingTabStrip.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/hometabs/ViewPagerAdapterHome.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/ViewPagerAdapterOverview.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/MileEventOverview.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/mile_event_overview.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/homeTabs/HomeTab.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/eventoverviewtabs/SlidingTabLayout.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/MileEventOverview.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/mile_event_overview.xml" />
       </list>
     </option>
   </component>
@@ -2180,7 +2180,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3251928" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3277635" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3277635" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17916666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -2584,17 +2584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/mile_event_overview.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.206897">
-          <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/HomeTabRoot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2646,11 +2635,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/MileEventOverview.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.3050505">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/mile_event_overview.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23390558">
+          <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
