@@ -13,7 +13,7 @@ import drose379.ridefundraiser.R;
 public class ViewPagerAdapterOverview extends FragmentPagerAdapter {
 
     public String[] titles = new String[] {"Event Summary","Donation Summary"};
-    public int[] icons = new int[] {R.drawable.ic_directions_run_white_36dp,R.drawable.ic_attach_money_white_36dp};
+    public int[] icons = new int[] {R.drawable.ic_directions_run_white_24dp,R.drawable.ic_attach_money_white_24dp};
 
     public ViewPagerAdapterOverview(FragmentManager manager) {super(manager);}
 
