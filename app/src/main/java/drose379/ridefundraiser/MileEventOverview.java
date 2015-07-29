@@ -34,26 +34,21 @@ public class MileEventOverview extends AppCompatActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.mile_event_overview);
 
+        eventData = getIntent().getBundleExtra("eventData");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(eventData.getString("eventName") + " Overview");
         setSupportActionBar(toolbar);
 
+
+
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
-        ViewPagerAdapterOverview pagerAdapter = new ViewPagerAdapterOverview(getSupportFragmentManager());
+        ViewPagerAdapterOverview pagerAdapter = new ViewPagerAdapterOverview(getSupportFragmentManager(),eventData);
         pager.setAdapter(pagerAdapter);
 
         SlidingTabLayout tabs = (SlidingTabLayout) findViewById(R.id.tabs);
         tabs.setViewPager(pager);
 
-        eventData = getIntent().getBundleExtra("eventData");
-
-        showDonationSummary();
     }
 
-    public void showDonationSummary() {
-        try {
-            JSONObject summary = new JSONObject(eventData.getString("donationSummary"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 }

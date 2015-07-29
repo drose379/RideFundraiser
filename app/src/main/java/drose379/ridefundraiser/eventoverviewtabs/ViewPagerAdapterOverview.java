@@ -1,5 +1,6 @@
 package drose379.ridefundraiser.eventoverviewtabs;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,16 +13,23 @@ import drose379.ridefundraiser.R;
  */
 public class ViewPagerAdapterOverview extends FragmentPagerAdapter {
 
+    private Bundle eventData;
+
     public String[] titles = new String[] {"Event","Donation"};
     public int[] icons = new int[] {R.drawable.ic_directions_run_white_24dp,R.drawable.ic_attach_money_white_24dp};
 
-    public ViewPagerAdapterOverview(FragmentManager manager) {super(manager);}
+    public ViewPagerAdapterOverview(FragmentManager manager,Bundle eventData) {
+        super(manager);
+        this.eventData = eventData;
+    }
 
     @Override
     public Fragment getItem(int item) {
         switch (item) {
             case 0 :
-                return new EventOverviewFragment();
+                EventOverviewFragment overview = new EventOverviewFragment();
+                overview.setArguments(eventData);
+                return overview;
             case 1 :
                 return new Fragment();
             //open donation summary fragment

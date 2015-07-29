@@ -144,9 +144,9 @@ public class GPSController {
              */
 
             if (shouldUpdate && location.getAccuracy() < 40 && location.getSpeed() > 0.6) {
-            	updateDistance(location);
-            	updateLiveMap(location);
-            	updateAverageSpeed(location);
+                updateDistance(location);
+                updateLiveMap(location);
+                updateAverageSpeed(location);
                 updateEventInfo();
             }
 

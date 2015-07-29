@@ -88,14 +88,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="GPSController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/GPSController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="156" column="9" selection-start-line="156" selection-start-column="9" selection-end-line="156" selection-end-column="9" />
+              <folding>
+                <element signature="e#1948#1949#0" expanded="true" />
+                <element signature="e#1976#1977#0" expanded="true" />
+                <element signature="e#2427#2428#0" expanded="true" />
+                <element signature="e#2464#2465#0" expanded="true" />
+                <element signature="e#3840#3841#0" expanded="true" />
+                <element signature="e#3882#3883#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LiveMileEvent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/LiveMileEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="182" column="16" selection-start-line="182" selection-start-column="16" selection-end-line="182" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MileEventOverview.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/MileEventOverview.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,32 +129,22 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/eventoverviewtabs/ViewPagerAdapterOverview.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="60" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
+              <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventOverviewFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EventOverviewFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/eventoverviewtabs/EventOverviewFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="55" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.6909091">
+              <caret line="51" column="55" selection-start-line="51" selection-start-column="55" selection-end-line="51" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#935#936#0" expanded="true" />
-                <element signature="e#966#967#0" expanded="true" />
+                <element signature="e#2234#2235#0" expanded="true" />
+                <element signature="e#2265#2266#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LiveMileEvent.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/LiveMileEvent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.81616163">
-              <caret line="290" column="108" selection-start-line="290" selection-start-column="108" selection-end-line="290" selection-end-column="108" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -137,8 +152,8 @@
       <file leaf-file-name="event_overview_frag.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/event_overview_frag.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.9310346">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.3448277">
+              <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -1760,7 +1775,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/MileEventFinished.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/LiveMileEventHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/GPSController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/HomeTabRoot.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/hometabs/LiveTab.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/hometabs/HomeTab.java" />
@@ -1771,13 +1785,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/ViewPagerAdapterOverview.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/homeTabs/HomeTab.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/eventoverviewtabs/SlidingTabLayout.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/MileEventOverview.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/mile_event_overview.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/my_activity.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/eventoverviewtabs/ViewPagerAdapterOverview.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/MileEventOverview.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/LiveMileEvent.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/GPSController.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/event_overview_frag.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/eventoverviewtabs/EventOverviewFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/LiveMileEvent.java" />
       </list>
     </option>
   </component>
@@ -2407,17 +2422,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/live_mile_event.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.724138">
-          <caret line="83" column="50" selection-start-line="83" selection-start-column="50" selection-end-line="83" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/load_dialog_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.275862">
@@ -2496,13 +2500,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/GPSController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17408907">
-          <caret line="145" column="12" selection-start-line="145" selection-start-column="12" selection-end-line="145" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/LiveMileEventHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.55353534">
@@ -2542,16 +2539,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="33" column="70" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/MileEventOverview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2613,25 +2600,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/eventoverviewtabs/ViewPagerAdapterOverview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="60" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/event_overview_frag.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9310346">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/homeTabs/HomeTab.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24040404">
@@ -2640,23 +2608,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/eventoverviewtabs/EventOverviewFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/eventoverviewtabs/ViewPagerAdapterOverview.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="55" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
+          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/MileEventOverview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/GPSController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="156" column="9" selection-start-line="156" selection-start-column="9" selection-end-line="156" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#935#936#0" expanded="true" />
-            <element signature="e#966#967#0" expanded="true" />
+            <element signature="e#1948#1949#0" expanded="true" />
+            <element signature="e#1976#1977#0" expanded="true" />
+            <element signature="e#2427#2428#0" expanded="true" />
+            <element signature="e#2464#2465#0" expanded="true" />
+            <element signature="e#3840#3841#0" expanded="true" />
+            <element signature="e#3882#3883#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/event_overview_frag.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3448277">
+          <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/live_mile_event.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65665233">
+          <caret line="138" column="42" selection-start-line="138" selection-start-column="42" selection-end-line="138" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/LiveMileEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81616163">
-          <caret line="290" column="108" selection-start-line="290" selection-start-column="108" selection-end-line="290" selection-end-column="108" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="182" column="16" selection-start-line="182" selection-start-column="16" selection-end-line="182" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/drose379/ridefundraiser/eventoverviewtabs/EventOverviewFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6909091">
+          <caret line="51" column="55" selection-start-line="51" selection-start-column="55" selection-end-line="51" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2234#2235#0" expanded="true" />
+            <element signature="e#2265#2266#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

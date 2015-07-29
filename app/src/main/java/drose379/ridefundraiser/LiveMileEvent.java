@@ -168,19 +168,19 @@ public class LiveMileEvent extends AppCompatActivity implements
 				break;
 			case R.id.singlePauseButton :
 
-				hideShow(singlePause,dualButtonLayout);
+				hideShow(singlePause, dualButtonLayout);
+                pauseEvent();
 
-                    pauseEvent();
 				break;
             case R.id.resume :
-                resumeEvent();
 
+                resumeEvent();
                 hideShow(dualButtonLayout, singlePause);
 
                 break;
             case R.id.finish :
-                pauseEvent();
 
+                pauseEvent();
                 globalLoading = new MaterialDialog.Builder(this)
                         .title("Thank You!")
                         .customView(R.layout.load_dialog_layout,true)
@@ -246,10 +246,12 @@ public class LiveMileEvent extends AppCompatActivity implements
     public void pauseEvent() {
         gpsController.updateStatus(false);
         timeKeeper.updateStatus(false);
+        liveMap.animateCamera(CameraUpdateFactory.zoomTo(10));
     }
     public void resumeEvent() {
         gpsController.updateStatus(true);
         timeKeeper.updateStatus(true);
+        liveMap.animateCamera(CameraUpdateFactory.zoomTo(16));
     }
 
 	@Override
@@ -288,7 +290,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 			liveMap.animateCamera(CameraUpdateFactory.newLatLngZoom(polyPoints.get(polyPoints.size() - 1), 16));
 		} else {
 			polyline.setPoints(polyPoints);
-       		liveMap.animateCamera(CameraUpdateFactory.newLatLngZoom(polyPoints.get(polyPoints.size() - 1),16));
+       		liveMap.animateCamera(CameraUpdateFactory.newLatLngZoom(polyPoints.get(polyPoints.size() - 1), 16));
 		}
 
 	}
