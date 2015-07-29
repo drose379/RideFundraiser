@@ -181,16 +181,39 @@ public class LiveMileEvent extends AppCompatActivity implements
             case R.id.finish :
 
                 pauseEvent();
-                globalLoading = new MaterialDialog.Builder(this)
-                        .title("Thank You!")
-                        .customView(R.layout.load_dialog_layout,true)
-                        .autoDismiss(false)
-                        .build();
-                TextView loadText = (TextView) globalLoading.getCustomView().findViewById(R.id.loadText);
-                loadText.setTypeface(TypeHelper.getTypefaceBold(this));
-                globalLoading.show();
+                //distanceMeasure == "Distance" if the user has not moved. If so, do not let event be submitted
+                if (!"Distance".equals(distanceMeasure.getText().toString())) {
+                    globalLoading = new MaterialDialog.Builder(this)
+                            .title("Thank You!")
+                            .customView(R.layout.load_dialog_layout,true)
+                            .autoDismiss(false)
+                            .build();
+                    TextView loadText = (TextView) globalLoading.getCustomView().findViewById(R.id.loadText);
+                    loadText.setTypeface(TypeHelper.getTypefaceBold(this));
+                    globalLoading.show();
 
-                eventHelper.liveMileEventFinished();
+                    eventHelper.liveMileEventFinished();
+                } else {
+                    MaterialDialog notQualify = new MaterialDialog.Builder(this)
+                            .title("Wait!")
+                            .content("You have not moved above the 0 mile point for this event.")
+                            .positiveText("Resume")
+                            .negativeText("Exit")
+                            .callback(new MaterialDialog.ButtonCallback() {
+                                @Override
+                                public void onPositive(MaterialDialog dialog) {
+                                    dialog.dismiss();
+                                    resumeEvent();
+                                }
+                                @Override
+                                public void onNegative(MaterialDialog dialog) {
+                                    dialog.dismiss();
+                                    endLiveEvent(true);
+                                }
+                            })
+                            .build();
+                    notQualify.show();
+                }
 
                 /**
                  * LiveMileEventHelper must have method to construct a json array of donation summary
