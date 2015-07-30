@@ -81,6 +81,7 @@ public class LiveMileEventHelper implements Parcelable {
     }
     public String getEventName() {return this.eventName;}
     public String getPerMile() { return perMile;}
+    public String getOrganization() {return organization;}
 
     //Need a getvalues
 

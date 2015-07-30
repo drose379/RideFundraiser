@@ -231,6 +231,7 @@ public class LiveMileEvent extends AppCompatActivity implements
 
         final Bundle completeEventData = new Bundle();
         completeEventData.putString("eventName",eventHelper.getEventName());
+        completeEventData.putString("organization",eventHelper.getOrganization());
         completeEventData.putString("distance", distanceMeasure.getText().toString());
         completeEventData.putString("time", timeMeasure.getText().toString());
         completeEventData.putString("averageSpeed", averageSpeedMeasure.getText().toString());

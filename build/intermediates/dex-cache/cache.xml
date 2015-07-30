@@ -2,11 +2,74 @@
 <items version="2" >
 
     <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.melnykov/floatingactionbutton/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8c6ebb7d087d1a30bf84356bd2aecf85309fc024">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-b1ceb33b9e48641650f63f5eb649f415e71473e0.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-49b57385a032a7870c66f8c7dbe96f93d268b426.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-958f989b87a06b73962e7e9e168a01be4bac18a8.jar" />
+    </item>
+    <item
         jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.5.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
         <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-f04719c82981211fea0d51366cfde95e14acc484.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="02bac2dc792d78241077861566f2c82da955e7fa">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-ad70792cd4e6826c3a5e98e60a59baa2cea23797.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/jars/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-e0a429211cfddec72f6b997b29f1400d195da956.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-9b14769f2e4c372f6a123ead99cbec011aa41b4f.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a78183f30e769a98ab4820794f597763088d3065">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-642bdb7992abf83465cc133d78b29d2eda9da290.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.4.0/5b72bf48563ea8410e650de14aa33ff69a3e8c35/okio-1.4.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5b72bf48563ea8410e650de14aa33ff69a3e8c35">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/okio-1.4.0-d89bef225596fe3b9e4886b37df40912c8389c95.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-9e9afcb0a03aa7788bfca72a19be0c0b94e88cb3.jar" />
     </item>
     <item
         jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.5.0/jars/classes.jar"
@@ -23,6 +86,111 @@
         <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-f19425c47a7c9c44b776d9af9ac29d232e85d066.jar" />
     </item>
     <item
+        jar="/Users/Dylan/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-484d45bef72bd83b1488113486ef8e15f731cd9f.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-10c9f2b6a074783f321d85ee691b78bc0a782707.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-06d59394da66ab7985ccc61062e6d964f21b9d6b.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-b59f3e256a9e90defad59d15a28a705fbb708d1d.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-8cb7948245049407bcf80e92577640485781c6ec.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/library-2.4.0-5d229de6ab19a1b632b24e93694415ceafef6cc7.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-d699a22937745be48857ef02ea0806916af603b4.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-24b143d0b927cf27373087c11732aa5b70a4b0d1.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d405025c600055237c171a0bbabaa49d69696573">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-e88b6863e25ad38e4b0328d52b21c6345c9f741f.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.4.0/40340c0748190fe897baf7bffbc1b282734294e5/okhttp-2.4.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="40340c0748190fe897baf7bffbc1b282734294e5">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/okhttp-2.4.0-c9db4ca88518a6edee5b8997e2d16bc5d20f7304.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-b1fb0ea523bb555a05985c6d43b1aa776bf8f1c5.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-5338e4d71c2535b4d0b58d661b88d335cf16fe45.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-ba40cf760a851c1e0952e1a7e385fd99ac0c35eb.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-b62ce0605ffe5f2de38fa6ebee2f445d61b6e820.jar" />
+    </item>
+    <item
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-ba82a1ddd3cd08012d0c9f3dcee927375c43ea5d.jar" />
+    </item>
+    <item
         jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.5.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -37,53 +205,11 @@
         <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-e26a792ba9f75f075ca1c1fd53ab6723694f58f1.jar" />
     </item>
     <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.5.0/jars/classes.jar"
+        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.afollestad/material-dialogs/0.7.6.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-9b14769f2e4c372f6a123ead99cbec011aa41b4f.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-958f989b87a06b73962e7e9e168a01be4bac18a8.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-ba82a1ddd3cd08012d0c9f3dcee927375c43ea5d.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.4.0/5b72bf48563ea8410e650de14aa33ff69a3e8c35/okio-1.4.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="5b72bf48563ea8410e650de14aa33ff69a3e8c35">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/okio-1.4.0-d89bef225596fe3b9e4886b37df40912c8389c95.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/jars/libs/internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-e0a429211cfddec72f6b997b29f1400d195da956.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.4.0/40340c0748190fe897baf7bffbc1b282734294e5/okhttp-2.4.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="40340c0748190fe897baf7bffbc1b282734294e5">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/okhttp-2.4.0-c9db4ca88518a6edee5b8997e2d16bc5d20f7304.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="02bac2dc792d78241077861566f2c82da955e7fa">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-ad70792cd4e6826c3a5e98e60a59baa2cea23797.jar" />
+        sha1="1c83e45c56a824bc54f276b2fa071f1914cceba7">
+        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-3db85e85fb382e0e156120c3f98136ad9e2968d7.jar" />
     </item>
     <item
         jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.5.0/jars/classes.jar"
@@ -93,137 +219,11 @@
         <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-ea5b20f6d6e2d55607ef863b4a2680000e289c5a.jar" />
     </item>
     <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-5338e4d71c2535b4d0b58d661b88d335cf16fe45.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-8cb7948245049407bcf80e92577640485781c6ec.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-b62ce0605ffe5f2de38fa6ebee2f445d61b6e820.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.afollestad/material-dialogs/0.7.6.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1c83e45c56a824bc54f276b2fa071f1914cceba7">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-3db85e85fb382e0e156120c3f98136ad9e2968d7.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-b59f3e256a9e90defad59d15a28a705fbb708d1d.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/library-2.4.0-5d229de6ab19a1b632b24e93694415ceafef6cc7.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-484d45bef72bd83b1488113486ef8e15f731cd9f.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="d405025c600055237c171a0bbabaa49d69696573">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-e88b6863e25ad38e4b0328d52b21c6345c9f741f.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-06d59394da66ab7985ccc61062e6d964f21b9d6b.jar" />
-    </item>
-    <item
         jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.5.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
         <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-5e0b0de1327fc84eb140a745b66f31452343a579.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-24b143d0b927cf27373087c11732aa5b70a4b0d1.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-9e9afcb0a03aa7788bfca72a19be0c0b94e88cb3.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-d699a22937745be48857ef02ea0806916af603b4.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-b1fb0ea523bb555a05985c6d43b1aa776bf8f1c5.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-ba40cf760a851c1e0952e1a7e385fd99ac0c35eb.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a78183f30e769a98ab4820794f597763088d3065">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-642bdb7992abf83465cc133d78b29d2eda9da290.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.5.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-10c9f2b6a074783f321d85ee691b78bc0a782707.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.melnykov/floatingactionbutton/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="8c6ebb7d087d1a30bf84356bd2aecf85309fc024">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-b1ceb33b9e48641650f63f5eb649f415e71473e0.jar" />
-    </item>
-    <item
-        jar="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/Users/Dylan/Documents/Programming/RideFundraiser/app/build/intermediates/pre-dexed/debug/classes-49b57385a032a7870c66f8c7dbe96f93d268b426.jar" />
     </item>
 
 </items>

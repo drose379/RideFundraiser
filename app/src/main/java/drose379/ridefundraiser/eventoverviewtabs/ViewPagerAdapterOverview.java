@@ -27,12 +27,13 @@ public class ViewPagerAdapterOverview extends FragmentPagerAdapter {
     public Fragment getItem(int item) {
         switch (item) {
             case 0 :
-                EventOverviewFragment overview = new EventOverviewFragment();
-                overview.setArguments(eventData);
-                return overview;
+                EventOverviewFragment eventOverview = new EventOverviewFragment();
+                eventOverview.setArguments(eventData);
+                return eventOverview;
             case 1 :
-                return new Fragment();
-            //open donation summary fragment
+                DonationOverviewFragment donationOverview = new DonationOverviewFragment();
+                donationOverview.setArguments(eventData);
+                return donationOverview;
             default :
                 throw new RuntimeException();
         }
