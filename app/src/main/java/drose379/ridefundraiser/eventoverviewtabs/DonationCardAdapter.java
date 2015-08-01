@@ -58,7 +58,7 @@ public class DonationCardAdapter extends BaseAdapter {
 
             user.setText(currentDonation.getUser());
             if (currentDonation.getMessage() != null) {messageText.setText(currentDonation.getMessage());}
-            amountText.setText(currentDonation.getAmount());
+            amountText.setText(currentDonation.getAmount())
         }
 
         return v;
