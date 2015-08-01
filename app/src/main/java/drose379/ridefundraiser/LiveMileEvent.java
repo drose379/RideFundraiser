@@ -229,41 +229,23 @@ public class LiveMileEvent extends AppCompatActivity implements
     public void finishedEventDataReady(String donationSummaryJson) {
 
         /**
-         * Instead of creatinga bundle of all event data
+         * Instead of creating a bundle of all event data
          * Have CompleteMileEvent object that holds all necessary data, make it parcelable and pass it to MileEventoverview
          * Create double values of all numbers (from strings)
          * Have getters and setters for each item, have setters return self.
          */
 
-        final Bundle completeEventData = new Bundle();
-        completeEventData.putString("eventName",eventHelper.getEventName());
-        completeEventData.putString("organization",eventHelper.getOrganization());
-        completeEventData.putString("perMile",eventHelper.getPerMile());
-        completeEventData.putString("distance", distanceMeasure.getText().toString());
-        completeEventData.putString("time", timeMeasure.getText().toString());
-        completeEventData.putString("averageSpeed", averageSpeedMeasure.getText().toString());
-        completeEventData.putString("percentComplete", goalReachedMeasure.getText().toString());
-        completeEventData.putString("donationSummary", donationSummaryJson);
+        CompleteMileEvent completeEvent = new CompleteMileEvent()
+                .setEventName(eventHelper.getEventName())
+                .setOrganization(eventHelper.getOrganization())
+                .setDonationRate(eventHelper.getPerMile())
+                .setDistance(distanceMeasure.getText().toString())
+                .setTime(timeMeasure.getText().toString())
+                .setAverageSpeed(averageSpeedMeasure.getText().toString())
+                .setPercentComplete(goalReachedMeasure.getText().toString())
+                .setDonationSummary(donationSummaryJson)
 
-        liveMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
-            @Override
-            public void onSnapshotReady(Bitmap bitmap) {
-
-                ByteArrayOutputStream output = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, output);
-                completeEventData.putByteArray("map", output.toByteArray());
-
-
-                Intent eventOverview = new Intent(LiveMileEvent.this, MileEventOverview.class);
-                eventOverview.putExtra("eventData", completeEventData);
-
-                globalLoading.dismiss();
-                endLiveEvent(false);
-                startActivity(eventOverview);
-
-            }
-        });
-
+                //pass through intent (parcelable) to MileEventOverview
 
 
 
