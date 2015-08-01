@@ -5,17 +5,23 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         xmlns:custom_text="http://schemas.android.com/apk/res-auto"
+        android:clickable="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="2dp"
         card_view:cardBackgroundColor="@color/ColorLightPrimary"
         android:paddingBottom="20dp"
         >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        >
 
         <drose379.ridefundraiser.CustomTextView
             android:layout_width="match_parent"
@@ -43,6 +49,22 @@
             />
 
     </LinearLayout>
+
+    <drose379.ridefundraiser.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="10dp"
+        android:layout_marginRight="10dp"
+        custom_text:bold="true"
+        android:background="@color/ColorStart"
+        android:id="@+id/thankYou"
+        android:text="SEND THANK YOU"
+        />
+
+</RelativeLayout>
+
 
 </android.support.v7.widget.CardView>
 

@@ -2,6 +2,7 @@ package drose379.ridefundraiser.eventoverviewtabs;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,9 +58,19 @@ public class DonationCardAdapter extends BaseAdapter {
             TextView messageText = (TextView) v.findViewById(R.id.messageText);
             TextView amountText = (TextView) v.findViewById(R.id.amountText);
 
+            TextView thanksButton = (TextView) v.findViewById(R.id.thankYou);
+
             user.setText(currentDonation.getUser());
             if (currentDonation.getMessage() != null) {messageText.setText(currentDonation.getMessage());} else {messageText.setVisibility(View.GONE);}
             amountText.setText(currentDonation.getAmount());
+
+            thanksButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //inflate thankyou message dialog (select what message, send a custom message, allow to save custom messages to use later)
+                }
+            });
+
         }
 
         return v;

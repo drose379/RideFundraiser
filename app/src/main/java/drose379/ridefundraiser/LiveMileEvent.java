@@ -228,10 +228,17 @@ public class LiveMileEvent extends AppCompatActivity implements
     @Override
     public void finishedEventDataReady(String donationSummaryJson) {
 
+        /**
+         * Instead of creatinga bundle of all event data
+         * Have CompleteMileEvent object that holds all necessary data, make it parcelable and pass it to MileEventoverview
+         * Create double values of all numbers (from strings)
+         * Have getters and setters for each item, have setters return self.
+         */
 
         final Bundle completeEventData = new Bundle();
         completeEventData.putString("eventName",eventHelper.getEventName());
         completeEventData.putString("organization",eventHelper.getOrganization());
+        completeEventData.putString("perMile",eventHelper.getPerMile());
         completeEventData.putString("distance", distanceMeasure.getText().toString());
         completeEventData.putString("time", timeMeasure.getText().toString());
         completeEventData.putString("averageSpeed", averageSpeedMeasure.getText().toString());

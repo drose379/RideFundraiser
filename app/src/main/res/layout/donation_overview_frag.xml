@@ -23,6 +23,28 @@
             android:id="@+id/headText"
             />
 
+        <!-- I raised $x per mile, for x miles - $xx.xx total -->
+        <!-- $xx.xx donated to my event by others -->
+        <!-- Total - $xx.xx -->
+
+        <drose379.ridefundraiser.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            customText:bold="true"
+            android:textColor="#000000"
+            android:id="@+id/donationInfo1"
+            />
+
+        <drose379.ridefundraiser.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            customText:bold="true"
+            android:textColor="#000000"
+            android:id="@+id/donationInfo2"
+            />
+
     </LinearLayout>
 
 

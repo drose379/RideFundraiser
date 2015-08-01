@@ -14,8 +14,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import drose379.ridefundraiser.Donation;
 import drose379.ridefundraiser.R;
@@ -26,6 +28,8 @@ import drose379.ridefundraiser.R;
 public class DonationOverviewFragment extends Fragment {
 
     private Bundle eventInfo;
+
+    NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
 
     @Override
     public void onAttach(Activity activity) {
@@ -40,9 +44,7 @@ public class DonationOverviewFragment extends Fragment {
         super.onCreateView(inflater, parent, savedInstance);
 
         View v = inflater.inflate(R.layout.donation_overview_frag,parent,false);
-        TextView headLabel = (TextView) v.findViewById(R.id.headText);
 
-        headLabel.setText("My Donation To - " + eventInfo.getString("organization"));
 
         return v;
     }
@@ -52,9 +54,25 @@ public class DonationOverviewFragment extends Fragment {
         super.onStart();
         try {
             populateDonationCards();
+            updateHeadTextInfo();
         } catch (JSONException e) {
             throw new RuntimeException(e.getMessage());
         }
+    }
+
+    public void updateHeadTextInfo() {
+        double personalDonation = Double.parseDouble(eventInfo.getString("perMile"));
+
+
+        TextView headLabel = (TextView) getView().findViewById(R.id.headText);
+        TextView donationInfo1 = (TextView) getView().findViewById(R.id.donationInfo1);
+        TextView donationInfo2 = (TextView) getView().findViewById(R.id.donationInfo2);
+
+
+
+        headLabel.setText("My Donation To - " + eventInfo.getString("organization"));
+        donationInfo1.setText("I raised " + currency.format(personalDonation) + " For " + eventInfo.getString("distance"));
+        donationInfo2.setText();
     }
 
     public void populateDonationCards() throws JSONException {
