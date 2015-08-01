@@ -31,6 +31,8 @@ public class DonationOverviewFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         eventInfo = getArguments();
+
+        //need to calculate total donation and add to top header
     }
 
     @Override

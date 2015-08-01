@@ -1,6 +1,7 @@
 package drose379.ridefundraiser.eventoverviewtabs;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,8 +58,8 @@ public class DonationCardAdapter extends BaseAdapter {
             TextView amountText = (TextView) v.findViewById(R.id.amountText);
 
             user.setText(currentDonation.getUser());
-            if (currentDonation.getMessage() != null) {messageText.setText(currentDonation.getMessage());}
-            amountText.setText(currentDonation.getAmount())
+            if (currentDonation.getMessage() != null) {messageText.setText(currentDonation.getMessage());} else {messageText.setVisibility(View.GONE);}
+            amountText.setText(currentDonation.getAmount());
         }
 
         return v;

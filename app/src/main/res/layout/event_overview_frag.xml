@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom_text="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
@@ -21,7 +24,7 @@
         >
 
 
-        <TextView
+        <drose379.ridefundraiser.CustomTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAlignment="gravity"
@@ -30,12 +33,13 @@
             android:layout_weight="0.5"
             android:padding="15dp"
             android:textSize="17sp"
-            android:textColor="#000000"
-            android:background="#E8EAF6"
+            custom_text:bold="true"
+            android:textColor="#FFFFFF"
+            android:background="@color/ColorLightPrimary"
             android:id="@+id/distanceText"
             android:text="Distance"/>
 
-        <TextView
+        <drose379.ridefundraiser.CustomTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAlignment="gravity"
@@ -44,8 +48,9 @@
             android:layout_weight="0.5"
             android:padding="15dp"
             android:textSize="17sp"
-            android:textColor="#000000"
-            android:background="#E8EAF6"
+            custom_text:bold="true"
+            android:textColor="#FFFFFF"
+            android:background="@color/ColorLightPrimary"
             android:id="@+id/timeText"
             android:text="Time"/>
 
@@ -61,7 +66,7 @@
         android:orientation="horizontal"
         >
 
-        <TextView
+        <drose379.ridefundraiser.CustomTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAlignment="gravity"
@@ -70,12 +75,13 @@
             android:layout_weight="0.5"
             android:padding="15dp"
             android:textSize="17sp"
-            android:textColor="#000000"
-            android:background="#E8EAF6"
+            custom_text:bold="true"
+            android:textColor="#FFFFFF"
+            android:background="@color/ColorLightPrimary"
             android:id="@+id/avgSpeed"
             android:text="Avg. Speed"/>
 
-        <TextView
+        <drose379.ridefundraiser.CustomTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAlignment="gravity"
@@ -84,8 +90,9 @@
             android:layout_weight="0.5"
             android:padding="15dp"
             android:textSize="17sp"
-            android:textColor="#000000"
-            android:background="#E8EAF6"
+            custom_text:bold="true"
+            android:textColor="#FFFFFF"
+            android:background="@color/ColorLightPrimary"
             android:id="@+id/percentReached"
             android:text="% Complete"/>
 
