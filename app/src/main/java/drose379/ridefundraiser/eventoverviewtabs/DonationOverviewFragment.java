@@ -7,11 +7,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import drose379.ridefundraiser.Donation;
 import drose379.ridefundraiser.R;
 
 /**
@@ -45,12 +51,28 @@ public class DonationOverviewFragment extends Fragment {
         try {
             populateDonationCards();
         } catch (JSONException e) {
-            //No donations submitted from other users, just show one card with original users donations
+            throw new RuntimeException(e.getMessage());
         }
     }
 
     public void populateDonationCards() throws JSONException {
-        JSONObject donations = new JSONObject(eventInfo.getString("donationSummary"));
+        JSONArray donations = new JSONArray(eventInfo.getString("donationSummary"));
+        List<Donation> donationList = new ArrayList<Donation>();
+
+        for(int i = 0; i < donations.length(); i++) {
+            JSONObject inner = donations.getJSONObject(i);
+            String user = inner.getString("user");
+            String amount = inner.getString("amount");
+            String message = inner.getString("message").equals("null") ? null : inner.getString("message");
+
+            Donation currentDonation = new Donation(user,amount);
+            if (message != null) {currentDonation.setMessage(message);}
+
+            donationList.add(currentDonation);
+        }
+        ListView donationCards = (ListView) getView().findViewById(R.id.donationCardContainer);
+        DonationCardAdapter adapter = new DonationCardAdapter(getActivity(),donationList);
+        donationCards.setAdapter(adapter);
     }
 
 }
