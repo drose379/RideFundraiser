@@ -1,5 +1,6 @@
 package drose379.ridefundraiser;
 
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.app.NavUtils;
@@ -10,6 +11,7 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -44,7 +46,7 @@ public class CompleteMileEvent implements Parcelable {
     private double donationRate;
     private double distance;
 
-    private List<Donation> donations;
+    private ArrayList<Donation> donations;
 
     NumberFormat currencyFormatUS = NumberFormat.getCurrencyInstance(Locale.US);
     NumberFormat currencyFormatUK = NumberFormat.getCurrencyInstance(Locale.UK);
@@ -70,11 +72,17 @@ public class CompleteMileEvent implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest,int flags) {
-        dest.writeString(user);
-        dest.writeString(eventName);
-        dest.writeString(organization);
-
         //create bundle and dest.writeBundle() and grab bindle in CompleteMileEvent(Parcel in) constructor just grab bundle and keys
+        Bundle completeInfo = new Bundle();
+        completeInfo.putString("user",user);
+        completeInfo.putString("eventName",eventName);
+        completeInfo.putString("organization",organization);
+        completeInfo.putString("time",time);
+        completeInfo.putString("averageSpeed",averageSpeed);
+        completeInfo.putString("percentComplete",percentComplete);
+        completeInfo.putDouble("donationRate", donationRate);
+        completeInfo.putDouble("distance",distance);
+        completeInfo.putParcelableArrayList("donations",donations);
     }
 
     public CompleteMileEvent() {
@@ -82,9 +90,8 @@ public class CompleteMileEvent implements Parcelable {
     }
 
     public CompleteMileEvent(Parcel in) {
-        //grab items from parcel with in.readX()
-
-
+        Bundle data = in.readBundle();
+        user = data.getString("user");
     }
 
     public CompleteMileEvent setUser(String user) {
