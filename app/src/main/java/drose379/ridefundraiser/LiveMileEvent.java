@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 
@@ -235,7 +236,7 @@ public class LiveMileEvent extends AppCompatActivity implements
          * Have getters and setters for each item, have setters return self.
          */
 
-        CompleteMileEvent completeEvent = new CompleteMileEvent()
+        final CompleteMileEvent completeEvent = new CompleteMileEvent()
                 .setEventName(eventHelper.getEventName())
                 .setOrganization(eventHelper.getOrganization())
                 .setDonationRate(eventHelper.getPerMile())
@@ -245,9 +246,23 @@ public class LiveMileEvent extends AppCompatActivity implements
                 .setPercentComplete(goalReachedMeasure.getText().toString())
                 .setDonationSummary(donationSummaryJson);
 
-        Intent i = new Intent(this,MileEventOverview.class);
-        i.putExtra("eventData",completeEvent);
-        startActivity(i);
+        liveMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
+            @Override
+            public void onSnapshotReady(Bitmap bitmap) {
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+                byte[] imageBytes = out.toByteArray();
+
+                Log.i("imageBytes",String.valueOf(imageBytes.length));
+
+                completeEvent.setLiveMapBytes(imageBytes);
+
+                Intent i = new Intent(LiveMileEvent.this, MileEventOverview.class);
+                i.putExtra("eventData", completeEvent);
+                startActivity(i);
+
+            }
+        });
 
     }
 

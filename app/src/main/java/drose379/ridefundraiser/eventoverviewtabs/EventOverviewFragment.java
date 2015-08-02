@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import drose379.ridefundraiser.CompleteMileEvent;
 import drose379.ridefundraiser.R;
 import drose379.ridefundraiser.TypeHelper;
 
@@ -21,14 +22,20 @@ import drose379.ridefundraiser.TypeHelper;
  */
 public class EventOverviewFragment extends Fragment {
 
+    /**
+     * Instead of using blocks just live LiveEvent activity to display event results (time,speed,etc)
+     * Show each item in a card, inside of a ListView, show all data that can gather about each item in this card
+     * Show how stats compare to users past events
+     */
+
     private Context context;
-    private Bundle eventArguments;
+    private CompleteMileEvent eventArguments;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.context = activity;
-        this.eventArguments = getArguments();
+        this.eventArguments = getArguments().getParcelable("eventData");
 
     }
 
@@ -43,18 +50,18 @@ public class EventOverviewFragment extends Fragment {
         TextView avgSpeedText = (TextView) v.findViewById(R.id.avgSpeed);
         TextView percentText = (TextView) v.findViewById(R.id.percentReached);
 
-        byte[] mapBytes = eventArguments.getByteArray("map");
-        mapImage.setImageBitmap(BitmapFactory.decodeByteArray(mapBytes,0,mapBytes.length));
+        mapImage.setImageBitmap(eventArguments.getMapImage());
+
 
         distanceText.setTypeface(TypeHelper.getTypeface(context));
         timeText.setTypeface(TypeHelper.getTypeface(context));
         avgSpeedText.setTypeface(TypeHelper.getTypeface(context));
         percentText.setTypeface(TypeHelper.getTypeface(context));
 
-        distanceText.setText(eventArguments.getString("distance"));
-        timeText.setText(eventArguments.getString("time"));
-        avgSpeedText.setText(eventArguments.getString("averageSpeed"));
-        percentText.setText(eventArguments.getString("percentComplete"));
+        distanceText.setText(eventArguments.getDistanceFormatted());
+        timeText.setText(eventArguments.getTime());
+        avgSpeedText.setText(eventArguments.getAverageSpeed());
+        percentText.setText(eventArguments.getPercentComplete());
 
         return v;
     }

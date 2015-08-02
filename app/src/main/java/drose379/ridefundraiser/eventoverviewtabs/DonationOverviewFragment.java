@@ -34,7 +34,7 @@ public class DonationOverviewFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        eventInfo = getArguments();
+        //eventInfo = getArguments();
 
         //need to calculate total donation and add to top header
     }
@@ -52,12 +52,14 @@ public class DonationOverviewFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        /**
         try {
             populateDonationCards();
             updateHeadTextInfo();
         } catch (JSONException e) {
             throw new RuntimeException(e.getMessage());
         }
+         */
     }
 
     public void updateHeadTextInfo() {
@@ -70,9 +72,9 @@ public class DonationOverviewFragment extends Fragment {
 
 
 
-        headLabel.setText("My Donation To - " + eventInfo.getString("organization"));
-        donationInfo1.setText("I raised " + currency.format(personalDonation) + " For " + eventInfo.getString("distance"));
-        donationInfo2.setText();
+        //headLabel.setText("My Donation To - " + eventInfo.getString("organization"));
+        //donationInfo1.setText("I raised " + currency.format(personalDonation) + " For " + eventInfo.getString("distance"));
+        //donationInfo2.setText();
     }
 
     public void populateDonationCards() throws JSONException {
