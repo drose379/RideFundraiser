@@ -243,11 +243,11 @@ public class LiveMileEvent extends AppCompatActivity implements
                 .setTime(timeMeasure.getText().toString())
                 .setAverageSpeed(averageSpeedMeasure.getText().toString())
                 .setPercentComplete(goalReachedMeasure.getText().toString())
-                .setDonationSummary(donationSummaryJson)
+                .setDonationSummary(donationSummaryJson);
 
-                //pass through intent (parcelable) to MileEventOverview
-
-
+        Intent i = new Intent(this,MileEventOverview.class);
+        i.putExtra("eventData",completeEvent);
+        startActivity(i);
 
     }
 

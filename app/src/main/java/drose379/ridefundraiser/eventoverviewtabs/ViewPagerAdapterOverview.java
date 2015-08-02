@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import drose379.ridefundraiser.CompleteMileEvent;
 import drose379.ridefundraiser.R;
 
 
@@ -13,26 +14,30 @@ import drose379.ridefundraiser.R;
  */
 public class ViewPagerAdapterOverview extends FragmentPagerAdapter {
 
-    private Bundle eventData;
+    private CompleteMileEvent eventData;
 
     public String[] titles = new String[] {"Event","Donation"};
     public int[] icons = new int[] {R.drawable.ic_directions_run_white_24dp,R.drawable.ic_attach_money_white_24dp};
 
-    public ViewPagerAdapterOverview(FragmentManager manager,Bundle eventData) {
+    public ViewPagerAdapterOverview(FragmentManager manager,CompleteMileEvent eventData) {
         super(manager);
         this.eventData = eventData;
     }
 
     @Override
     public Fragment getItem(int item) {
+
+        Bundle data = new Bundle();
+        data.putParcelable("eventData",eventData);
+
         switch (item) {
             case 0 :
                 EventOverviewFragment eventOverview = new EventOverviewFragment();
-                eventOverview.setArguments(eventData);
+                eventOverview.setArguments(data);
                 return eventOverview;
             case 1 :
                 DonationOverviewFragment donationOverview = new DonationOverviewFragment();
-                donationOverview.setArguments(eventData);
+                donationOverview.setArguments(data);
                 return donationOverview;
             default :
                 throw new RuntimeException();

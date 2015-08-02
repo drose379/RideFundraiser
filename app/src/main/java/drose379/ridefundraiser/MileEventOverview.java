@@ -27,17 +27,17 @@ import drose379.ridefundraiser.eventoverviewtabs.ViewPagerAdapterOverview;
 
 public class MileEventOverview extends AppCompatActivity {
 
-    private Bundle eventData;
+    private CompleteMileEvent eventData;
 
     @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         setContentView(R.layout.mile_event_overview);
 
-        eventData = getIntent().getBundleExtra("eventData");
+        eventData = getIntent().getParcelableExtra("eventData");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(eventData.getString("eventName") + " Overview");
+        toolbar.setTitle(eventData.getEventName() + " Overview");
         setSupportActionBar(toolbar);
 
 
