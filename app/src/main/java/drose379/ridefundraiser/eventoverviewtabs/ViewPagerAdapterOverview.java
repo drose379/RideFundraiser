@@ -16,8 +16,8 @@ public class ViewPagerAdapterOverview extends FragmentPagerAdapter {
 
     private CompleteMileEvent eventData;
 
-    public String[] titles = new String[] {"Event","Donation"};
-    public int[] icons = new int[] {R.drawable.ic_directions_run_white_24dp,R.drawable.ic_attach_money_white_24dp};
+    public String[] titles = new String[] {"Event","Map","Donation"};
+    public int[] icons = new int[] {R.drawable.ic_directions_run_white_24dp,R.drawable.ic_map_white_24dp,R.drawable.ic_attach_money_white_24dp};
 
     public ViewPagerAdapterOverview(FragmentManager manager,CompleteMileEvent eventData) {
         super(manager);
@@ -36,6 +36,9 @@ public class ViewPagerAdapterOverview extends FragmentPagerAdapter {
                 eventOverview.setArguments(data);
                 return eventOverview;
             case 1 :
+                MapOverviewFragment mapFrag = new MapOverviewFragment();
+                return mapFrag;
+            case 2:
                 DonationOverviewFragment donationOverview = new DonationOverviewFragment();
                 donationOverview.setArguments(data);
                 return donationOverview;
@@ -46,7 +49,7 @@ public class ViewPagerAdapterOverview extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     public String getTabTitle(int position) {return titles[position];}

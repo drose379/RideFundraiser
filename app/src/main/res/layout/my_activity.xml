@@ -13,7 +13,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="16dp"
-        fab:fab_colorNormal="@color/ColorLightPrimary"
+        fab:fab_colorNormal="@color/indicator"
         fab:fab_colorPressed="@color/ColorPrimary"
         android:src="@drawable/ic_add_white_24dp"
      />

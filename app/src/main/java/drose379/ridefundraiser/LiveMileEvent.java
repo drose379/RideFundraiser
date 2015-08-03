@@ -246,6 +246,11 @@ public class LiveMileEvent extends AppCompatActivity implements
                 .setPercentComplete(goalReachedMeasure.getText().toString())
                 .setDonationSummary(donationSummaryJson);
 
+        /**
+         * Instead of getting a Bitmap of the map, get the polyline on the map and pass it through an event bus
+         * MapOverview fragment will grab the eventBus and use the polyline to add to its map.
+         */
+
         liveMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
             @Override
             public void onSnapshotReady(Bitmap bitmap) {

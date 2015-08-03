@@ -40,6 +40,10 @@ public class MileEventOverview extends AppCompatActivity {
         toolbar.setTitle(eventData.getEventName() + " Overview");
         setSupportActionBar(toolbar);
 
+        /**
+         * Need seperate tab for map, have class that extends GoogleMap and is parcelable, pass Map object to map fragment and give map options, (change type,zoom, etc)
+         * In event tab, show cards for each category (dist,speed) giving in depth info into the event for each, (max speed, min speed with avg speed, etc)
+         */
 
 
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);

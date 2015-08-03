@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ColorPrimary">#5274A1</color>
-    <color name="ColorPrimaryDark">#415D81</color>
-    <color name="indicator">#03A9F4</color>
-    <color name="ColorLightPrimary">#5394D6</color>
+    <color name="ColorPrimary">#4CAF50</color>
+    <color name="ColorPrimaryDark">#388E3C</color>
+    <color name="indicator">#039BE5</color>
+    <color name="ColorLightPrimary">#C8E6C9</color>
     <color name="ColorStart">#00bfa5</color>
 </resources>

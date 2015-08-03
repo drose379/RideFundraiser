@@ -2,101 +2,17 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom_text="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- ListView with cards for each piece of info about the event -->
+    <!-- DISTANCE CARD:  Need extended data for Distance, add elevation data along with distance and percent of goal reached) -->
+    <!-- SPEED CARD: Need to show average speed, high speed, low speed-->
+    <!-- Time card -->
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="20dp"
-        android:id="@+id/mapImage"
-        />
+    <!-- Have one card layout, depending on which item is being added to card, set Textviws in card to either GONE or VISIBLE -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="horizontal"
-        >
-
-
-        <drose379.ridefundraiser.CustomTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="gravity"
-            android:gravity="center"
-            android:layout_marginRight="1dp"
-            android:layout_weight="0.5"
-            android:padding="15dp"
-            android:textSize="17sp"
-            custom_text:bold="true"
-            android:textColor="#FFFFFF"
-            android:background="@color/ColorLightPrimary"
-            android:id="@+id/distanceText"
-            android:text="Distance"/>
-
-        <drose379.ridefundraiser.CustomTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="gravity"
-            android:gravity="center"
-            android:layout_marginLeft="1dp"
-            android:layout_weight="0.5"
-            android:padding="15dp"
-            android:textSize="17sp"
-            custom_text:bold="true"
-            android:textColor="#FFFFFF"
-            android:background="@color/ColorLightPrimary"
-            android:id="@+id/timeText"
-            android:text="Time"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="2dp"
-        android:orientation="horizontal"
-        >
-
-        <drose379.ridefundraiser.CustomTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="gravity"
-            android:gravity="center"
-            android:layout_marginRight="1dp"
-            android:layout_weight="0.5"
-            android:padding="15dp"
-            android:textSize="17sp"
-            custom_text:bold="true"
-            android:textColor="#FFFFFF"
-            android:background="@color/ColorLightPrimary"
-            android:id="@+id/avgSpeed"
-            android:text="Avg. Speed"/>
-
-        <drose379.ridefundraiser.CustomTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="gravity"
-            android:gravity="center"
-            android:layout_marginLeft="1dp"
-            android:layout_weight="0.5"
-            android:padding="15dp"
-            android:textSize="17sp"
-            custom_text:bold="true"
-            android:textColor="#FFFFFF"
-            android:background="@color/ColorLightPrimary"
-            android:id="@+id/percentReached"
-            android:text="% Complete"/>
-
-
-    </LinearLayout>
 
 </LinearLayout>

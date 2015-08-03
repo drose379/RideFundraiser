@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -44,24 +46,6 @@ public class EventOverviewFragment extends Fragment {
         super.onCreateView(inflater, parent, savedInstance);
         View v = inflater.inflate(R.layout.event_overview_frag,parent,false);
 
-        ImageView mapImage = (ImageView) v.findViewById(R.id.mapImage);
-        TextView distanceText = (TextView) v.findViewById(R.id.distanceText);
-        TextView timeText = (TextView) v.findViewById(R.id.timeText);
-        TextView avgSpeedText = (TextView) v.findViewById(R.id.avgSpeed);
-        TextView percentText = (TextView) v.findViewById(R.id.percentReached);
-
-        mapImage.setImageBitmap(eventArguments.getMapImage());
-
-
-        distanceText.setTypeface(TypeHelper.getTypeface(context));
-        timeText.setTypeface(TypeHelper.getTypeface(context));
-        avgSpeedText.setTypeface(TypeHelper.getTypeface(context));
-        percentText.setTypeface(TypeHelper.getTypeface(context));
-
-        distanceText.setText(eventArguments.getDistanceFormatted());
-        timeText.setText(eventArguments.getTime());
-        avgSpeedText.setText(eventArguments.getAverageSpeed());
-        percentText.setText(eventArguments.getPercentComplete());
 
         return v;
     }

@@ -38,7 +38,7 @@
                 android:textAlignment="gravity"
                 android:gravity="center_horizontal"
                 android:padding="15dp"
-                android:background="@color/ColorStart"
+                android:background="@color/ColorPrimary"
                 android:text="START"
                 android:id="@+id/singleStartButton"
                 />
@@ -83,7 +83,7 @@
                     android:padding="15dp"
                     android:layout_marginLeft="1dp"
                     android:text="Resume"
-                    android:background="@color/ColorStart"
+                    android:background="@color/ColorPrimary"
                     android:id="@+id/resume"
                     />
          
